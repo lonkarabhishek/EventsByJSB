@@ -82,11 +82,29 @@ const VideoReelsSection = () => {
     };
   }, [goNext, goPrev]);
 
-  // Lightbox body scroll lock
+  // Lightbox body scroll lock + hide navbar/sticky CTA
   useEffect(() => {
-    if (lightbox !== null) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => { document.body.style.overflow = ""; };
+    if (lightbox !== null) {
+      document.body.style.overflow = "hidden";
+      // Hide navbar and sticky CTA so they don't cover video controls
+      const navbar = document.querySelector("nav.fixed");
+      const stickyCta = document.querySelector(".fixed.bottom-0");
+      if (navbar) (navbar as HTMLElement).style.display = "none";
+      if (stickyCta) (stickyCta as HTMLElement).style.display = "none";
+    } else {
+      document.body.style.overflow = "";
+      const navbar = document.querySelector("nav.fixed");
+      const stickyCta = document.querySelector(".fixed.bottom-0");
+      if (navbar) (navbar as HTMLElement).style.display = "";
+      if (stickyCta) (stickyCta as HTMLElement).style.display = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      const navbar = document.querySelector("nav.fixed");
+      const stickyCta = document.querySelector(".fixed.bottom-0");
+      if (navbar) (navbar as HTMLElement).style.display = "";
+      if (stickyCta) (stickyCta as HTMLElement).style.display = "";
+    };
   }, [lightbox]);
 
   // Auto-play lightbox video
@@ -247,16 +265,26 @@ const VideoReelsSection = () => {
       {/* Fullscreen Video Lightbox */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center animate-[fadeIn_0.3s_ease-out]"
+          className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center animate-[fadeIn_0.3s_ease-out]"
           onClick={() => setLightbox(null)}
         >
-          {/* Close */}
-          <button
-            onClick={() => setLightbox(null)}
-            className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          {/* Top bar: label + close */}
+          <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 pt-[env(safe-area-inset-top,12px)] pb-2 bg-gradient-to-b from-black/80 to-transparent">
+            <div className="text-center flex-1 pl-12">
+              <p className="font-heading text-base text-white/90 tracking-wider">
+                {reels[lightbox]?.label}
+              </p>
+              <p className="font-body text-xs text-white/50">
+                {lightbox + 1} / {reels.length}
+              </p>
+            </div>
+            <button
+              onClick={() => setLightbox(null)}
+              className="w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
 
           {/* Prev */}
           <button
@@ -264,7 +292,7 @@ const VideoReelsSection = () => {
               e.stopPropagation();
               setLightbox(lightbox === 0 ? reels.length - 1 : lightbox - 1);
             }}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-colors"
+            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -275,14 +303,14 @@ const VideoReelsSection = () => {
               e.stopPropagation();
               setLightbox(lightbox === reels.length - 1 ? 0 : lightbox + 1);
             }}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-colors"
+            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-colors"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Video phone frame */}
+          {/* Video — larger on mobile, phone frame on desktop */}
           <div
-            className="relative w-[85vw] max-w-[400px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/10"
+            className="relative w-full h-full md:w-[85vw] md:max-w-[400px] md:h-auto md:aspect-[9/16] md:rounded-[2rem] overflow-hidden md:shadow-2xl md:border-2 md:border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
             <video
@@ -292,20 +320,10 @@ const VideoReelsSection = () => {
               playsInline
               controls
               loop
-              className="w-full h-full object-cover bg-black"
+              className="w-full h-full object-contain md:object-cover bg-black"
             >
               <source src={reels[lightbox]?.src} type="video/mp4" />
             </video>
-          </div>
-
-          {/* Label */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-center">
-            <p className="font-heading text-lg text-white/80 tracking-wider">
-              {reels[lightbox]?.label}
-            </p>
-            <p className="font-body text-xs text-white/40 mt-1">
-              {lightbox + 1} / {reels.length}
-            </p>
           </div>
         </div>
       )}

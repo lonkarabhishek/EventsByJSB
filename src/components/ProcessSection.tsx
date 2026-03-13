@@ -88,24 +88,24 @@ const ProcessSection = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
           {/* Header */}
-          <div className="text-center mb-6 md:mb-12">
-            <p className="text-gold md:text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-1 md:mb-3">
+          <div className="text-center mb-8 md:mb-12">
+            <p className="text-gold md:text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3">
               Our Process
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl font-light text-primary-foreground md:text-foreground">
+            <h2 className="font-heading text-4xl md:text-5xl font-light text-primary-foreground md:text-foreground">
               How We Work
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-center">
             {/* Left: Steps timeline */}
-            <div className="relative pl-12 md:pl-16">
+            <div className="relative pl-14 md:pl-16">
               {/* Vertical dashed line (background) */}
-              <div className="absolute left-[15px] md:left-[22px] top-2 bottom-2 w-px border-l-2 border-dashed border-primary-foreground/20 md:border-primary/20" />
+              <div className="absolute left-[18px] md:left-[22px] top-2 bottom-2 w-px border-l-2 border-dashed border-primary-foreground/20 md:border-primary/20" />
 
               {/* Vertical progress fill */}
               <div
-                className="absolute left-[15px] md:left-[22px] top-2 w-[2px] bg-gold transition-all duration-700 ease-out rounded-full"
+                className="absolute left-[18px] md:left-[22px] top-2 w-[2px] bg-gold transition-all duration-700 ease-out rounded-full"
                 style={{ height: `${lineProgress}%` }}
               />
 
@@ -116,7 +116,7 @@ const ProcessSection = () => {
                 return (
                   <div
                     key={i}
-                    className="relative mb-4 md:mb-10 last:mb-0 cursor-pointer"
+                    className="relative mb-6 md:mb-10 last:mb-0 cursor-pointer"
                     onClick={() => {
                       // Scroll to make this step active
                       if (!sectionRef.current) return;
@@ -131,7 +131,7 @@ const ProcessSection = () => {
                   >
                     {/* Number circle */}
                     <div
-                      className={`absolute -left-12 md:-left-16 top-0 w-8 h-8 md:w-11 md:h-11 rounded-full flex items-center justify-center font-body text-[10px] md:text-sm font-semibold transition-all duration-500 ${
+                      className={`absolute -left-14 md:-left-16 top-0 w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center font-body text-xs md:text-sm font-semibold transition-all duration-500 ${
                         isActive
                           ? "bg-gold text-foreground scale-110 shadow-[0_0_20px_rgba(183,142,78,0.4)]"
                           : isPast
@@ -150,7 +150,7 @@ const ProcessSection = () => {
                     >
                       <h3
                         className={`font-heading text-primary-foreground md:text-foreground transition-all duration-500 leading-tight ${
-                          isActive ? "text-xl md:text-3xl lg:text-4xl mb-2 md:mb-3" : "text-base md:text-xl mb-1"
+                          isActive ? "text-2xl md:text-3xl lg:text-4xl mb-3 md:mb-3" : "text-lg md:text-xl mb-1"
                         }`}
                       >
                         {step.title}
@@ -160,7 +160,7 @@ const ProcessSection = () => {
                           isActive ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
                         }`}
                       >
-                        <p className="text-body text-sm md:text-base text-primary-foreground/70 md:text-muted-foreground max-w-md leading-relaxed">
+                        <p className="text-body text-base md:text-base text-primary-foreground/70 md:text-muted-foreground max-w-md leading-relaxed">
                           {step.desc}
                         </p>
                       </div>
@@ -208,18 +208,6 @@ const ProcessSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Mobile step counter */}
-          <div className="flex md:hidden justify-center mt-4 gap-2">
-            {steps.map((_, i) => (
-              <div
-                key={i}
-                className={`h-1 rounded-full transition-all duration-500 ${
-                  i === activeStep ? "w-8 bg-gold" : i < activeStep ? "w-4 bg-gold/50" : "w-4 bg-primary-foreground/20"
-                }`}
-              />
-            ))}
           </div>
 
           {/* CTA below steps */}
