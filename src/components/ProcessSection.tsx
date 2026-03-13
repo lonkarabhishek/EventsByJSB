@@ -68,46 +68,40 @@ const ProcessSection = () => {
     >
       {/* Sticky viewport-height container */}
       <div className="sticky top-0 h-screen flex items-start pt-20 md:pt-24 overflow-hidden bg-muted pb-16">
-        <div className="max-w-6xl mx-auto px-6 w-full">
+
+        {/* Mobile fullscreen background images */}
+        <div className="absolute inset-0 md:hidden">
+          {steps.map((step, i) => (
+            <img
+              key={i}
+              src={step.image}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out"
+              style={{ opacity: i === activeStep ? 1 : 0 }}
+              loading="lazy"
+            />
+          ))}
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-foreground/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/50" />
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
           {/* Header */}
-          <div className="text-center mb-4 md:mb-12">
-            <p className="text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-1 md:mb-3">
+          <div className="text-center mb-6 md:mb-12">
+            <p className="text-gold md:text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-1 md:mb-3">
               Our Process
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground">
+            <h2 className="font-heading text-3xl md:text-5xl font-light text-primary-foreground md:text-foreground">
               How We Work
             </h2>
-          </div>
-
-          {/* Mobile image — compact crossfading photo above steps */}
-          <div className="flex md:hidden justify-center mb-4">
-            <div className="relative w-28 h-28 rounded-xl overflow-hidden shadow-lg border-2 border-gold/20">
-              {steps.map((step, i) => (
-                <img
-                  key={i}
-                  src={step.image}
-                  alt={step.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out"
-                  style={{
-                    opacity: i === activeStep ? 1 : 0,
-                    transform: i === activeStep ? "scale(1)" : "scale(1.08)",
-                  }}
-                  loading="lazy"
-                />
-              ))}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
-              <div className="absolute bottom-2 right-2 bg-foreground/50 backdrop-blur-md rounded-full px-3 py-1 border border-primary-foreground/10">
-                <span className="text-gold font-heading text-sm">{activeStep + 1}</span>
-                <span className="text-primary-foreground/40 font-body text-[10px]"> / {steps.length}</span>
-              </div>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-center">
             {/* Left: Steps timeline */}
             <div className="relative pl-12 md:pl-16">
               {/* Vertical dashed line (background) */}
-              <div className="absolute left-[15px] md:left-[22px] top-2 bottom-2 w-px border-l-2 border-dashed border-primary/20" />
+              <div className="absolute left-[15px] md:left-[22px] top-2 bottom-2 w-px border-l-2 border-dashed border-primary-foreground/20 md:border-primary/20" />
 
               {/* Vertical progress fill */}
               <div
@@ -122,7 +116,7 @@ const ProcessSection = () => {
                 return (
                   <div
                     key={i}
-                    className="relative mb-3 md:mb-10 last:mb-0 cursor-pointer"
+                    className="relative mb-4 md:mb-10 last:mb-0 cursor-pointer"
                     onClick={() => {
                       // Scroll to make this step active
                       if (!sectionRef.current) return;
@@ -142,7 +136,7 @@ const ProcessSection = () => {
                           ? "bg-gold text-foreground scale-110 shadow-[0_0_20px_rgba(183,142,78,0.4)]"
                           : isPast
                             ? "bg-gold/80 text-foreground"
-                            : "bg-background border-2 border-primary/25 text-muted-foreground"
+                            : "bg-primary-foreground/10 md:bg-background border-2 border-primary-foreground/25 md:border-primary/25 text-primary-foreground/50 md:text-muted-foreground"
                       }`}
                     >
                       {step.number}
@@ -155,7 +149,7 @@ const ProcessSection = () => {
                       }`}
                     >
                       <h3
-                        className={`font-heading text-foreground transition-all duration-500 leading-tight ${
+                        className={`font-heading text-primary-foreground md:text-foreground transition-all duration-500 leading-tight ${
                           isActive ? "text-xl md:text-3xl lg:text-4xl mb-2 md:mb-3" : "text-base md:text-xl mb-1"
                         }`}
                       >
@@ -166,7 +160,7 @@ const ProcessSection = () => {
                           isActive ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
                         }`}
                       >
-                        <p className="text-body text-sm md:text-base text-muted-foreground max-w-md leading-relaxed">
+                        <p className="text-body text-sm md:text-base text-primary-foreground/70 md:text-muted-foreground max-w-md leading-relaxed">
                           {step.desc}
                         </p>
                       </div>
@@ -176,7 +170,7 @@ const ProcessSection = () => {
               })}
             </div>
 
-            {/* Right: Image with decorative ring */}
+            {/* Right: Image with decorative ring — desktop only */}
             <div className="relative hidden md:flex items-center justify-center">
               {/* Decorative ring */}
               <div
@@ -216,9 +210,21 @@ const ProcessSection = () => {
             </div>
           </div>
 
+          {/* Mobile step counter */}
+          <div className="flex md:hidden justify-center mt-4 gap-2">
+            {steps.map((_, i) => (
+              <div
+                key={i}
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  i === activeStep ? "w-8 bg-gold" : i < activeStep ? "w-4 bg-gold/50" : "w-4 bg-primary-foreground/20"
+                }`}
+              />
+            ))}
+          </div>
+
           {/* CTA below steps */}
           <div
-            className={`text-center mt-8 md:mt-10 transition-all duration-500 ${
+            className={`text-center mt-6 md:mt-10 transition-all duration-500 ${
               activeStep === steps.length - 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >

@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import WhatsAppButton from "./components/WhatsAppButton.tsx";
 import StickyCTA from "./components/StickyCTA.tsx";
 
 const Index = lazy(() => import("./pages/Index"));
@@ -23,7 +22,6 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      <WhatsAppButton />
       <StickyCTA />
     </BrowserRouter>
   );
