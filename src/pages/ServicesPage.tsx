@@ -3,38 +3,32 @@ import Lenis from "lenis";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
-import { Heart, MapPin, Gem, Building2, PartyPopper, CheckCircle } from "lucide-react";
+import { Palette, Hotel, Music, UtensilsCrossed, CheckCircle } from "lucide-react";
 
 const services = [
   {
-    icon: Heart,
-    title: "Wedding Planning",
-    description: "Full-service wedding planning from concept to celebration. We handle venue selection, vendor coordination, décor design, timeline management, and day-of execution — so you can focus on enjoying every moment.",
-    features: ["Venue Selection", "Vendor Management", "Décor & Design", "Day-of Coordination", "Budget Planning"],
+    icon: Palette,
+    title: "Exquisite Planning & Decor",
+    description: "We create stunning events with meticulous planning and elegant décor that transforms every venue into a masterpiece.",
+    features: ["Venue Selection & Styling", "Floral & Décor Design", "Theme Development", "Day-of Coordination", "Budget Planning"],
   },
   {
-    icon: MapPin,
-    title: "Destination Weddings",
-    description: "Dream weddings in breathtaking locations around the world. We manage travel logistics, local vendor partnerships, cultural integration, and ensure a seamless experience for you and your guests.",
-    features: ["Location Scouting", "Travel Coordination", "Local Vendors", "Cultural Integration", "Guest Management"],
+    icon: Hotel,
+    title: "Flawless Hospitality & Logistics",
+    description: "Travel, accommodations, and hospitality are managed seamlessly — so you and your guests enjoy a worry-free experience.",
+    features: ["Travel Coordination", "Hotel Bookings", "Guest Management", "Transport Logistics", "On-ground Support"],
   },
   {
-    icon: Gem,
-    title: "Engagement Ceremonies",
-    description: "Beautifully curated engagement celebrations that set the perfect tone for your upcoming journey together. From intimate proposals to grand celebration parties.",
-    features: ["Proposal Planning", "Venue Styling", "Photography Coordination", "Catering & Menu", "Entertainment"],
+    icon: Music,
+    title: "Engaging Entertainment",
+    description: "Entertainment includes live performances, DJ sets, and interactive experiences that keep your guests enthralled all night.",
+    features: ["Live Performances", "DJ & Sound", "Interactive Experiences", "Cultural Programs", "Special Acts"],
   },
   {
-    icon: Building2,
-    title: "Corporate Events",
-    description: "Sophisticated corporate gatherings that leave lasting impressions. From product launches to annual galas, we create polished, professional experiences.",
-    features: ["Event Strategy", "Brand Integration", "AV Production", "Catering", "Logistics Management"],
-  },
-  {
-    icon: PartyPopper,
-    title: "Private Celebrations",
-    description: "Intimate, bespoke events for life's special milestones. Whether it's a milestone birthday, anniversary, or family reunion, we make it unforgettable.",
-    features: ["Theme Development", "Custom Décor", "Entertainment", "Catering", "Guest Experience"],
+    icon: UtensilsCrossed,
+    title: "Customized Culinary Experiences",
+    description: "Curated menus and exceptional catering to ensure a delightful dining experience for every palate.",
+    features: ["Menu Curation", "Multi-cuisine Catering", "Live Counters", "Beverage Planning", "Dietary Accommodations"],
   },
 ];
 
@@ -69,7 +63,7 @@ const ServicesPage = () => {
         <div className="max-w-5xl mx-auto space-y-20">
           {services.map((service, i) => (
             <FadeIn key={service.title} delay={0.1}>
-              <div className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:direction-rtl" : ""}`}>
+              <div className={`grid md:grid-cols-2 gap-12 items-center`}>
                 <div className={i % 2 === 1 ? "md:order-2" : ""}>
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                     <service.icon className="w-7 h-7 text-primary" />
@@ -92,6 +86,16 @@ const ServicesPage = () => {
             </FadeIn>
           ))}
         </div>
+      </section>
+
+      {/* Locations */}
+      <section className="py-16 px-6 bg-muted text-center">
+        <FadeIn>
+          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">Our Locations</p>
+          <p className="font-heading text-3xl md:text-4xl font-light text-foreground">
+            Patna &nbsp;|&nbsp; Delhi &nbsp;|&nbsp; Global
+          </p>
+        </FadeIn>
       </section>
 
       {/* CTA */}

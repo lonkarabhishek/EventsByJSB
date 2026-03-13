@@ -20,7 +20,6 @@ const AboutPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Page Header */}
       <section className="pt-32 pb-16 px-6 text-center bg-muted">
         <FadeIn>
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">Our Story</p>
@@ -30,12 +29,11 @@ const AboutPage = () => {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p className="text-body text-muted-foreground max-w-2xl mx-auto">
-            Where elegance meets passion — crafting celebrations that reflect your unique story.
+            Founded in 2014 in Patna, Bihar — crafting celebrations that reflect your unique story across India and beyond.
           </p>
         </FadeIn>
       </section>
 
-      {/* Story Section */}
       <section className="section-padding bg-background">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <FadeIn direction="left">
@@ -49,24 +47,23 @@ const AboutPage = () => {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-body text-muted-foreground mb-5">
-                Founded with a deep love for celebrations and an eye for detail, JSB Events has grown from a passionate dream into one of the most trusted names in luxury event planning.
+                Founded in 2014 in Patna, Bihar by Jagdeep Singh Bagga, JSB Events has become a trusted name in crafting unforgettable experiences. With a passion for excellence, we've expanded our expertise to cities like Delhi, Jaipur, Udaipur, and Kolkata, making every event truly exceptional.
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>
               <p className="text-body text-muted-foreground mb-5">
-                We believe every celebration is a story waiting to be told. Our team of experienced planners, designers, and coordinators work tirelessly to ensure that your vision comes to life in the most beautiful and seamless way possible.
+                We are your reliable expert for planning destination weddings and milestone celebrations. With expertise in destination weddings across India, we handle every detail seamlessly. Our in-house team manages everything — from vendor coordination and catering to bespoke décor design — ensuring a stress-free and stunning experience from start to finish.
               </p>
             </FadeIn>
             <FadeIn delay={0.4}>
               <p className="text-body text-muted-foreground">
-                From intimate gatherings to grand destination weddings, we bring the same level of dedication, creativity, and professionalism to every event we touch.
+                Whatever the occasion, we've got you covered. Contact us today.
               </p>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Values */}
       <section className="section-padding bg-muted">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -92,7 +89,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Team / Vision */}
       <section className="section-padding bg-background">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
@@ -101,7 +97,7 @@ const AboutPage = () => {
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="text-body text-muted-foreground mb-5">
-                To be the most sought-after wedding and event planning company, known for transforming dreams into breathtaking realities across the globe.
+                To be the most sought-after wedding and event planning company, known for transforming dreams into breathtaking realities across India and the globe.
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -116,7 +112,7 @@ const AboutPage = () => {
                   <p className="text-body text-sm text-muted-foreground mt-1">Events Planned</p>
                 </div>
                 <div>
-                  <p className="font-heading text-4xl text-primary font-light">8+</p>
+                  <p className="font-heading text-4xl text-primary font-light">10+</p>
                   <p className="text-body text-sm text-muted-foreground mt-1">Years Experience</p>
                 </div>
                 <div>

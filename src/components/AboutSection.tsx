@@ -19,22 +19,22 @@ const AboutSection = () => {
         <div>
           <FadeIn delay={0.1}>
             <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
-              About Us
+              About JSB Events
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-6 leading-tight">
-              Crafting Moments That Last Forever
+              Our Journey
             </h2>
           </FadeIn>
           <FadeIn delay={0.3}>
             <p className="text-body text-muted-foreground mb-6">
-              We craft unforgettable celebrations with elegance, creativity, and attention to every detail. At JSB Events, we believe every love story deserves a celebration as unique as the couple themselves.
+              Founded in 2014 in Patna, Bihar by Jagdeep Singh Bagga, JSB Events has become a trusted name in crafting unforgettable experiences. With a passion for excellence, we've expanded our expertise to cities like Delhi, Jaipur, Udaipur, and Kolkata, making every event truly exceptional.
             </p>
           </FadeIn>
           <FadeIn delay={0.4}>
             <p className="text-body text-muted-foreground mb-8">
-              With years of experience in luxury wedding and event planning, our team brings together artistry, precision, and passion to create seamless, breathtaking experiences that you and your guests will cherish forever.
+              We are your reliable expert for planning destination weddings and milestone celebrations. With expertise in destination weddings across India, we handle every detail seamlessly. Our in-house team manages everything — from vendor coordination and catering to bespoke décor design — ensuring a stress-free and stunning experience from start to finish.
             </p>
           </FadeIn>
           <FadeIn delay={0.5}>
@@ -44,7 +44,7 @@ const AboutSection = () => {
                 <p className="text-body text-sm text-muted-foreground mt-1">Events Planned</p>
               </div>
               <div>
-                <p className="font-heading text-4xl text-primary font-light">8+</p>
+                <p className="font-heading text-4xl text-primary font-light">10+</p>
                 <p className="text-body text-sm text-muted-foreground mt-1">Years Experience</p>
               </div>
               <div>
