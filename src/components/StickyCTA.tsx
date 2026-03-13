@@ -37,7 +37,7 @@ const StickyCTA = () => {
               to="/contact"
               className="flex-1 sm:flex-none text-center px-6 py-2.5 bg-gold text-foreground font-body text-xs tracking-widest uppercase rounded-full hover:bg-gold/90 transition-colors duration-300"
             >
-              Book Consultation
+              Start Planning Now
             </Link>
             <a
               href="https://wa.me/919999999999"

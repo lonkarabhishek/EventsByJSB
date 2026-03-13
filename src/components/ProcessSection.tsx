@@ -5,25 +5,25 @@ const steps = [
     number: "01",
     title: "Share Your Vision",
     desc: "Tell us about your dream celebration — event date, budget, location, venue style, guest count, and every detail that matters to you.",
-    image: "/gallery/green-aisle.jpg",
+    image: "/gallery/process-vision.jpg",
   },
   {
     number: "02",
     title: "Get a Personalised Plan",
     desc: "Our team crafts a bespoke proposal with curated designs, handpicked venues, trusted vendors, and detailed timelines — tailored to your taste.",
-    image: "/gallery/pampas-arch.jpg",
+    image: "/gallery/process-plan.jpg",
   },
   {
     number: "03",
     title: "We Handle Everything",
     desc: "From vendor coordination to on-site setup and breakdown, we manage every detail so you can be fully present in the moment.",
-    image: "/gallery/mandap-velvet.jpg",
+    image: "/gallery/process-setup.jpg",
   },
   {
     number: "04",
     title: "Celebrate!",
     desc: "Your dream event comes to life — flawlessly orchestrated, beautifully executed, and absolutely unforgettable. Just enjoy.",
-    image: "/gallery/venue-night.jpg",
+    image: "/gallery/process-celebrate.jpg",
   },
 ];
 
@@ -67,19 +67,43 @@ const ProcessSection = () => {
       className="relative"
     >
       {/* Sticky viewport-height container */}
-      <div className="sticky top-0 h-screen flex items-start pt-24 md:items-center md:pt-0 overflow-hidden bg-muted pb-16">
+      <div className="sticky top-0 h-screen flex items-start pt-20 md:pt-24 overflow-hidden bg-muted pb-16">
         <div className="max-w-6xl mx-auto px-6 w-full">
           {/* Header */}
-          <div className="text-center mb-6 md:mb-12">
-            <p className="text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3">
+          <div className="text-center mb-4 md:mb-12">
+            <p className="text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-1 md:mb-3">
               Our Process
             </p>
             <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground">
-              How It Works
+              How We Work
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Mobile image — compact crossfading photo above steps */}
+          <div className="flex md:hidden justify-center mb-4">
+            <div className="relative w-28 h-28 rounded-xl overflow-hidden shadow-lg border-2 border-gold/20">
+              {steps.map((step, i) => (
+                <img
+                  key={i}
+                  src={step.image}
+                  alt={step.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out"
+                  style={{
+                    opacity: i === activeStep ? 1 : 0,
+                    transform: i === activeStep ? "scale(1)" : "scale(1.08)",
+                  }}
+                  loading="lazy"
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
+              <div className="absolute bottom-2 right-2 bg-foreground/50 backdrop-blur-md rounded-full px-3 py-1 border border-primary-foreground/10">
+                <span className="text-gold font-heading text-sm">{activeStep + 1}</span>
+                <span className="text-primary-foreground/40 font-body text-[10px]"> / {steps.length}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-center">
             {/* Left: Steps timeline */}
             <div className="relative pl-12 md:pl-16">
               {/* Vertical dashed line (background) */}
@@ -98,7 +122,7 @@ const ProcessSection = () => {
                 return (
                   <div
                     key={i}
-                    className="relative mb-5 md:mb-10 last:mb-0 cursor-pointer"
+                    className="relative mb-3 md:mb-10 last:mb-0 cursor-pointer"
                     onClick={() => {
                       // Scroll to make this step active
                       if (!sectionRef.current) return;

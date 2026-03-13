@@ -200,7 +200,7 @@ const HeroSection = () => {
               to="/contact"
               className="px-8 py-3.5 border border-primary-foreground/50 text-primary-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-500"
             >
-              Book Consultation
+              Start Planning Now
             </Link>
           </div>
         </div>

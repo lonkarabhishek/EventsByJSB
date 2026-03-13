@@ -29,7 +29,7 @@ const CTASection = () => {
         <FadeIn delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="px-8 py-3.5 bg-gold text-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-gold/90 transition-colors duration-300">
-              Book Consultation
+              Start Planning Now
             </Link>
             <Link to="/contact" className="px-8 py-3.5 border border-primary-foreground text-primary-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary-foreground/10 transition-colors duration-300">
               Contact Us
