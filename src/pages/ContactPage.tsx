@@ -5,7 +5,7 @@ import FadeIn from "@/components/FadeIn";
 import { MapPin, Phone, Mail, Clock, CheckCircle, AlertCircle } from "lucide-react";
 
 // ✅ Get your FREE access key at https://web3forms.com (just enter your email)
-const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_KEY = "683f9335-f4c0-481e-ae0a-711e11c6414c";
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", eventType: "", message: "" });
