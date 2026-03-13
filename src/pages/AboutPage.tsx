@@ -1,19 +1,14 @@
 import { useEffect } from "react";
-import Lenis from "lenis";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
-import aboutImg from "@/assets/about-wedding.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
-import portfolio4 from "@/assets/portfolio-4.jpg";
+const aboutImg = "/gallery/green-aisle.jpg";
+const portfolio3 = "/gallery/about-vision-1.jpg";
+const portfolio4 = "/gallery/about-vision-2.jpg";
 
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
-    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
   }, []);
 
   return (

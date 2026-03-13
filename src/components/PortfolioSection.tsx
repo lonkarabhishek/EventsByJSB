@@ -1,18 +1,13 @@
+import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
-import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
-import portfolio4 from "@/assets/portfolio-4.jpg";
-import portfolio5 from "@/assets/portfolio-5.jpg";
-import portfolio6 from "@/assets/portfolio-6.jpg";
 
 const images = [
-  { src: portfolio1, alt: "Mandap ceremony setup", label: "Royal Wedding" },
-  { src: portfolio2, alt: "Floral centerpiece", label: "Floral Design" },
-  { src: portfolio3, alt: "Reception venue", label: "Grand Reception" },
-  { src: portfolio4, alt: "Couple portrait", label: "Couple Moments" },
-  { src: portfolio5, alt: "Beach wedding", label: "Destination Wedding" },
-  { src: portfolio6, alt: "Engagement ceremony", label: "Engagement" },
+  { src: "/gallery/mandap-velvet.jpg", alt: "Luxurious mandap with velvet seating and chandeliers", label: "Royal Mandap" },
+  { src: "/gallery/pampas-arch.jpg", alt: "Elegant pampas grass arch ceremony setup", label: "Ceremony Arch" },
+  { src: "/gallery/venue-night.jpg", alt: "Outdoor night venue with illuminated arched backdrop", label: "Night Venue" },
+  { src: "/gallery/gold-aisle.jpg", alt: "Gold and silver themed wedding aisle", label: "Golden Aisle" },
+  { src: "/gallery/engagement-setup.jpg", alt: "Romantic engagement ceremony setup", label: "Engagement" },
+  { src: "/gallery/floral-archway.jpg", alt: "Grand floral archway entrance", label: "Floral Design" },
 ];
 
 const PortfolioSection = () => {
@@ -51,6 +46,17 @@ const PortfolioSection = () => {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.5}>
+          <div className="text-center mt-12">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-primary text-primary font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+            >
+              View Full Gallery
+            </Link>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

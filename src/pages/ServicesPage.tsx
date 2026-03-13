@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Lenis from "lenis";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
@@ -11,34 +10,34 @@ const services = [
     title: "Exquisite Planning & Decor",
     description: "We create stunning events with meticulous planning and elegant décor that transforms every venue into a masterpiece.",
     features: ["Venue Selection & Styling", "Floral & Décor Design", "Theme Development", "Day-of Coordination", "Budget Planning"],
+    bgImage: "/gallery/service-decor.jpg",
   },
   {
     icon: Hotel,
     title: "Flawless Hospitality & Logistics",
     description: "Travel, accommodations, and hospitality are managed seamlessly — so you and your guests enjoy a worry-free experience.",
     features: ["Travel Coordination", "Hotel Bookings", "Guest Management", "Transport Logistics", "On-ground Support"],
+    bgImage: "/gallery/service-hospitality.jpg",
   },
   {
     icon: Music,
     title: "Engaging Entertainment",
     description: "Entertainment includes live performances, DJ sets, and interactive experiences that keep your guests enthralled all night.",
     features: ["Live Performances", "DJ & Sound", "Interactive Experiences", "Cultural Programs", "Special Acts"],
+    bgImage: "/gallery/service-entertainment.jpg",
   },
   {
     icon: UtensilsCrossed,
     title: "Customized Culinary Experiences",
     description: "Curated menus and exceptional catering to ensure a delightful dining experience for every palate.",
     features: ["Menu Curation", "Multi-cuisine Catering", "Live Counters", "Beverage Planning", "Dietary Accommodations"],
+    bgImage: "/gallery/service-culinary.jpg",
   },
 ];
 
 const ServicesPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
-    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
   }, []);
 
   return (
@@ -79,8 +78,15 @@ const ServicesPage = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`bg-muted rounded-lg h-72 flex items-center justify-center ${i % 2 === 1 ? "md:order-1" : ""}`}>
-                  <service.icon className="w-20 h-20 text-primary/20" />
+                <div className={`rounded-lg overflow-hidden h-72 ${i % 2 === 1 ? "md:order-1" : ""}`}>
+                  <div className="img-hover-zoom h-full">
+                    <img
+                      src={service.bgImage}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </FadeIn>

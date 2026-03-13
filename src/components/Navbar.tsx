@@ -56,7 +56,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/contact"
-            className="px-6 py-2.5 bg-primary text-primary-foreground text-sm font-body tracking-widest uppercase rounded-full hover:bg-primary/90 transition-colors duration-300"
+            className="px-6 py-2.5 bg-gold text-foreground text-sm font-body tracking-widest uppercase rounded-full hover:bg-gold/90 transition-colors duration-300"
           >
             Book Now
           </Link>

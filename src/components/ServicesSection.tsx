@@ -6,21 +6,25 @@ const services = [
     icon: Palette,
     title: "Exquisite Planning & Decor",
     description: "We create stunning events with meticulous planning and elegant décor that transforms every venue into a masterpiece.",
+    bgImage: "/gallery/service-decor.jpg",
   },
   {
     icon: Hotel,
     title: "Flawless Hospitality & Logistics",
     description: "Travel, accommodations, and hospitality are managed seamlessly — so you and your guests enjoy a worry-free experience.",
+    bgImage: "/gallery/service-hospitality.jpg",
   },
   {
     icon: Music,
     title: "Engaging Entertainment",
     description: "Entertainment includes live performances, DJ sets, and interactive experiences that keep your guests enthralled all night.",
+    bgImage: "/gallery/service-entertainment.jpg",
   },
   {
     icon: UtensilsCrossed,
     title: "Customized Culinary Experiences",
     description: "Curated menus and exceptional catering to ensure a delightful dining experience for every palate.",
+    bgImage: "/gallery/service-culinary.jpg",
   },
 ];
 
@@ -44,14 +48,25 @@ const ServicesSection = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, i) => (
             <FadeIn key={service.title} delay={i * 0.1}>
-              <div className="bg-card p-8 rounded-lg hover:shadow-lg transition-shadow duration-500 group">
-                <service.icon className="w-8 h-8 text-primary mb-5 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="font-heading text-2xl font-normal text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-body text-sm text-muted-foreground">
-                  {service.description}
-                </p>
+              <div className="relative p-8 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-500 group min-h-[260px] flex flex-col justify-end">
+                <div className="absolute inset-0">
+                  <img
+                    src={service.bgImage}
+                    alt=""
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-foreground/75 group-hover:bg-foreground/65 transition-colors duration-500" />
+                </div>
+                <div className="relative z-10">
+                  <service.icon className="w-8 h-8 text-gold mb-5 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="font-heading text-2xl font-normal text-primary-foreground mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-body text-sm text-primary-foreground/70">
+                    {service.description}
+                  </p>
+                </div>
               </div>
             </FadeIn>
           ))}

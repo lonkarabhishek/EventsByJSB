@@ -1,5 +1,5 @@
 import FadeIn from "@/components/FadeIn";
-import aboutImg from "@/assets/about-wedding.jpg";
+const aboutImg = "/gallery/green-aisle.jpg";
 
 const AboutSection = () => {
   return (

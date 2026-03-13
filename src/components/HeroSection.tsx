@@ -1,61 +1,98 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
 
+import heroBg from "@/assets/hero-layer-bg.jpg";
 import heroVenue from "@/assets/hero-layer-venue.jpg";
 import heroCouple from "@/assets/hero-layer-couple.png";
+import heroFlorals from "@/assets/hero-layer-florals.png";
+
+const stats = [
+  { value: "200+", label: "Events Planned" },
+  { value: "10+", label: "Years Experience" },
+  { value: "50+", label: "Destinations" },
+];
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile();
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
+  const coupleRef = useRef<HTMLImageElement>(null);
+  const venueRef = useRef<HTMLImageElement>(null);
+  const floralsRef = useRef<HTMLImageElement>(null);
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const scrollRef = useRef(0);
+  const rafRef = useRef<number>(0);
 
-  // Mouse parallax (desktop only) with RAF smoothing
-  const targetMouse = useRef({ x: 0, y: 0 });
-  const animatedMouse = useRef({ x: 0, y: 0 });
-  const rafId = useRef<number>(0);
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (isMobile) return;
-      const cx = (e.clientX / window.innerWidth - 0.5) * 2;
-      const cy = (e.clientY / window.innerHeight - 0.5) * 2;
-      targetMouse.current = { x: cx, y: cy };
-    },
-    [isMobile]
-  );
-
+  // Combined scroll + mouse parallax — single rAF loop for smoothness
   useEffect(() => {
-    if (isMobile) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const handleScroll = () => {
+      scrollRef.current = window.scrollY;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Normalize mouse position to -1 to 1 range from center
+      mouseRef.current = {
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
+      };
+    };
+
+    // Smooth animation loop
+    let currentMx = 0, currentMy = 0;
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
     const animate = () => {
-      animatedMouse.current.x += (targetMouse.current.x - animatedMouse.current.x) * 0.05;
-      animatedMouse.current.y += (targetMouse.current.y - animatedMouse.current.y) * 0.05;
-      setMouse({ x: animatedMouse.current.x, y: animatedMouse.current.y });
-      rafId.current = requestAnimationFrame(animate);
+      const y = scrollRef.current;
+      const vh = window.innerHeight;
+      const progress = Math.min(y / vh, 1);
+
+      // Smooth mouse interpolation (eased follow)
+      currentMx = lerp(currentMx, mouseRef.current.x, 0.05);
+      currentMy = lerp(currentMy, mouseRef.current.y, 0.05);
+
+      // Fade out section on scroll
+      section.style.opacity = String(Math.max(0, 1 - y / (vh * 0.7)));
+
+      // Layer parallax depths (mouse + scroll combined)
+      const venue = venueRef.current;
+      const couple = coupleRef.current;
+      const florals = floralsRef.current;
+
+      if (venue) {
+        // Venue: subtle mouse shift + slight zoom on scroll
+        const vx = currentMx * -8;
+        const vy = currentMy * -5;
+        venue.style.transform = `scale(${1.08 + progress * 0.05}) translate(${vx}px, ${vy}px)`;
+      }
+
+      if (couple) {
+        // Couple: stronger mouse shift (closer = more movement) + scroll lift
+        const cx = currentMx * 15;
+        const cy = currentMy * 8;
+        couple.style.transform = `translate(${cx}px, ${cy + (-y * 0.15)}px)`;
+      }
+
+      if (florals) {
+        // Florals: medium mouse shift (overhead frame)
+        const fx = currentMx * -5;
+        const fy = currentMy * -3;
+        florals.style.transform = `translate(${fx}px, ${fy}px)`;
+      }
+
+      rafRef.current = requestAnimationFrame(animate);
     };
 
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    rafId.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(animate);
 
     return () => {
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(rafId.current);
+      cancelAnimationFrame(rafRef.current);
     };
-  }, [isMobile, handleMouseMove]);
-
-  // Scroll tracking for opacity fade
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const opacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.7));
 
   return (
     <>
@@ -63,118 +100,138 @@ const HeroSection = () => {
       <section
         ref={sectionRef}
         className="fixed inset-0 h-screen overflow-hidden z-0"
-        style={{ opacity }}
       >
-        {/* Layer 1: Venue background — moves with mouse */}
-        <div
-          className="absolute inset-0 will-change-transform"
-          style={{
-            transform: `translate3d(${mouse.x * -20}px, ${mouse.y * -15}px, 0) scale(1.15)`,
-            transition: 'none',
-          }}
-        >
-          <img
-            src={heroVenue}
-            alt="Elegant wedding venue"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-foreground/10" />
-        </div>
+        {/* Layer 1: Golden sky background */}
+        <img
+          src={heroBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
 
-        {/* Layer 2: Couple — stays still, pushed below fold so legs are hidden */}
-        <div
-          className="absolute inset-0 flex items-end justify-center will-change-transform"
-          style={{
-            transform: `translate3d(${mouse.x * 2}px, ${mouse.y * 1}px, 0)`,
-          }}
-        >
+        {/* Layer 2: Venue — parallax controlled via JS */}
+        <img
+          ref={venueRef}
+          src={heroVenue}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
+          style={{ transform: "scale(1.08)" }}
+          loading="eager"
+        />
+
+        {/* Layer 3: Dark cinematic overlays for text readability */}
+        <div className="absolute inset-0 bg-foreground/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-foreground/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0.5)_100%)] pointer-events-none" />
+
+        {/* Layer 4: Couple silhouette — walking down the aisle */}
+        <div className="absolute inset-0 z-[5] flex items-end justify-center pointer-events-none">
           <img
+            ref={coupleRef}
             src={heroCouple}
-            alt="Bride and groom from behind facing the venue"
-            className="h-[75vh] md:h-[90vh] object-contain drop-shadow-2xl translate-y-[18%]"
+            alt="Couple holding hands"
+            className="hero-fade-up h-[32vh] sm:h-[36vh] md:h-[42vh] lg:h-[48vh] object-contain mb-[80px] will-change-transform"
+            style={{
+              animationDelay: "1.6s",
+              animationDuration: "1.5s",
+              filter: "brightness(0.15) sepia(0.3) saturate(0.5)",
+              WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 5%)",
+              maskImage: "linear-gradient(to top, transparent 0%, black 5%)",
+            }}
             loading="eager"
           />
         </div>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-foreground/20 pointer-events-none" />
+        {/* Layer 5: Floral frame at top — decorative depth */}
+        <div className="absolute top-0 left-0 right-0 z-[6] pointer-events-none">
+          <img
+            ref={floralsRef}
+            src={heroFlorals}
+            alt=""
+            className="w-full h-auto max-h-[30vh] object-cover object-bottom opacity-70 will-change-transform"
+            loading="eager"
+          />
+          {/* Fade out florals at bottom edge */}
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-transparent to-transparent" />
+        </div>
 
-        {/* Text content */}
-        <div
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="text-primary-foreground/70 font-body text-xs md:text-sm tracking-[0.4em] uppercase mb-4 md:mb-6"
+        {/* Text content — above couple */}
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pb-[22vh] sm:pb-[24vh] md:pb-[28vh]">
+          {/* Small decorative line */}
+          <div
+            className="hero-fade-up w-px h-12 bg-gold/60 mb-6"
+            style={{ animationDelay: "0.2s", animationDuration: "1s" }}
+          />
+
+          <p
+            className="hero-fade-up text-gold font-body text-xs md:text-sm tracking-[0.5em] uppercase mb-4 md:mb-6"
+            style={{ animationDelay: "0.4s", animationDuration: "1s" }}
           >
-            Welcome to JSB
-          </motion.p>
+            JSB Events
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
-            className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-primary-foreground leading-tight mb-4 md:mb-6 max-w-5xl"
+          <h1
+            className="hero-fade-up text-shadow-hero font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-primary-foreground leading-[1.1] mb-4 md:mb-6 max-w-5xl"
+            style={{ animationDelay: "0.7s", animationDuration: "1.2s" }}
           >
             Crafting Timeless
             <br />
             Celebrations
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
-            className="font-body text-base md:text-lg font-light text-primary-foreground/85 mb-8 md:mb-10 max-w-xl"
+          <p
+            className="hero-fade-up text-shadow-hero font-body text-base md:text-lg font-light text-primary-foreground/80 mb-8 md:mb-10 max-w-xl"
+            style={{ animationDelay: "1s", animationDuration: "1s" }}
           >
             Your reliable expert for planning destination weddings &amp; milestone celebrations.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row items-center gap-4"
+          <div
+            className="hero-fade-up flex flex-col sm:flex-row items-center gap-4"
+            style={{ animationDelay: "1.3s", animationDuration: "1s" }}
           >
             <Link
               to="/gallery"
-              className="group relative px-8 py-3.5 bg-primary-foreground text-foreground font-body text-sm tracking-widest uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+              className="group relative px-8 py-3.5 bg-gold text-foreground font-body text-sm tracking-widest uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(183,142,78,0.4)]"
             >
-              <span className="relative z-10">Explore Our Work</span>
-              <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="absolute inset-0 z-10 flex items-center justify-center text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-500 font-body text-sm tracking-widest uppercase">
-                Explore Our Work
-              </span>
+              Explore Our Work
             </Link>
             <Link
               to="/contact"
-              className="px-8 py-3.5 border border-primary-foreground/60 text-primary-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-500"
+              className="px-8 py-3.5 border border-primary-foreground/50 text-primary-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-500"
             >
               Book Consultation
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
+        <div
+          className="hero-fade-up absolute bottom-[115px] md:bottom-[125px] right-8 z-20 flex flex-col items-center gap-2"
+          style={{ animationDelay: "2s", animationDuration: "1s" }}
         >
-          <span className="text-primary-foreground/50 font-body text-[10px] tracking-[0.3em] uppercase">
+          <span className="font-body text-[9px] tracking-[0.3em] uppercase text-primary-foreground/40 [writing-mode:vertical-lr]">
             Scroll
           </span>
-          <motion.div
-            className="w-px h-8 bg-primary-foreground/30"
-            animate={{ scaleY: [0, 1, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            style={{ transformOrigin: "top" }}
-          />
-        </motion.div>
+          <div className="w-px h-8 bg-primary-foreground/20 relative overflow-hidden">
+            <div className="absolute top-0 w-full h-3 bg-gold/60 animate-[scrollPulse_2s_ease-in-out_infinite]" />
+          </div>
+        </div>
+
+        {/* Stats overlay bar at bottom */}
+        <div
+          className="hero-fade-up absolute bottom-0 left-0 right-0 z-20 bg-foreground/50 backdrop-blur-md border-t border-primary-foreground/10"
+          style={{ animationDelay: "1.8s", animationDuration: "1s" }}
+        >
+          <div className="max-w-5xl mx-auto flex justify-center divide-x divide-primary-foreground/15 py-5 px-6">
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex-1 text-center px-4">
+                <p className="font-heading text-3xl md:text-4xl text-gold font-light">{stat.value}</p>
+                <p className="font-body text-[10px] md:text-xs text-primary-foreground/60 tracking-widest uppercase mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Spacer so content below has room */}

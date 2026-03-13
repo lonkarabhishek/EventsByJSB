@@ -1,5 +1,4 @@
 import { useEffect, useRef, ReactNode } from "react";
-import { motion, useInView } from "framer-motion";
 
 interface FadeInProps {
   children: ReactNode;
@@ -8,27 +7,47 @@ interface FadeInProps {
   className?: string;
 }
 
-const FadeIn = ({ children, delay = 0, direction = "up", className = "" }: FadeInProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+const initialTransform: Record<string, string> = {
+  up: "translate3d(0, 30px, 0)",
+  down: "translate3d(0, -30px, 0)",
+  left: "translate3d(30px, 0, 0)",
+  right: "translate3d(-30px, 0, 0)",
+};
 
-  const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { y: 0, x: 40 },
-    right: { y: 0, x: -40 },
-  };
+const FadeIn = ({ children, delay = 0, direction = "up", className = "" }: FadeInProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.opacity = "1";
+          el.style.transform = "translate3d(0, 0, 0)";
+          observer.unobserve(el);
+        }
+      },
+      { rootMargin: "-50px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, ...directions[direction] }}
-      animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.4, 0.25, 1] }}
       className={className}
+      style={{
+        opacity: 0,
+        transform: initialTransform[direction],
+        transition: `opacity 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) ${delay}s, transform 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import logo from "@/assets/jsb-logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground py-16 px-6">
+    <footer className="bg-foreground py-16 px-6 wave-divider text-foreground">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-1">
