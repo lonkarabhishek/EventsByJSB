@@ -12,7 +12,7 @@ const Footer = () => {
               <img src={logo} alt="JSB Events" className="h-10 w-10 rounded-full object-cover" />
               <span className="font-heading text-xl font-light text-primary-foreground tracking-wider">JSB Events</span>
             </Link>
-            <p className="text-sm text-primary-foreground/50 font-body font-light leading-relaxed">
+            <p className="text-sm text-primary-foreground/50 font-body font-normal leading-relaxed">
               Creating beautiful celebrations with elegance, creativity, and love.
             </p>
           </div>

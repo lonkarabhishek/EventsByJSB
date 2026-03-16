@@ -21,7 +21,9 @@ const VideoReelsSection = () => {
   const lightboxVideoRef = useRef<HTMLVideoElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const touchStartRef = useRef({ x: 0, y: 0 });
-  const wheelAccumRef = useRef(0);
+  const dragOffsetRef = useRef(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const isDraggingRef = useRef(false);
   const wheelTimerRef = useRef<ReturnType<typeof setTimeout>>();
   const lockRef = useRef(false);
 
@@ -29,7 +31,7 @@ const VideoReelsSection = () => {
   const goTo = useCallback((index: number) => {
     if (lockRef.current) return;
     lockRef.current = true;
-    setTimeout(() => { lockRef.current = false; }, 450);
+    setTimeout(() => { lockRef.current = false; }, 350);
     const n = ((index % reels.length) + reels.length) % reels.length;
     activeRef.current = n;
     setActiveIndex(n);
@@ -38,6 +40,24 @@ const VideoReelsSection = () => {
   const goNext = useCallback(() => goTo(activeRef.current + 1), [goTo]);
   const goPrev = useCallback(() => goTo(activeRef.current - 1), [goTo]);
 
+  // Snap to nearest card based on drag offset
+  const snapFromDrag = useCallback(() => {
+    const offset = dragOffsetRef.current;
+    const threshold = (CARD_W + CARD_GAP) * 0.3;
+    if (Math.abs(offset) > threshold) {
+      const steps = Math.round(Math.abs(offset) / (CARD_W + CARD_GAP));
+      const clamped = Math.max(1, steps);
+      if (offset < 0) {
+        goTo(activeRef.current + clamped);
+      } else {
+        goTo(activeRef.current - clamped);
+      }
+    }
+    dragOffsetRef.current = 0;
+    setDragOffset(0);
+    isDraggingRef.current = false;
+  }, [goTo]);
+
   // Touch swipe + trackpad horizontal scroll
   useEffect(() => {
     const el = carouselRef.current;
@@ -45,42 +65,50 @@ const VideoReelsSection = () => {
 
     const onTouchStart = (e: TouchEvent) => {
       touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      isDraggingRef.current = true;
     };
 
-    const onTouchEnd = (e: TouchEvent) => {
-      const dx = touchStartRef.current.x - e.changedTouches[0].clientX;
-      const dy = touchStartRef.current.y - e.changedTouches[0].clientY;
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-        dx > 0 ? goNext() : goPrev();
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDraggingRef.current) return;
+      const dx = e.touches[0].clientX - touchStartRef.current.x;
+      if (Math.abs(dx) > 10) {
+        dragOffsetRef.current = dx;
+        setDragOffset(dx);
       }
     };
 
-    // Trackpad swipe — accumulate deltaX then decide direction
+    const onTouchEnd = () => {
+      snapFromDrag();
+    };
+
+    // Trackpad / mouse wheel — capture both horizontal and vertical scroll
     const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 2) {
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) > 2) {
         e.preventDefault();
-        wheelAccumRef.current += e.deltaX;
+        isDraggingRef.current = true;
+        dragOffsetRef.current -= delta;
+        setDragOffset(dragOffsetRef.current);
         clearTimeout(wheelTimerRef.current);
         wheelTimerRef.current = setTimeout(() => {
-          if (Math.abs(wheelAccumRef.current) > 30) {
-            wheelAccumRef.current > 0 ? goNext() : goPrev();
-          }
-          wheelAccumRef.current = 0;
-        }, 120);
+          snapFromDrag();
+        }, 150);
       }
     };
 
     el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: true });
     el.addEventListener("touchend", onTouchEnd, { passive: true });
     el.addEventListener("wheel", onWheel, { passive: false });
 
     return () => {
       el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
       el.removeEventListener("touchend", onTouchEnd);
       el.removeEventListener("wheel", onWheel);
       clearTimeout(wheelTimerRef.current);
     };
-  }, [goNext, goPrev]);
+  }, [goNext, goPrev, snapFromDrag]);
 
   // Lightbox body scroll lock + hide navbar/sticky CTA
   useEffect(() => {
@@ -175,13 +203,14 @@ const VideoReelsSection = () => {
             const absOff = Math.abs(offset);
             const isActive = offset === 0;
             const scale = isActive ? 1 : 0.82;
-            const x = offset * (CARD_W + CARD_GAP);
-            const isVisible = absOff <= 2;
+            const x = offset * (CARD_W + CARD_GAP) + dragOffset;
+            const isVisible = absOff <= 2 || (isDraggingRef.current && absOff <= 3);
+            const isDragging = isDraggingRef.current;
 
             return (
               <div
                 key={i}
-                className="absolute top-0 transition-all duration-500 ease-out"
+                className={`absolute top-0 ${isDragging ? "transition-none" : "transition-all duration-500 ease-out"}`}
                 style={{
                   left: "50%",
                   width: CARD_W,

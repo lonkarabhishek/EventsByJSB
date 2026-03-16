@@ -48,8 +48,8 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --font-heading: 'Cormorant Garamond', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
   }
 }
 
@@ -75,12 +75,12 @@
 @layer utilities {
   .heading-display {
     font-family: var(--font-heading);
-    @apply font-light tracking-wide;
+    @apply font-medium tracking-wide;
   }
 
   .text-body {
     font-family: var(--font-body);
-    @apply font-light leading-relaxed;
+    @apply font-normal leading-relaxed;
   }
 
   .section-padding {
@@ -144,7 +144,7 @@
 
 /* Hero text shadow — subtle */
 .text-shadow-hero {
-  text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.5);
 }
 
 /* Hide scrollbar for horizontal scroll */

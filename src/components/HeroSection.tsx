@@ -14,8 +14,8 @@ const HeroSection = () => {
         />
 
         {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-foreground/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-foreground/15 to-foreground/25" />
+        <div className="absolute inset-0 bg-foreground/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/25 to-foreground/35" />
 
         {/* Centered content */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 -mt-28 md:mt-0">
@@ -27,7 +27,7 @@ const HeroSection = () => {
           </p>
 
           <h1
-            className="hero-fade-up text-shadow-hero font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-primary-foreground leading-[1.1] mb-4 md:mb-6 max-w-4xl"
+            className="hero-fade-up text-shadow-hero font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-normal text-primary-foreground leading-[1.1] mb-4 md:mb-6 max-w-4xl"
             style={{ animationDelay: "0.6s", animationDuration: "1.2s" }}
           >
             Crafting Timeless
@@ -36,7 +36,7 @@ const HeroSection = () => {
           </h1>
 
           <p
-            className="hero-fade-up text-shadow-hero font-body text-sm md:text-lg font-light text-primary-foreground mb-6 md:mb-10 max-w-lg"
+            className="hero-fade-up text-shadow-hero font-body text-sm md:text-lg font-normal text-primary-foreground mb-6 md:mb-10 max-w-lg"
             style={{ animationDelay: "0.9s", animationDuration: "1s" }}
           >
             Your reliable expert for planning destination weddings &amp; milestone celebrations.

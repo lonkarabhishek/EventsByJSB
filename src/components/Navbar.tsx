@@ -45,7 +45,7 @@ const Navbar = () => {
             <Link
               key={link.href}
               to={link.href}
-              className={`text-sm font-body font-light tracking-widest uppercase transition-colors duration-300 ${
+              className={`text-sm font-body font-normal tracking-widest uppercase transition-colors duration-300 ${
                 location.pathname === link.href
                   ? (scrolled || !isHome ? "text-primary" : "text-primary-foreground")
                   : (scrolled || !isHome ? "text-foreground/70 hover:text-primary" : "text-primary-foreground/70 hover:text-primary-foreground")
@@ -79,7 +79,7 @@ const Navbar = () => {
                 key={link.href}
                 to={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-sm font-body font-light tracking-widest uppercase ${
+                className={`text-sm font-body font-normal tracking-widest uppercase ${
                   location.pathname === link.href ? "text-primary" : "text-foreground/70 hover:text-primary"
                 }`}
               >

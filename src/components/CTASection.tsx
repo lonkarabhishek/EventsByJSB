@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
+import { Clock } from "lucide-react";
 
 const CTASection = () => {
   return (
@@ -23,6 +24,10 @@ const CTASection = () => {
             <Link to="/contact" className="px-8 py-3.5 border border-foreground text-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-foreground hover:text-primary-foreground transition-colors duration-300">
               Contact Us
             </Link>
+          </div>
+          <div className="inline-flex items-center justify-center gap-2 mt-8 px-5 py-2.5 bg-foreground/10 rounded-full">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <span className="font-body text-sm font-medium text-foreground">We respond in under 10 minutes</span>
           </div>
         </FadeIn>
       </div>

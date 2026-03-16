@@ -72,7 +72,12 @@ const ContactPage = () => {
           <div className="md:col-span-3">
             <FadeIn>
               <h2 className="font-heading text-3xl font-light text-foreground mb-2">Send Us a Message</h2>
-              <p className="text-body text-sm text-muted-foreground mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
+              <div className="flex items-center gap-2 mb-8">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 border border-green-300 rounded-full">
+                  <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
+                  <span className="font-body text-sm font-semibold text-green-800 tracking-wide">We respond in under 10 minutes</span>
+                </span>
+              </div>
             </FadeIn>
 
             {status === "success" ? (
@@ -81,7 +86,7 @@ const ContactPage = () => {
                   <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
                   <h3 className="font-heading text-2xl text-foreground mb-2">Message Sent!</h3>
                   <p className="text-body text-sm text-muted-foreground mb-6">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
+                    Thank you for reaching out. We typically respond within 10 minutes.
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
