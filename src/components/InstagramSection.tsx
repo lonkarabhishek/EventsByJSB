@@ -131,14 +131,14 @@ const VideoReelsSection = () => {
 
   return (
     <>
-      <section className="py-20 bg-foreground overflow-hidden">
+      <section className="py-24 md:py-32 bg-muted overflow-hidden">
         {/* Header */}
         <div className="max-w-7xl mx-auto px-6 text-center mb-12">
           <FadeIn>
-            <Play className="w-8 h-8 text-gold mx-auto mb-4" />
+            <Play className="w-7 h-7 text-primary mx-auto mb-4" strokeWidth={1.5} />
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="font-heading text-4xl md:text-5xl font-light text-primary-foreground">
+            <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
               Events in Motion
             </h2>
           </FadeIn>
@@ -153,14 +153,14 @@ const VideoReelsSection = () => {
           {/* Nav arrows */}
           <button
             onClick={goPrev}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-foreground/80 border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Previous reel"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={goNext}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-foreground/80 border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Next reel"
           >
             <ChevronRight className="w-5 h-5" />
@@ -193,7 +193,7 @@ const VideoReelsSection = () => {
                 }}
                 onClick={() => (isActive ? setLightbox(i) : goTo(i))}
               >
-                <div className="group relative rounded-[2rem] overflow-hidden border-[3px] border-primary-foreground/20 bg-black aspect-[9/16] shadow-2xl cursor-pointer">
+                <div className="group relative rounded-[2rem] overflow-hidden border border-border bg-foreground aspect-[9/16] shadow-lg cursor-pointer">
                   <video
                     autoPlay
                     muted
@@ -236,9 +236,9 @@ const VideoReelsSection = () => {
               style={{ width: activeIndex === i ? 40 : 16 }}
               aria-label={`Go to reel ${i + 1}`}
             >
-              <div className="absolute inset-0 bg-primary-foreground/30 rounded-full" />
+              <div className="absolute inset-0 bg-foreground/15 rounded-full" />
               <div
-                className="absolute inset-0 bg-gold rounded-full transition-transform duration-500 origin-left"
+                className="absolute inset-0 bg-primary rounded-full transition-transform duration-500 origin-left"
                 style={{
                   transform: activeIndex === i ? "scaleX(1)" : "scaleX(0)",
                 }}
@@ -254,7 +254,7 @@ const VideoReelsSection = () => {
               href="https://instagram.com/eventsbyjsb"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-gold text-gold font-body text-sm tracking-widest uppercase rounded-full hover:bg-gold hover:text-foreground transition-colors duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-primary text-primary font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
             >
               Follow @eventsbyjsb
             </a>

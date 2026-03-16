@@ -30,11 +30,11 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="section-padding bg-gold-light">
+    <section className="py-24 md:py-32 px-6 bg-background">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <FadeIn>
-            <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-4">
+            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
               Common Questions
             </p>
           </FadeIn>

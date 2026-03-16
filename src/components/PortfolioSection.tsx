@@ -12,11 +12,11 @@ const images = [
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="section-padding bg-background">
+    <section id="portfolio" className="py-24 md:py-32 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <FadeIn>
-            <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
+            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
               Our Portfolio
             </p>
           </FadeIn>

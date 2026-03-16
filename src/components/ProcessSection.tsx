@@ -67,7 +67,7 @@ const ProcessSection = () => {
       className="relative"
     >
       {/* Sticky viewport-height container */}
-      <div className="sticky top-0 h-screen flex items-start pt-20 md:pt-24 overflow-hidden bg-muted pb-16">
+      <div className="sticky top-0 h-screen flex items-start pt-20 md:pt-24 overflow-hidden bg-background pb-16">
 
         {/* Mobile fullscreen background images */}
         <div className="absolute inset-0 md:hidden">
@@ -81,15 +81,15 @@ const ProcessSection = () => {
               loading="lazy"
             />
           ))}
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-foreground/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/50" />
+          {/* Softer overlay for text readability */}
+          <div className="absolute inset-0 bg-foreground/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/40 to-foreground/30" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
           {/* Header */}
           <div className="text-center mb-8 md:mb-12">
-            <p className="text-gold md:text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3">
+            <p className="text-primary-foreground/70 md:text-primary font-body text-xs md:text-sm tracking-[0.3em] uppercase mb-2 md:mb-3">
               Our Process
             </p>
             <h2 className="font-heading text-4xl md:text-5xl font-light text-primary-foreground md:text-foreground">
@@ -105,7 +105,7 @@ const ProcessSection = () => {
 
               {/* Vertical progress fill */}
               <div
-                className="absolute left-[18px] md:left-[22px] top-2 w-[2px] bg-gold transition-all duration-700 ease-out rounded-full"
+                className="absolute left-[18px] md:left-[22px] top-2 w-[2px] bg-primary transition-all duration-700 ease-out rounded-full"
                 style={{ height: `${lineProgress}%` }}
               />
 
@@ -133,10 +133,10 @@ const ProcessSection = () => {
                     <div
                       className={`absolute -left-14 md:-left-16 top-0 w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center font-body text-xs md:text-sm font-semibold transition-all duration-500 ${
                         isActive
-                          ? "bg-gold text-foreground scale-110 shadow-[0_0_20px_rgba(183,142,78,0.4)]"
+                          ? "bg-primary text-primary-foreground scale-105"
                           : isPast
-                            ? "bg-gold/80 text-foreground"
-                            : "bg-primary-foreground/10 md:bg-background border-2 border-primary-foreground/25 md:border-primary/25 text-primary-foreground/50 md:text-muted-foreground"
+                            ? "bg-primary/60 text-primary-foreground"
+                            : "bg-primary-foreground/10 md:bg-background border border-primary-foreground/20 md:border-border text-primary-foreground/50 md:text-muted-foreground"
                       }`}
                     >
                       {step.number}
@@ -172,14 +172,10 @@ const ProcessSection = () => {
 
             {/* Right: Image with decorative ring — desktop only */}
             <div className="relative hidden md:flex items-center justify-center">
-              {/* Decorative ring */}
+              {/* Decorative ring — subtle */}
               <div
-                className="absolute w-[105%] aspect-square rounded-full border-2 border-gold/20 transition-transform duration-1000 ease-out"
+                className="absolute w-[105%] aspect-square rounded-full border border-border transition-transform duration-1000 ease-out"
                 style={{ transform: `rotate(${progress * 90}deg)` }}
-              />
-              <div
-                className="absolute w-[110%] aspect-square rounded-full border border-dashed border-primary/15 transition-transform duration-1000 ease-out"
-                style={{ transform: `rotate(${-progress * 60}deg)` }}
               />
 
               {/* Image container */}
@@ -202,9 +198,9 @@ const ProcessSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
 
                 {/* Step counter badge */}
-                <div className="absolute bottom-5 right-5 bg-foreground/50 backdrop-blur-md rounded-full px-4 py-2 border border-primary-foreground/10">
-                  <span className="text-gold font-heading text-xl">{activeStep + 1}</span>
-                  <span className="text-primary-foreground/40 font-body text-sm"> / {steps.length}</span>
+                <div className="absolute bottom-5 right-5 bg-background/80 backdrop-blur-md rounded-full px-4 py-2">
+                  <span className="text-foreground font-heading text-xl">{activeStep + 1}</span>
+                  <span className="text-muted-foreground font-body text-sm"> / {steps.length}</span>
                 </div>
               </div>
             </div>
@@ -218,7 +214,7 @@ const ProcessSection = () => {
           >
             <a
               href="/contact"
-              className="inline-block px-8 py-3.5 bg-gold text-foreground font-body text-sm tracking-widest uppercase rounded-full hover:shadow-[0_0_30px_rgba(183,142,78,0.4)] transition-all duration-500"
+              className="inline-block px-8 py-3.5 bg-primary text-primary-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary/90 transition-colors duration-300"
             >
               Start Your Journey
             </a>

@@ -4,37 +4,33 @@ import FadeIn from "@/components/FadeIn";
 const services = [
   {
     icon: Palette,
-    title: "Exquisite Planning & Decor",
-    description: "We create stunning events with meticulous planning and elegant décor that transforms every venue into a masterpiece.",
-    bgImage: "/gallery/service-decor.jpg",
+    title: "Planning & Decor",
+    description: "Meticulous planning and elegant décor that transforms every venue into a masterpiece.",
   },
   {
     icon: Hotel,
-    title: "Flawless Hospitality & Logistics",
-    description: "Travel, accommodations, and hospitality are managed seamlessly — so you and your guests enjoy a worry-free experience.",
-    bgImage: "/gallery/service-hospitality.jpg",
+    title: "Hospitality & Logistics",
+    description: "Travel, accommodations, and hospitality managed seamlessly for a worry-free experience.",
   },
   {
     icon: Music,
-    title: "Engaging Entertainment",
-    description: "Entertainment includes live performances, DJ sets, and interactive experiences that keep your guests enthralled all night.",
-    bgImage: "/gallery/service-entertainment.jpg",
+    title: "Entertainment",
+    description: "Live performances, DJ sets, and interactive experiences that keep guests enthralled.",
   },
   {
     icon: UtensilsCrossed,
-    title: "Customized Culinary Experiences",
-    description: "Curated menus and exceptional catering to ensure a delightful dining experience for every palate.",
-    bgImage: "/gallery/service-culinary.jpg",
+    title: "Culinary Experiences",
+    description: "Curated menus and exceptional catering for a delightful dining experience.",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="section-padding bg-muted">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section id="services" className="py-24 md:py-32 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-20">
           <FadeIn>
-            <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
+            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
               Our Services
             </p>
           </FadeIn>
@@ -45,39 +41,27 @@ const ServicesSection = () => {
           </FadeIn>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
           {services.map((service, i) => (
             <FadeIn key={service.title} delay={i * 0.1}>
-              <div className="relative p-8 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-500 group min-h-[260px] flex flex-col justify-end">
-                <div className="absolute inset-0">
-                  <img
-                    src={service.bgImage}
-                    alt=""
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-foreground/75 group-hover:bg-foreground/65 transition-colors duration-500" />
-                </div>
-                <div className="relative z-10">
-                  <service.icon className="w-8 h-8 text-gold mb-5 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="font-heading text-2xl font-normal text-primary-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-body text-sm text-primary-foreground/70">
-                    {service.description}
-                  </p>
-                </div>
+              <div className="p-8 md:p-10 bg-card border border-border rounded-lg hover:shadow-sm transition-shadow duration-500">
+                <service.icon className="w-7 h-7 text-primary mb-6" strokeWidth={1.5} />
+                <h3 className="font-heading text-2xl font-normal text-foreground mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-body text-sm text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             </FadeIn>
           ))}
         </div>
 
-        {/* Locations */}
         <FadeIn delay={0.5}>
-          <div className="mt-16 text-center">
-            <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">Our Locations</p>
+          <div className="mt-20 text-center">
+            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-3">Our Locations</p>
             <p className="font-heading text-2xl md:text-3xl font-light text-foreground">
-              Patna &nbsp;|&nbsp; Delhi &nbsp;|&nbsp; Global
+              Patna &nbsp;·&nbsp; Delhi &nbsp;·&nbsp; Global
             </p>
           </div>
         </FadeIn>

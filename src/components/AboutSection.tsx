@@ -3,8 +3,8 @@ const aboutImg = "/gallery/green-aisle.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="section-padding bg-background">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="about" className="py-24 md:py-32 px-6 bg-muted">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
         <FadeIn direction="left">
           <div className="img-hover-zoom rounded-lg">
             <img
