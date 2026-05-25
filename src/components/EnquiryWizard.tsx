@@ -353,14 +353,15 @@ const EnquiryWizard = ({ compact = false }: Props) => {
     <div className="w-full">
       <ProgressBar />
 
-      {/* Fixed-height content area — prevents the box resizing between steps */}
+      {/* Content + nav in one flex column — content grows, nav sticks below */}
       <div
+        className="flex flex-col"
         style={{
-          minHeight: compact ? "260px" : "300px",
-          overflow: "hidden",
+          minHeight: compact ? "220px" : "260px",
         }}
       >
-        <div style={animStyle}>
+        {/* Animated step content */}
+        <div style={{ ...animStyle, flex: "1 1 auto" }}>
           {/* Step counter */}
           <p className="font-body text-[9px] tracking-[0.4em] uppercase mb-3"
             style={{ color: "rgba(201,169,110,0.5)" }}>
@@ -379,17 +380,16 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           </h3>
 
           {/* Hint */}
-          <p className="font-body text-sm mb-6" style={{ color: "rgba(232,224,208,0.38)", fontSize: "12px" }}>
+          <p className="font-body text-sm mb-5" style={{ color: "rgba(232,224,208,0.38)", fontSize: "12px" }}>
             {step.hint}
           </p>
 
           {/* Input */}
           {renderInput()}
         </div>
-      </div>
 
-      {/* Navigation */}
-      <div className="flex items-center justify-between mt-6">
+        {/* Navigation — always flush to the bottom of the min-height box */}
+        <div className="flex items-center justify-between pt-6 mt-auto">
         {/* Back */}
         {stepIdx > 0 ? (
           <button
@@ -448,7 +448,8 @@ const EnquiryWizard = ({ compact = false }: Props) => {
             </button>
           </div>
         )}
-      </div>
+        </div>{/* end navigation */}
+      </div>{/* end flex column */}
 
       {/* Error message */}
       {status === "error" && (

@@ -51,10 +51,10 @@ const ContactPage = () => {
 
       {/* ── Main grid — wizard first on mobile ── */}
       <section className="px-4 md:px-6 pb-20 md:pb-32">
-        <div className="max-w-5xl mx-auto flex flex-col-reverse md:grid md:grid-cols-[1fr_1.65fr] gap-8 md:gap-14 items-start">
+        <div className="max-w-5xl mx-auto flex flex-col-reverse md:grid md:grid-cols-[1fr_1.65fr] gap-8 md:gap-14 md:items-start">
 
           {/* Left: contact info — below wizard on mobile */}
-          <FadeIn direction="left">
+          <FadeIn direction="left" className="w-full">
             <div className="md:sticky md:top-28 overflow-hidden"
               style={{ border: "1px solid rgba(201,169,110,0.13)" }}>
 
@@ -219,7 +219,7 @@ const ContactPage = () => {
           </FadeIn>
 
           {/* Right: conversational wizard */}
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.1} className="w-full">
             <div
               className="p-5 md:p-8"
               style={{ background: "rgba(201,169,110,0.03)", border: "1px solid rgba(201,169,110,0.1)" }}
