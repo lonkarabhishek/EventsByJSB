@@ -7,7 +7,7 @@ const steps = [
   {
     number: "01",
     title: "Share Your Vision",
-    desc: "Tell us about your dream celebration — event date, location, guest count, and every detail that matters to you.",
+    desc: "Tell us about your dream celebration: event date, location, guest count, and every detail that matters to you.",
     image: "/gallery/process-vision.jpg",
   },
   {
@@ -25,7 +25,7 @@ const steps = [
   {
     number: "04",
     title: "Celebrate!",
-    desc: "Your dream event comes to life — flawlessly orchestrated, beautifully executed, absolutely unforgettable.",
+    desc: "Your dream event comes to life, flawlessly orchestrated, beautifully executed, absolutely unforgettable.",
     image: "/gallery/process-celebrate.jpg",
   },
 ];

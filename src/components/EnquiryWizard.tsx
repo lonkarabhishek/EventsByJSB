@@ -45,7 +45,7 @@ const STEPS: Step[] = [
   {
     id: "date",
     question: "When is your event?",
-    hint: "Approximate date is fine — you can always change it later",
+    hint: "Approximate date is fine, you can always change it later",
     type: "date",
     required: false,
     skippable: true,

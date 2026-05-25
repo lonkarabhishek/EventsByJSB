@@ -172,8 +172,8 @@ const ContactPage = () => {
                       <p className="font-body text-[9px] tracking-[0.2em] uppercase"
                         style={{ color: "rgba(232,224,208,0.3)" }}>Hours</p>
                     </div>
-                    <p className="font-body text-sm leading-snug" style={{ color: "#e8e0d0" }}>Mon – Sat</p>
-                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(232,224,208,0.3)" }}>10 AM – 7 PM</p>
+                    <p className="font-body text-sm leading-snug" style={{ color: "#e8e0d0" }}>Mon to Sat</p>
+                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(232,224,208,0.3)" }}>10 AM to 7 PM</p>
                   </div>
                 </div>
               </div>
