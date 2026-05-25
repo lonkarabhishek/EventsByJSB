@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const VIDEOS = [
+  "/videos/reels/reel-4.mp4",
   "/videos/reels/reel-1.mp4",
   "/videos/reels/reel-2.mp4",
   "/videos/reels/reel-3.mp4",
-  "/videos/reels/reel-4.mp4",
   "/videos/reels/reel-5.mp4",
   "/videos/reels/reel-6.mp4",
 ];
