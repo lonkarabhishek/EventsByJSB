@@ -99,7 +99,7 @@ const ContactPage = () => {
       <Navbar />
 
       {/* ── Page hero ─────────────────────────────────────── */}
-      <section className="relative pt-32 pb-16 md:pb-20 px-6 text-center overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-10 md:pb-20 px-6 text-center overflow-hidden">
         {/* Radial gold glow */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
@@ -119,7 +119,7 @@ const ContactPage = () => {
         <FadeIn delay={0.1}>
           <h1
             className="font-heading font-light mb-5"
-            style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", color: "#e8e0d0", lineHeight: 0.95 }}
+            style={{ fontSize: "clamp(2.2rem, 8vw, 6.5rem)", color: "#e8e0d0", lineHeight: 0.95 }}
           >
             Let's Begin<br />
             <em className="italic" style={{ color: GOLD }}>Your Story</em>
@@ -140,13 +140,13 @@ const ContactPage = () => {
       </section>
 
       {/* ── Main grid ─────────────────────────────────────── */}
-      <section className="px-6 pb-24 md:pb-32">
-        <div className="max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-[1fr_1.65fr] gap-10 md:gap-14 items-start">
+      <section className="px-4 md:px-6 pb-20 md:pb-32">
+        <div className="max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-[1fr_1.65fr] gap-8 md:gap-14 items-start">
 
           {/* Left: Contact info panel */}
           <FadeIn direction="left">
             <div
-              className="md:sticky md:top-28 p-8 space-y-7"
+              className="md:sticky md:top-28 p-5 md:p-8 space-y-6 md:space-y-7"
               style={{
                 background: "rgba(201,169,110,0.04)",
                 border: "1px solid rgba(201,169,110,0.13)",

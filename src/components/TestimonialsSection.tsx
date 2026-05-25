@@ -43,7 +43,7 @@ const TestimonialsSection = () => {
 
   return (
     <section
-      className="py-24 md:py-32 px-6"
+      className="py-16 md:py-32 px-4 md:px-6"
       style={{
         background: "linear-gradient(to bottom, hsl(24 10% 5%), hsl(24 8% 7%))",
       }}
@@ -51,7 +51,7 @@ const TestimonialsSection = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-10 md:mb-20">
           <FadeIn>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
               style={{ color: "#c9a96e" }}>
@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="font-heading font-light"
-              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
               Words From Our Couples
             </h2>
           </FadeIn>
@@ -69,7 +69,7 @@ const TestimonialsSection = () => {
         {/* Large featured quote */}
         <FadeIn delay={0.15}>
           <div
-            className="relative px-6 md:px-16 py-12 md:py-16 mb-8"
+            className="relative px-5 md:px-16 py-10 md:py-16 mb-8"
             style={{ border: "1px solid rgba(201,169,110,0.12)", background: "rgba(201,169,110,0.03)" }}
           >
             {/* Big decorative quote mark */}
@@ -84,7 +84,7 @@ const TestimonialsSection = () => {
             <blockquote
               className="relative font-heading font-light italic text-center mb-8 leading-snug transition-all duration-500"
               style={{
-                fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
+                fontSize: "clamp(1.1rem, 3vw, 2.2rem)",
                 color: "rgba(232,224,208,0.85)",
                 maxWidth: "820px",
                 margin: "0 auto 2rem",

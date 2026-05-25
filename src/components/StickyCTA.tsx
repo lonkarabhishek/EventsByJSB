@@ -27,25 +27,27 @@ const StickyCTA = () => {
         visible ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="bg-background/95 backdrop-blur-sm border-t border-border px-6 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <p className="hidden sm:block font-heading text-lg text-foreground font-normal">
+      <div className="bg-background/95 backdrop-blur-sm border-t border-border px-4 md:px-6 py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          <p className="hidden sm:block font-heading text-lg text-foreground font-normal whitespace-nowrap">
             Ready to plan your dream celebration?
           </p>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <Link
               to="/contact"
-              className="flex-1 sm:flex-none text-center px-6 py-2.5 bg-foreground text-primary-foreground font-body text-xs tracking-widest uppercase rounded-full hover:bg-foreground/90 transition-colors duration-300"
+              className="flex-1 sm:flex-none text-center px-4 sm:px-6 py-2.5 bg-foreground text-primary-foreground font-body text-[10px] sm:text-xs tracking-widest uppercase rounded-full hover:bg-foreground/90 transition-colors duration-300"
             >
-              Start Planning Now
+              <span className="sm:hidden">Plan Now</span>
+              <span className="hidden sm:inline">Start Planning Now</span>
             </Link>
             <a
               href="https://wa.me/919905168295"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-none text-center px-6 py-2.5 border border-foreground/30 text-foreground font-body text-xs tracking-widest uppercase rounded-full hover:bg-foreground hover:text-primary-foreground transition-colors duration-300"
+              className="flex-1 sm:flex-none text-center px-4 sm:px-6 py-2.5 border border-foreground/30 text-foreground font-body text-[10px] sm:text-xs tracking-widest uppercase rounded-full hover:bg-foreground hover:text-primary-foreground transition-colors duration-300"
             >
-              WhatsApp Us
+              <span className="sm:hidden">WhatsApp</span>
+              <span className="hidden sm:inline">WhatsApp Us</span>
             </a>
           </div>
         </div>

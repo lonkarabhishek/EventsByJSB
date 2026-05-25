@@ -32,11 +32,11 @@ const services = [
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-24 md:py-32 px-6">
+  <section id="services" className="py-16 md:py-32 px-4 md:px-6">
     <div className="max-w-6xl mx-auto">
 
       {/* Header */}
-      <div className="mb-16 md:mb-20 max-w-xl">
+      <div className="mb-12 md:mb-20 max-w-xl">
         <FadeIn>
           <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-4"
             style={{ color: "#c9a96e" }}>
@@ -45,7 +45,7 @@ const ServicesSection = () => (
         </FadeIn>
         <FadeIn delay={0.1}>
           <h2 className="font-heading font-light leading-tight"
-            style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#e8e0d0" }}>
+            style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)", color: "#e8e0d0" }}>
             Everything Your<br />
             <em className="italic" style={{ color: "rgba(232,224,208,0.45)" }}>
               Celebration Deserves
@@ -59,11 +59,11 @@ const ServicesSection = () => (
         {services.map((s, i) => (
           <FadeIn key={s.number} delay={i * 0.08}>
             <div
-              className="group py-8 md:py-10 grid md:grid-cols-[80px_1fr_auto] gap-4 md:gap-8 items-start cursor-default transition-all duration-500 hover:pl-2"
+              className="group py-6 md:py-10 grid grid-cols-[56px_1fr] md:grid-cols-[80px_1fr_auto] gap-3 md:gap-8 items-start cursor-default transition-all duration-500 hover:pl-2"
             >
               {/* Number */}
               <span
-                className="font-heading text-5xl md:text-6xl font-light transition-colors duration-500 group-hover:text-[#c9a96e]"
+                className="font-heading text-4xl md:text-6xl font-light transition-colors duration-500 group-hover:text-[#c9a96e]"
                 style={{ color: "rgba(232,224,208,0.12)", lineHeight: 1 }}
               >
                 {s.number}

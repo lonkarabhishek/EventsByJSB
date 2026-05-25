@@ -11,7 +11,7 @@ const stats = [
 
 const CTASection = () => (
   <section
-    className="relative overflow-hidden py-28 md:py-40 px-6"
+    className="relative overflow-hidden py-20 md:py-40 px-4 md:px-6"
     style={{ background: "hsl(24 10% 5%)" }}
   >
     {/* ── Layered atmospheric background ── */}
@@ -77,7 +77,7 @@ const CTASection = () => (
       <FadeIn delay={0.14}>
         <h2
           className="font-heading font-light leading-[0.95] mb-8"
-          style={{ fontSize: "clamp(3rem, 8vw, 7rem)", color: "#fff" }}
+          style={{ fontSize: "clamp(2.2rem, 8vw, 7rem)", color: "#fff" }}
         >
           Let's Create Your<br />
           <em className="italic" style={{ color: GOLD }}>Dream Celebration</em>
@@ -95,14 +95,14 @@ const CTASection = () => (
 
       {/* Stats row */}
       <FadeIn delay={0.3}>
-        <div className="flex items-center justify-center gap-0 divide-x mb-14"
+        <div className="flex items-center justify-center gap-0 divide-x mb-10 md:mb-14"
           style={{ borderColor: `${GOLD}18` }}>
           {stats.map(s => (
-            <div key={s.label} className="px-8 md:px-12 first:pl-0 last:pr-0">
-              <p className="font-heading font-light" style={{ fontSize: "clamp(2rem,4vw,3rem)", color: GOLD }}>
+            <div key={s.label} className="px-5 md:px-12 first:pl-0 last:pr-0">
+              <p className="font-heading font-light" style={{ fontSize: "clamp(1.6rem,4vw,3rem)", color: GOLD }}>
                 {s.value}
               </p>
-              <p className="font-body text-[10px] tracking-[0.25em] uppercase mt-1"
+              <p className="font-body text-[9px] md:text-[10px] tracking-[0.2em] uppercase mt-1"
                 style={{ color: "rgba(232,224,208,0.35)" }}>
                 {s.label}
               </p>

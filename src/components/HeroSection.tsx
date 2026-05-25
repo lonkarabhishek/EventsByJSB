@@ -93,7 +93,7 @@ const HeroSection = () => {
           <h1
             className="hero-fade-up text-shadow-hero font-heading font-light text-white leading-[0.95] mb-5 md:mb-6 tracking-wide"
             style={{
-              fontSize: "clamp(3.2rem, 10vw, 10rem)",
+              fontSize: "clamp(2.4rem, 9vw, 10rem)",
               animationDelay: "0.7s",
             }}
           >

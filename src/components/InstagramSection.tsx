@@ -116,11 +116,11 @@ const VideoReelsSection = () => {
   const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
-    <section className="py-24 md:py-32 px-6" style={{ background: "hsl(24 8% 7%)" }}>
+    <section className="py-16 md:py-32 px-4 md:px-6" style={{ background: "hsl(24 8% 7%)" }}>
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-14 md:mb-20">
+        <div className="text-center mb-10 md:mb-20">
           <FadeIn>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
               style={{ color: "#c9a96e" }}>
@@ -129,7 +129,7 @@ const VideoReelsSection = () => {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="font-heading font-light"
-              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
               Stories in Motion
             </h2>
           </FadeIn>

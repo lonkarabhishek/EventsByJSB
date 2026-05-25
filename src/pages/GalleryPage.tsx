@@ -56,30 +56,30 @@ const GalleryPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6 text-center bg-muted">
+      <section className="pt-24 md:pt-32 pb-10 md:pb-16 px-4 md:px-6 text-center bg-muted">
         <FadeIn>
-          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">Our Work</p>
+          <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-3 md:mb-4">Our Work</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="font-heading text-5xl md:text-7xl font-light text-foreground mb-6">Gallery</h1>
+          <h1 className="font-heading text-4xl md:text-7xl font-light text-foreground mb-4 md:mb-6">Gallery</h1>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p className="text-body text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-body text-muted-foreground text-sm max-w-2xl mx-auto px-2">
             A curated collection of our most cherished celebrations and events. {galleryImages.length} moments of magic.
           </p>
         </FadeIn>
       </section>
 
       {/* Filters (sticky) */}
-      <section className="py-6 px-6 bg-background sticky top-0 z-30 border-b border-border/50 backdrop-blur-sm bg-background/95">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-2 md:gap-3">
+      <section className="py-4 md:py-6 bg-background sticky top-0 z-30 border-b border-border/50 backdrop-blur-sm bg-background/95">
+        <div className="max-w-7xl mx-auto flex gap-2 overflow-x-auto px-4 md:px-6 pb-1 md:flex-wrap md:justify-center md:overflow-visible scrollbar-hide">
           {galleryCategories.map((cat) => {
             const count = cat === "All" ? galleryImages.length : galleryImages.filter(i => i.category === cat).length;
             return (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-4 md:px-6 py-2 rounded-full font-body text-xs md:text-sm tracking-widest uppercase transition-colors duration-300 ${
+                className={`flex-shrink-0 px-4 md:px-6 py-1.5 md:py-2 rounded-full font-body text-[11px] md:text-sm tracking-widest uppercase transition-colors duration-300 ${
                   active === cat
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-primary/10"
@@ -93,19 +93,19 @@ const GalleryPage = () => {
       </section>
 
       {/* Masonry Grid */}
-      <section className="section-padding bg-background pt-8">
-        <div className="max-w-7xl mx-auto columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+      <section className="bg-background pt-6 pb-12 md:pb-16">
+        <div className="max-w-7xl mx-auto px-3 md:px-6 columns-2 sm:columns-2 lg:columns-3 gap-3 md:gap-6 space-y-3 md:space-y-6">
           {visible.map((img, i) => (
             <div key={`${img.src}-${active}`} className="break-inside-avoid">
               <FadeIn delay={Math.min(i * 0.03, 0.5)}>
                 <div
-                  className="img-hover-zoom rounded-lg cursor-pointer group relative"
+                  className="img-hover-zoom rounded cursor-pointer group relative"
                   onClick={() => setLightbox(i)}
                 >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className="w-full object-cover rounded-lg"
+                    className="w-full object-cover rounded"
                     loading="lazy"
                   />
                   {/* Hover overlay with caption */}
@@ -122,10 +122,10 @@ const GalleryPage = () => {
 
         {/* Load More */}
         {hasMore && (
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 md:mt-12 px-4">
             <button
               onClick={() => setVisibleCount((c) => c + IMAGES_PER_PAGE)}
-              className="px-8 py-3.5 bg-primary text-primary-foreground font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary/90 transition-colors duration-300"
+              className="px-8 py-3 bg-primary text-primary-foreground font-body text-xs tracking-widest uppercase rounded-full hover:bg-primary/90 transition-colors duration-300"
             >
               Load More ({filtered.length - visibleCount} remaining)
             </button>
@@ -133,7 +133,7 @@ const GalleryPage = () => {
         )}
 
         {!hasMore && filtered.length > IMAGES_PER_PAGE && (
-          <p className="text-center text-muted-foreground font-body text-sm mt-12">
+          <p className="text-center text-muted-foreground font-body text-xs md:text-sm mt-8 md:mt-12">
             Showing all {filtered.length} images
           </p>
         )}

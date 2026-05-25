@@ -9,11 +9,11 @@ const stats = [
 const AboutSection = () => (
   <section
     id="about"
-    className="py-24 md:py-32 px-6"
+    className="py-16 md:py-32 px-4 md:px-6"
     style={{ background: "hsl(24 8% 7%)" }}
   >
     <div className="max-w-6xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-24 items-center">
 
         {/* Image side */}
         <FadeIn direction="left">
@@ -28,7 +28,7 @@ const AboutSection = () => (
               alt="JSB Events elegant celebration"
               loading="lazy"
               className="relative z-10 w-full object-cover"
-              style={{ height: "560px" }}
+              style={{ height: "clamp(260px, 60vw, 560px)" }}
             />
             {/* Floating stat card */}
             <div
@@ -54,7 +54,7 @@ const AboutSection = () => (
 
           <FadeIn delay={0.2}>
             <h2 className="font-heading font-light leading-tight mb-6"
-              style={{ fontSize: "clamp(2.4rem, 4.5vw, 3.6rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(1.9rem, 4.5vw, 3.6rem)", color: "#e8e0d0" }}>
               A Decade of<br />
               <em className="italic" style={{ color: "rgba(232,224,208,0.45)" }}>
                 Flawless Celebrations
@@ -100,7 +100,7 @@ const AboutSection = () => (
                 Jagdeep Singh Bagga
               </p>
             </div>
-            <p className="font-body text-[10px] tracking-[0.3em] uppercase ml-16 mt-1" style={{ color: "rgba(232,224,208,0.3)" }}>
+            <p className="font-body text-[10px] tracking-[0.3em] uppercase mt-1 pl-14 md:ml-16" style={{ color: "rgba(232,224,208,0.3)" }}>
               Founder &amp; Lead Planner
             </p>
           </FadeIn>
