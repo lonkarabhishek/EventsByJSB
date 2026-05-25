@@ -17,7 +17,7 @@ const Index = () => (
     <Navbar />
     <HeroSection />
 
-    <div className="relative z-10 bg-background">
+    <div className="relative z-10 bg-background overflow-x-hidden">
       <MarqueeStrip />
       <PortfolioSection />
       <VideoReelsSection />
