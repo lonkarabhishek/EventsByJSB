@@ -105,6 +105,12 @@ interface Props {
   compact?: boolean;
 }
 
+/* Today's date in YYYY-MM-DD using local time (not UTC) */
+const localToday = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+
 const EnquiryWizard = ({ compact = false }: Props) => {
   const [stepIdx, setStepIdx]   = useState(0);
   const [answers, setAnswers]   = useState<Record<string, string>>({});
@@ -298,7 +304,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
         <input
           type="date"
           value={current}
-          min={new Date().toISOString().split("T")[0]}
+          min={localToday()}
           onChange={e => setAnswer(e.target.value)}
           style={{
             ...inputBase,
@@ -347,35 +353,43 @@ const EnquiryWizard = ({ compact = false }: Props) => {
     <div className="w-full">
       <ProgressBar />
 
-      <div style={animStyle}>
-        {/* Step counter */}
-        <p className="font-body text-[9px] tracking-[0.4em] uppercase mb-3"
-          style={{ color: "rgba(201,169,110,0.5)" }}>
-          {stepIdx + 1} of {STEPS.length}
-        </p>
+      {/* Fixed-height content area — prevents the box resizing between steps */}
+      <div
+        style={{
+          minHeight: compact ? "260px" : "300px",
+          overflow: "hidden",
+        }}
+      >
+        <div style={animStyle}>
+          {/* Step counter */}
+          <p className="font-body text-[9px] tracking-[0.4em] uppercase mb-3"
+            style={{ color: "rgba(201,169,110,0.5)" }}>
+            {stepIdx + 1} of {STEPS.length}
+          </p>
 
-        {/* Question */}
-        <h3
-          className="font-heading font-light leading-tight mb-2"
-          style={{
-            fontSize: compact ? "clamp(1.3rem, 4vw, 1.7rem)" : "clamp(1.5rem, 4vw, 2.1rem)",
-            color: "#e8e0d0",
-          }}
-        >
-          {step.question}
-        </h3>
+          {/* Question */}
+          <h3
+            className="font-heading font-light leading-tight mb-2"
+            style={{
+              fontSize: compact ? "clamp(1.3rem, 4vw, 1.7rem)" : "clamp(1.5rem, 4vw, 2.1rem)",
+              color: "#e8e0d0",
+            }}
+          >
+            {step.question}
+          </h3>
 
-        {/* Hint */}
-        <p className="font-body text-sm mb-6" style={{ color: "rgba(232,224,208,0.38)", fontSize: "12px" }}>
-          {step.hint}
-        </p>
+          {/* Hint */}
+          <p className="font-body text-sm mb-6" style={{ color: "rgba(232,224,208,0.38)", fontSize: "12px" }}>
+            {step.hint}
+          </p>
 
-        {/* Input */}
-        {renderInput()}
+          {/* Input */}
+          {renderInput()}
+        </div>
       </div>
 
       {/* Navigation */}
-      <div className="flex items-center justify-between mt-8">
+      <div className="flex items-center justify-between mt-6">
         {/* Back */}
         {stepIdx > 0 ? (
           <button
