@@ -4,84 +4,140 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/jsb-logo.jpg";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Home",     href: "/" },
+  { label: "About",    href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Contact", href: "/contact" },
+  { label: "Gallery",  href: "/gallery" },
 ];
 
+const GOLD = "#c9a96e";
+
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const textColor = !scrolled && isHome ? "text-primary-foreground" : "text-foreground";
-  const textHover = !scrolled && isHome ? "hover:text-primary-foreground/70" : "hover:text-primary";
+  const transparent = !scrolled && isHome;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || !isHome ? "bg-background/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      style={{
+        background: transparent
+          ? "transparent"
+          : "rgba(12, 10, 8, 0.92)",
+        backdropFilter: transparent ? "none" : "blur(12px)",
+        borderBottom: transparent ? "none" : "1px solid rgba(201,169,110,0.12)",
+      }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="JSB Events" className="h-12 w-12 rounded-full object-cover" />
-          <span className={`font-heading text-2xl font-light tracking-wider transition-colors duration-300 ${scrolled || !isHome ? "text-foreground" : "text-primary-foreground"}`}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:py-5">
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt="JSB Events"
+            className="h-10 w-10 rounded-full object-cover"
+            style={{ border: `1px solid ${GOLD}40` }}
+          />
+          <span
+            className="font-heading text-xl md:text-2xl font-light tracking-[0.18em] transition-colors duration-300"
+            style={{ color: transparent ? "#fff" : "#e8e0d0", letterSpacing: "0.2em" }}
+          >
             JSB Events
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={`text-sm font-body font-normal tracking-widest uppercase transition-colors duration-300 ${
-                location.pathname === link.href
-                  ? (scrolled || !isHome ? "text-primary" : "text-primary-foreground")
-                  : (scrolled || !isHome ? "text-foreground/70 hover:text-primary" : "text-primary-foreground/70 hover:text-primary-foreground")
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8 lg:gap-10">
+          {navLinks.map((link) => {
+            const active = location.pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="font-body text-[11px] tracking-[0.3em] uppercase transition-all duration-300"
+                style={{
+                  color: active
+                    ? GOLD
+                    : transparent
+                    ? "rgba(255,255,255,0.65)"
+                    : "rgba(232,224,208,0.55)",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = GOLD; }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.color = active
+                    ? GOLD
+                    : transparent
+                    ? "rgba(255,255,255,0.65)"
+                    : "rgba(232,224,208,0.55)";
+                }}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+
           <Link
             to="/contact"
-            className="px-6 py-2.5 bg-foreground text-primary-foreground text-sm font-body tracking-widest uppercase rounded-full hover:bg-foreground/90 transition-colors duration-300"
+            className="font-body text-[11px] tracking-[0.3em] uppercase px-6 py-2.5 transition-all duration-300"
+            style={{
+              border: `1px solid ${GOLD}`,
+              color: GOLD,
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = GOLD;
+              el.style.color = "#0c0a08";
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "transparent";
+              el.style.color = GOLD;
+            }}
           >
             Book Now
           </Link>
         </div>
 
+        {/* Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`md:hidden transition-colors ${scrolled || !isHome ? "text-foreground" : "text-primary-foreground"}`}
+          className="md:hidden transition-colors"
+          style={{ color: transparent ? "#fff" : "#e8e0d0" }}
           aria-label="Toggle menu"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
+      {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-background/98 backdrop-blur-sm border-t border-border">
-          <div className="flex flex-col items-center gap-6 py-8">
+        <div
+          className="md:hidden"
+          style={{
+            background: "rgba(10,8,6,0.97)",
+            backdropFilter: "blur(16px)",
+            borderTop: "1px solid rgba(201,169,110,0.15)",
+          }}
+        >
+          <div className="flex flex-col items-center gap-7 py-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-sm font-body font-normal tracking-widest uppercase ${
-                  location.pathname === link.href ? "text-primary" : "text-foreground/70 hover:text-primary"
-                }`}
+                className="font-body text-[11px] tracking-[0.35em] uppercase transition-colors"
+                style={{
+                  color: location.pathname === link.href ? GOLD : "rgba(232,224,208,0.55)",
+                }}
               >
                 {link.label}
               </Link>
@@ -89,7 +145,8 @@ const Navbar = () => {
             <Link
               to="/contact"
               onClick={() => setMenuOpen(false)}
-              className="px-6 py-2.5 bg-primary text-primary-foreground text-sm tracking-widest uppercase rounded-full"
+              className="font-body text-[11px] tracking-[0.35em] uppercase px-8 py-3 mt-2"
+              style={{ border: `1px solid ${GOLD}`, color: GOLD }}
             >
               Book Now
             </Link>

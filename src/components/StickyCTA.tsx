@@ -40,7 +40,7 @@ const StickyCTA = () => {
               Start Planning Now
             </Link>
             <a
-              href="https://wa.me/919999999999"
+              href="https://wa.me/919905168295"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 sm:flex-none text-center px-6 py-2.5 border border-foreground/30 text-foreground font-body text-xs tracking-widest uppercase rounded-full hover:bg-foreground hover:text-primary-foreground transition-colors duration-300"

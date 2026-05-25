@@ -3,18 +3,20 @@ import { useEffect, useRef, ReactNode } from "react";
 interface FadeInProps {
   children: ReactNode;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right";
+  direction?: "up" | "down" | "left" | "right" | "none";
+  distance?: number;   // px — default 52
+  scale?: boolean;     // start slightly smaller — default true
   className?: string;
 }
 
-const initialTransform: Record<string, string> = {
-  up: "translate3d(0, 30px, 0)",
-  down: "translate3d(0, -30px, 0)",
-  left: "translate3d(30px, 0, 0)",
-  right: "translate3d(-30px, 0, 0)",
-};
-
-const FadeIn = ({ children, delay = 0, direction = "up", className = "" }: FadeInProps) => {
+const FadeIn = ({
+  children,
+  delay = 0,
+  direction = "up",
+  distance = 52,
+  scale = true,
+  className = "",
+}: FadeInProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,17 +26,27 @@ const FadeIn = ({ children, delay = 0, direction = "up", className = "" }: FadeI
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.style.opacity = "1";
-          el.style.transform = "translate3d(0, 0, 0)";
+          el.style.opacity    = "1";
+          el.style.transform  = "translate3d(0, 0, 0) scale(1)";
           observer.unobserve(el);
         }
       },
-      { rootMargin: "-50px" }
+      { rootMargin: "-32px" }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  const tx = direction === "left"  ? `translate3d(${distance}px, 0, 0)` :
+             direction === "right" ? `translate3d(-${distance}px, 0, 0)` :
+             direction === "down"  ? `translate3d(0, -${distance}px, 0)` :
+             direction === "none"  ? "translate3d(0, 0, 0)" :
+                                     `translate3d(0, ${distance}px, 0)`;
+
+  const initialTransform = scale && direction !== "none"
+    ? `${tx} scale(0.96)`
+    : tx;
 
   return (
     <div
@@ -42,8 +54,11 @@ const FadeIn = ({ children, delay = 0, direction = "up", className = "" }: FadeI
       className={className}
       style={{
         opacity: 0,
-        transform: initialTransform[direction],
-        transition: `opacity 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) ${delay}s, transform 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) ${delay}s`,
+        transform: initialTransform,
+        /* Spring-like easing — fast settle, natural overshoot feel */
+        transition: `opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s,
+                     transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
+        willChange: "opacity, transform",
       }}
     >
       {children}

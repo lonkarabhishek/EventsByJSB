@@ -24,7 +24,7 @@ const AboutPage = () => {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p className="text-body text-muted-foreground max-w-2xl mx-auto">
-            Founded in 2014 in Patna, Bihar — crafting celebrations that reflect your unique story across India and beyond.
+            Founded in 2014 in Patna, Bihar, crafting celebrations that reflect your unique story across India and beyond.
           </p>
         </FadeIn>
       </section>
@@ -47,7 +47,7 @@ const AboutPage = () => {
             </FadeIn>
             <FadeIn delay={0.3}>
               <p className="text-body text-muted-foreground mb-5">
-                We are your reliable expert for planning destination weddings and milestone celebrations. With expertise in destination weddings across India, we handle every detail seamlessly. Our in-house team manages everything — from vendor coordination and catering to bespoke décor design — ensuring a stress-free and stunning experience from start to finish.
+                We are your reliable expert for planning destination weddings and milestone celebrations. With expertise in destination weddings across India, we handle every detail seamlessly. Our in-house team manages everything from vendor coordination and catering to bespoke décor design, ensuring a stress-free and stunning experience from start to finish.
               </p>
             </FadeIn>
             <FadeIn delay={0.4}>
@@ -67,7 +67,7 @@ const AboutPage = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "Elegance", desc: "Every detail is curated with refined taste and timeless sophistication." },
-              { title: "Personalization", desc: "No two events are the same — we design each celebration around your unique story." },
+              { title: "Personalization", desc: "No two events are the same; we design each celebration around your unique story." },
               { title: "Excellence", desc: "We hold ourselves to the highest standard in every aspect of planning and execution." },
               { title: "Creativity", desc: "We push boundaries to create visually stunning and emotionally impactful experiences." },
               { title: "Reliability", desc: "You can count on us to deliver flawlessly, so you can enjoy every moment stress-free." },
@@ -97,7 +97,7 @@ const AboutPage = () => {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-body text-muted-foreground mb-8">
-                We envision a world where every couple gets the celebration they truly deserve — one that reflects their love, values, and personalities in every single detail.
+                We envision a world where every couple gets the celebration they truly deserve, one that reflects their love, values, and personalities in every single detail.
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>

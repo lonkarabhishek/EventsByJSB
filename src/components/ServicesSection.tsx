@@ -1,73 +1,140 @@
-import { Palette, Hotel, Music, UtensilsCrossed } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
 const services = [
   {
-    icon: Palette,
+    number: "01",
     title: "Planning & Decor",
-    description: "Meticulous planning and elegant décor that transforms every venue into a masterpiece.",
+    description:
+      "Meticulous planning and bespoke décor that transforms every venue into a living masterpiece, from colour palette to final petal.",
+    tags: ["Venue Styling", "Floral Design", "Lighting"],
   },
   {
-    icon: Hotel,
+    number: "02",
     title: "Hospitality & Logistics",
-    description: "Travel, accommodations, and hospitality managed seamlessly for a worry-free experience.",
+    description:
+      "Seamless coordination of travel, accommodations, and hospitality, so every guest feels like the guest of honour.",
+    tags: ["Guest Management", "Travel", "Accommodations"],
   },
   {
-    icon: Music,
+    number: "03",
     title: "Entertainment",
-    description: "Live performances, DJ sets, and interactive experiences that keep guests enthralled.",
+    description:
+      "Live performances, curated DJ sets, and interactive experiences that keep every moment alive and every guest enthralled.",
+    tags: ["Live Music", "DJ Curation", "Experiences"],
   },
   {
-    icon: UtensilsCrossed,
+    number: "04",
     title: "Culinary Experiences",
-    description: "Curated menus and exceptional catering for a delightful dining experience.",
+    description:
+      "From intimate family dinners to grand receptions, menus curated for taste, occasion, and unforgettable dining memories.",
+    tags: ["Catering", "Bar Service", "Custom Menus"],
   },
 ];
 
-const ServicesSection = () => {
-  return (
-    <section id="services" className="py-24 md:py-32 px-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-20">
-          <FadeIn>
-            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
-              Our Services
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
-              What We Offer
-            </h2>
-          </FadeIn>
-        </div>
+const ServicesSection = () => (
+  <section id="services" className="py-24 md:py-32 px-6">
+    <div className="max-w-6xl mx-auto">
 
-        <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
-          {services.map((service, i) => (
-            <FadeIn key={service.title} delay={i * 0.1}>
-              <div className="p-8 md:p-10 bg-card border border-border rounded-lg hover:shadow-sm transition-shadow duration-500">
-                <service.icon className="w-7 h-7 text-primary mb-6" strokeWidth={1.5} />
-                <h3 className="font-heading text-2xl font-normal text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-body text-sm text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={0.5}>
-          <div className="mt-20 text-center">
-            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-3">Our Locations</p>
-            <p className="font-heading text-2xl md:text-3xl font-light text-foreground">
-              Patna &nbsp;·&nbsp; Delhi &nbsp;·&nbsp; Global
-            </p>
-          </div>
+      {/* Header */}
+      <div className="mb-16 md:mb-20 max-w-xl">
+        <FadeIn>
+          <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-4"
+            style={{ color: "#c9a96e" }}>
+            Our Services
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h2 className="font-heading font-light leading-tight"
+            style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#e8e0d0" }}>
+            Everything Your<br />
+            <em className="italic" style={{ color: "rgba(232,224,208,0.45)" }}>
+              Celebration Deserves
+            </em>
+          </h2>
         </FadeIn>
       </div>
-    </section>
-  );
-};
+
+      {/* Service rows */}
+      <div className="divide-y" style={{ borderColor: "rgba(201,169,110,0.1)" }}>
+        {services.map((s, i) => (
+          <FadeIn key={s.number} delay={i * 0.08}>
+            <div
+              className="group py-8 md:py-10 grid md:grid-cols-[80px_1fr_auto] gap-4 md:gap-8 items-start cursor-default transition-all duration-500 hover:pl-2"
+            >
+              {/* Number */}
+              <span
+                className="font-heading text-5xl md:text-6xl font-light transition-colors duration-500 group-hover:text-[#c9a96e]"
+                style={{ color: "rgba(232,224,208,0.12)", lineHeight: 1 }}
+              >
+                {s.number}
+              </span>
+
+              {/* Content */}
+              <div className="space-y-3">
+                <h3
+                  className="font-heading font-light transition-colors duration-500 group-hover:text-[#c9a96e]"
+                  style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#e8e0d0" }}
+                >
+                  {s.title}
+                </h3>
+                <p className="font-body text-sm leading-relaxed max-w-lg"
+                  style={{ color: "rgba(232,224,208,0.45)" }}>
+                  {s.description}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {s.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="font-body text-[10px] tracking-[0.25em] uppercase px-3 py-1"
+                      style={{
+                        color: "rgba(201,169,110,0.65)",
+                        border: "1px solid rgba(201,169,110,0.2)",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div
+                className="hidden md:flex items-center self-center transition-all duration-500 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1"
+                style={{ color: "#c9a96e" }}
+              >
+                <svg width="28" height="12" viewBox="0 0 28 12" fill="none">
+                  <path d="M0 6H26M22 1L27 6L22 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+
+      {/* Locations strip */}
+      <FadeIn delay={0.4}>
+        <div className="mt-16 md:mt-20 pt-8 md:pt-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-10"
+          style={{ borderTop: "1px solid rgba(201,169,110,0.15)" }}>
+          <p className="font-body text-[10px] tracking-[0.45em] uppercase"
+            style={{ color: "rgba(201,169,110,0.55)" }}>
+            Serving
+          </p>
+          <div className="flex flex-wrap gap-6 md:gap-10">
+            {["Patna", "Delhi", "Jaipur", "Udaipur", "Kolkata", "Global"].map((city, i) => (
+              <span
+                key={city}
+                className="font-heading text-lg md:text-xl font-light"
+                style={{ color: i === 5 ? "#c9a96e" : "rgba(232,224,208,0.6)" }}
+              >
+                {city}
+              </span>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+
+    </div>
+  </section>
+);
 
 export default ServicesSection;

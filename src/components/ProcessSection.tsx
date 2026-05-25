@@ -4,13 +4,13 @@ const steps = [
   {
     number: "01",
     title: "Share Your Vision",
-    desc: "Tell us about your dream celebration — event date, budget, location, venue style, guest count, and every detail that matters to you.",
+    desc: "Tell us about your dream celebration: event date, budget, location, venue style, guest count, and every detail that matters to you.",
     image: "/gallery/process-vision.jpg",
   },
   {
     number: "02",
     title: "Get a Personalised Plan",
-    desc: "Our team crafts a bespoke proposal with curated designs, handpicked venues, trusted vendors, and detailed timelines — tailored to your taste.",
+    desc: "Our team crafts a bespoke proposal with curated designs, handpicked venues, trusted vendors, and detailed timelines tailored to your taste.",
     image: "/gallery/process-plan.jpg",
   },
   {
@@ -22,7 +22,7 @@ const steps = [
   {
     number: "04",
     title: "Celebrate!",
-    desc: "Your dream event comes to life — flawlessly orchestrated, beautifully executed, and absolutely unforgettable. Just enjoy.",
+    desc: "Your dream event comes to life, flawlessly orchestrated, beautifully executed, and absolutely unforgettable. Just enjoy.",
     image: "/gallery/process-celebrate.jpg",
   },
 ];
@@ -170,9 +170,9 @@ const ProcessSection = () => {
               })}
             </div>
 
-            {/* Right: Image with decorative ring — desktop only */}
+            {/* Right: Image with decorative ring (desktop only) */}
             <div className="relative hidden md:flex items-center justify-center">
-              {/* Decorative ring — subtle */}
+              {/* Decorative ring */}
               <div
                 className="absolute w-[105%] aspect-square rounded-full border border-border transition-transform duration-1000 ease-out"
                 style={{ transform: `rotate(${progress * 90}deg)` }}

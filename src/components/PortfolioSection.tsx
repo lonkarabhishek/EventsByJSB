@@ -1,62 +1,89 @@
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 
+// Mix of real new images + existing named gallery images
 const images = [
-  { src: "/gallery/mandap-velvet.jpg", alt: "Luxurious mandap with velvet seating and chandeliers", label: "Royal Mandap" },
-  { src: "/gallery/pampas-arch.jpg", alt: "Elegant pampas grass arch ceremony setup", label: "Ceremony Arch" },
-  { src: "/gallery/venue-night.jpg", alt: "Outdoor night venue with illuminated arched backdrop", label: "Night Venue" },
-  { src: "/gallery/gold-aisle.jpg", alt: "Gold and silver themed wedding aisle", label: "Golden Aisle" },
-  { src: "/gallery/engagement-setup.jpg", alt: "Romantic engagement ceremony setup", label: "Engagement" },
-  { src: "/gallery/floral-archway.jpg", alt: "Grand floral archway entrance", label: "Floral Design" },
+  { src: "/gallery/real/2026-02-18_15-00-14_UTC_1.jpg",  alt: "Wedding celebration",     label: "Wedding Ceremony",  size: "tall" },
+  { src: "/gallery/real/2025-12-17_13-53-28_UTC_1.jpg",  alt: "Floral décor",            label: "Floral Design",     size: "short" },
+  { src: "/gallery/real/2026-02-23_15-20-24_UTC_3.jpg",  alt: "Grand stage setup",       label: "Stage Design",      size: "short" },
+  { src: "/gallery/real/2025-04-27_15-30-00_UTC_1.jpg",  alt: "Engagement ceremony",     label: "Engagement",        size: "tall" },
+  { src: "/gallery/real/2025-01-30_16-24-11_UTC_1.jpg",  alt: "Wedding mandap",          label: "Royal Mandap",      size: "short" },
+  { src: "/gallery/real/2024-07-30_05-40-32_UTC_1.jpg",  alt: "Evening venue lighting",  label: "Venue & Lighting",  size: "wide" },
+  { src: "/gallery/real/2025-03-29_15-30-00_UTC_1.jpg",  alt: "Celebration decor",       label: "Celebrations",      size: "short" },
+  { src: "/gallery/real/2024-04-08_15-12-47_UTC_1.jpg",  alt: "Destination wedding",     label: "Destination",       size: "short" },
+  { src: "/gallery/real/2026-01-29_13-10-04_UTC_1.jpg",  alt: "Luxury event",            label: "Luxury Events",     size: "short" },
 ];
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="py-24 md:py-32 px-6 bg-background">
+    <section id="portfolio" className="py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <FadeIn>
-            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
-              Our Portfolio
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
-              Celebrations We've Crafted
-            </h2>
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 md:mb-20 gap-6">
+          <div>
+            <FadeIn>
+              <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3" style={{ color: "#c9a96e" }}>
+                Our Portfolio
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h2 className="font-heading font-light leading-tight"
+                style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#e8e0d0" }}>
+                Celebrations<br />
+                <em className="italic" style={{ color: "rgba(232,224,208,0.4)" }}>We've Crafted</em>
+              </h2>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.2}>
+            <Link
+              to="/gallery"
+              className="self-start md:self-auto font-body text-[11px] tracking-[0.35em] uppercase px-7 py-3 transition-all duration-300"
+              style={{ border: "1px solid rgba(201,169,110,0.4)", color: "#c9a96e" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#c9a96e"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,169,110,0.4)"; }}
+            >
+              View Full Gallery
+            </Link>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Masonry-style grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {images.map((img, i) => (
-            <FadeIn key={img.label} delay={i * 0.08}>
-              <div className="img-hover-zoom rounded-lg relative group cursor-pointer">
+            <FadeIn key={img.label + i} delay={i * 0.06}>
+              <div
+                className="relative group overflow-hidden cursor-pointer"
+                style={{
+                  gridRow:    img.size === "tall" ? "span 2" : "span 1",
+                  gridColumn: img.size === "wide" ? "span 2" : "span 1",
+                }}
+              >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full h-80 object-cover rounded-lg"
                   loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{
+                    minHeight: img.size === "tall" ? "480px" : "220px",
+                    maxHeight: img.size === "tall" ? "620px" : "300px",
+                  }}
                 />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors duration-500 rounded-lg flex items-end justify-start p-6">
-                  <p className="text-primary-foreground font-heading text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
+                {/* Hover overlay */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%)" }}
+                >
+                  <p className="font-heading text-white text-lg md:text-xl font-light translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                     {img.label}
                   </p>
+                  <div className="h-px w-8 mt-2 group-hover:w-14 transition-all duration-500" style={{ background: "#c9a96e" }} />
                 </div>
               </div>
             </FadeIn>
           ))}
         </div>
 
-        <FadeIn delay={0.5}>
-          <div className="text-center mt-12">
-            <Link
-              to="/gallery"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-primary text-primary font-body text-sm tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-            >
-              View Full Gallery
-            </Link>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

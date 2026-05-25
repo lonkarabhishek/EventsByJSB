@@ -15,7 +15,7 @@ const services = [
   {
     icon: Hotel,
     title: "Flawless Hospitality & Logistics",
-    description: "Travel, accommodations, and hospitality are managed seamlessly — so you and your guests enjoy a worry-free experience.",
+    description: "Travel, accommodations, and hospitality are managed seamlessly so you and your guests enjoy a worry-free experience.",
     features: ["Travel Coordination", "Hotel Bookings", "Guest Management", "Transport Logistics", "On-ground Support"],
     bgImage: "/gallery/service-hospitality.jpg",
   },

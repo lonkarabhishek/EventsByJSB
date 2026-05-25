@@ -65,12 +65,12 @@ const GalleryPage = () => {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p className="text-body text-muted-foreground max-w-2xl mx-auto">
-            A curated collection of our most cherished celebrations and events — {galleryImages.length} moments of magic.
+            A curated collection of our most cherished celebrations and events. {galleryImages.length} moments of magic.
           </p>
         </FadeIn>
       </section>
 
-      {/* Filters — sticky */}
+      {/* Filters (sticky) */}
       <section className="py-6 px-6 bg-background sticky top-0 z-30 border-b border-border/50 backdrop-blur-sm bg-background/95">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-2 md:gap-3">
           {galleryCategories.map((cat) => {
@@ -181,7 +181,7 @@ const GalleryPage = () => {
               {filtered[lightbox]?.alt}
             </p>
             <p className="text-primary-foreground/40 font-body text-xs">
-              {lightbox + 1} / {filtered.length} — {filtered[lightbox]?.category}
+              {lightbox + 1} / {filtered.length} · {filtered[lightbox]?.category}
             </p>
           </div>
         </div>

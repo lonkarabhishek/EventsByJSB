@@ -1,22 +1,23 @@
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
 const faqs = [
   {
     q: "How far in advance should we book?",
-    a: "We recommend booking at least 6–12 months before your event date for destination weddings, and 3–6 months for local celebrations. However, reach out anytime — we'll do our best to accommodate you.",
+    a: "We recommend booking at least 6 to 12 months before your event date for destination weddings, and 3 to 6 months for local celebrations. However, reach out anytime and we will do our best to accommodate you.",
   },
   {
     q: "Do you handle destination weddings outside India?",
-    a: "Yes! While we specialize in destinations across India like Udaipur, Jaipur, Goa, and Kerala, we also plan international destination weddings. Contact us to discuss your dream location.",
+    a: "Yes! While we specialise in destinations across India like Udaipur, Jaipur, Goa, and Kerala, we also plan international destination weddings. Contact us to discuss your dream location.",
   },
   {
     q: "What is included in your wedding planning packages?",
-    a: "Our packages are fully customizable and can include venue selection, vendor management, decor design, catering coordination, guest hospitality, entertainment, and day-of coordination.",
+    a: "Our packages are fully customisable and can include venue selection, vendor management, décor design, catering coordination, guest hospitality, entertainment, and day-of coordination.",
   },
   {
-    q: "Can we customize every detail of the event?",
-    a: "Absolutely. Every celebration we plan is bespoke. From the color palette and floral arrangements to the menu and entertainment — everything is tailored to your vision.",
+    q: "Can we customise every detail of the event?",
+    a: "Absolutely. Every celebration we plan is bespoke. From the colour palette and floral arrangements to the menu and entertainment, everything is tailored to your vision.",
   },
   {
     q: "How does the consultation process work?",
@@ -24,45 +25,76 @@ const faqs = [
   },
   {
     q: "What is the typical budget range for your events?",
-    a: "Our events range widely based on scale, destination, and customization. We work with you to create a plan that respects your budget while delivering an unforgettable experience.",
+    a: "Our events range widely based on scale, destination, and customisation. We work with you to create a plan that respects your budget while delivering an unforgettable experience.",
   },
 ];
 
 const FAQSection = () => {
+  const [open, setOpen] = useState<number | null>(null);
+
   return (
-    <section className="py-24 md:py-32 px-6 bg-background">
+    <section className="py-24 md:py-32 px-6" style={{ background: "hsl(24 8% 7%)" }}>
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-20">
+
+        {/* Header */}
+        <div className="text-center mb-14 md:mb-20">
           <FadeIn>
-            <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
+            <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
+              style={{ color: "#c9a96e" }}>
               Common Questions
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
-              Frequently Asked Questions
+            <h2 className="font-heading font-light"
+              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
+              Frequently Asked
             </h2>
           </FadeIn>
         </div>
 
+        {/* Custom accordion */}
         <FadeIn delay={0.2}>
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-background border border-border rounded-lg px-6 data-[state=open]:shadow-md transition-shadow"
-              >
-                <AccordionTrigger className="font-heading text-lg text-foreground hover:no-underline py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-body text-muted-foreground pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div className="space-y-0 divide-y" style={{ borderColor: "rgba(201,169,110,0.12)" }}>
+            {faqs.map((faq, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={i}>
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between gap-4 py-6 text-left group"
+                  >
+                    <span
+                      className="font-heading text-lg md:text-xl font-light transition-colors duration-300"
+                      style={{ color: isOpen ? "#c9a96e" : "#e8e0d0" }}
+                    >
+                      {faq.q}
+                    </span>
+                    <span
+                      className="flex-shrink-0 w-6 h-6 flex items-center justify-center transition-colors duration-300"
+                      style={{ color: "#c9a96e" }}
+                    >
+                      {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                    </span>
+                  </button>
+
+                  {/* Answer */}
+                  <div
+                    className="overflow-hidden transition-all duration-500 ease-out"
+                    style={{ maxHeight: isOpen ? "200px" : "0" }}
+                  >
+                    <p
+                      className="font-body text-sm leading-relaxed pb-6"
+                      style={{ color: "rgba(232,224,208,0.45)" }}
+                    >
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </FadeIn>
+
       </div>
     </section>
   );
