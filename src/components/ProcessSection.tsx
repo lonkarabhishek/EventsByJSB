@@ -101,7 +101,7 @@ const ProcessSection = () => (
                 </h3>
                 <p
                   className="font-body text-sm leading-relaxed"
-                  style={{ color: "rgba(27,46,36,0.52)" }}
+                  style={{ color: "rgba(27,46,36,0.80)" }}
                 >
                   {step.desc}
                 </p>
@@ -133,7 +133,7 @@ const ProcessSection = () => (
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-12 md:mt-16 pt-10 md:pt-12"
           style={{ borderTop: "1px solid rgba(27,58,45,0.1)" }}>
           <div>
-            <p className="font-body text-sm font-light" style={{ color: "rgba(27,46,36,0.48)" }}>
+            <p className="font-body text-sm font-light" style={{ color: "rgba(27,46,36,0.75)" }}>
               Ready to get started?
             </p>
           </div>

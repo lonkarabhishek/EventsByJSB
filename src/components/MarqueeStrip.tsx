@@ -24,7 +24,7 @@ const MarqueeStrip = () => {
           <span
             key={i}
             className="font-heading text-sm md:text-base font-light tracking-[0.35em] uppercase mx-8 md:mx-12 whitespace-nowrap"
-            style={{ color: i % 2 === 0 ? "rgba(27,58,45,0.7)" : "rgba(27,46,36,0.28)" }}
+            style={{ color: i % 2 === 0 ? "rgba(27,58,45,0.7)" : "rgba(27,46,36,0.55)" }}
           >
             {w}
           </span>

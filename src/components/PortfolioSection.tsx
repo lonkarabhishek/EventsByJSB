@@ -33,7 +33,7 @@ const PortfolioSection = () => (
             <h2 className="font-heading font-light leading-tight"
               style={{ fontSize: "clamp(2rem, 5vw, 4rem)", color: "#1B2E24" }}>
               Celebrations<br />
-              <em className="italic" style={{ color: "rgba(27,46,36,0.38)" }}>We've Crafted</em>
+              <em className="italic" style={{ color: "rgba(27,46,36,0.65)" }}>We've Crafted</em>
             </h2>
           </FadeIn>
         </div>

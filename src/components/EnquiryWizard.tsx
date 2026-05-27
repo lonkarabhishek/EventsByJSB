@@ -192,7 +192,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
         <h3 className="font-heading text-2xl md:text-3xl font-light mb-3" style={{ color: "#1B2E24" }}>
           Enquiry Received
         </h3>
-        <p className="font-body text-sm mb-8 max-w-xs" style={{ color: "rgba(27,46,36,0.52)" }}>
+        <p className="font-body text-sm mb-8 max-w-xs" style={{ color: "rgba(27,46,36,0.80)" }}>
           Thank you{answers.name ? `, ${answers.name.split(" ")[0]}` : ""}! We'll be in touch within 10 minutes.
         </p>
         <a
@@ -307,7 +307,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           onChange={e => setAnswer(e.target.value)}
           style={{
             ...inputBase,
-            color: current ? "#1B2E24" : "rgba(27,46,36,0.35)",
+            color: current ? "#1B2E24" : "rgba(27,46,36,0.62)",
             colorScheme: "light",
           } as React.CSSProperties}
         />
@@ -380,7 +380,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           </h3>
 
           {/* Hint */}
-          <p className="font-body text-sm mb-5" style={{ color: "rgba(27,46,36,0.42)", fontSize: "12px" }}>
+          <p className="font-body text-sm mb-5" style={{ color: "rgba(27,46,36,0.68)", fontSize: "12px" }}>
             {step.hint}
           </p>
 
@@ -415,9 +415,9 @@ const EnquiryWizard = ({ compact = false }: Props) => {
                   type="button"
                   onClick={advance}
                   className="font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-200"
-                  style={{ color: "rgba(27,46,36,0.32)" }}
+                  style={{ color: "rgba(27,46,36,0.60)" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.65)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.32)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.60)"; }}
                 >
                   Skip
                 </button>
@@ -470,7 +470,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
       {stepIdx === STEPS.length - 1 && status !== "sending" && (
         <div className="flex items-center gap-2 mt-4">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-          <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.32)" }}>
+          <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.60)" }}>
             We typically respond in under 10 minutes
           </span>
         </div>
