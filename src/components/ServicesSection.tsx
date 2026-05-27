@@ -1,5 +1,8 @@
 import FadeIn from "@/components/FadeIn";
 
+const FOREST = "#1B3A2D";
+const IVORY  = "#FAF8F3";
+
 const services = [
   {
     number: "01",
@@ -32,22 +35,22 @@ const services = [
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-16 md:py-32 px-4 md:px-6">
+  <section id="services" className="py-16 md:py-32 px-4 md:px-6" style={{ background: IVORY }}>
     <div className="max-w-6xl mx-auto">
 
       {/* Header */}
       <div className="mb-12 md:mb-20 max-w-xl">
         <FadeIn>
           <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-4"
-            style={{ color: "#c9a96e" }}>
+            style={{ color: FOREST }}>
             Our Services
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
           <h2 className="font-heading font-light leading-tight"
-            style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)", color: "#e8e0d0" }}>
+            style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)", color: "#1B2E24" }}>
             Everything Your<br />
-            <em className="italic" style={{ color: "rgba(232,224,208,0.45)" }}>
+            <em className="italic" style={{ color: "rgba(27,46,36,0.42)" }}>
               Celebration Deserves
             </em>
           </h2>
@@ -55,7 +58,7 @@ const ServicesSection = () => (
       </div>
 
       {/* Service rows */}
-      <div className="divide-y" style={{ borderColor: "rgba(201,169,110,0.1)" }}>
+      <div className="divide-y" style={{ borderColor: "rgba(27,58,45,0.1)" }}>
         {services.map((s, i) => (
           <FadeIn key={s.number} delay={i * 0.08}>
             <div
@@ -63,8 +66,8 @@ const ServicesSection = () => (
             >
               {/* Number */}
               <span
-                className="font-heading text-4xl md:text-6xl font-light transition-colors duration-500 group-hover:text-[#c9a96e]"
-                style={{ color: "rgba(232,224,208,0.12)", lineHeight: 1 }}
+                className="font-heading text-4xl md:text-6xl font-light transition-colors duration-500 group-hover:text-[#1B3A2D]"
+                style={{ color: "rgba(27,46,36,0.1)", lineHeight: 1 }}
               >
                 {s.number}
               </span>
@@ -72,13 +75,13 @@ const ServicesSection = () => (
               {/* Content */}
               <div className="space-y-3">
                 <h3
-                  className="font-heading font-light transition-colors duration-500 group-hover:text-[#c9a96e]"
-                  style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#e8e0d0" }}
+                  className="font-heading font-light transition-colors duration-500 group-hover:text-[#1B3A2D]"
+                  style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#1B2E24" }}
                 >
                   {s.title}
                 </h3>
                 <p className="font-body text-sm leading-relaxed max-w-lg"
-                  style={{ color: "rgba(232,224,208,0.45)" }}>
+                  style={{ color: "rgba(27,46,36,0.52)" }}>
                   {s.description}
                 </p>
                 <div className="flex flex-wrap gap-2 pt-1">
@@ -87,8 +90,8 @@ const ServicesSection = () => (
                       key={tag}
                       className="font-body text-[10px] tracking-[0.25em] uppercase px-3 py-1"
                       style={{
-                        color: "rgba(201,169,110,0.65)",
-                        border: "1px solid rgba(201,169,110,0.2)",
+                        color: "rgba(27,58,45,0.6)",
+                        border: "1px solid rgba(27,58,45,0.18)",
                       }}
                     >
                       {tag}
@@ -100,7 +103,7 @@ const ServicesSection = () => (
               {/* Arrow */}
               <div
                 className="hidden md:flex items-center self-center transition-all duration-500 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1"
-                style={{ color: "#c9a96e" }}
+                style={{ color: FOREST }}
               >
                 <svg width="28" height="12" viewBox="0 0 28 12" fill="none">
                   <path d="M0 6H26M22 1L27 6L22 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -114,9 +117,9 @@ const ServicesSection = () => (
       {/* Locations strip */}
       <FadeIn delay={0.4}>
         <div className="mt-16 md:mt-20 pt-8 md:pt-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-10"
-          style={{ borderTop: "1px solid rgba(201,169,110,0.15)" }}>
+          style={{ borderTop: "1px solid rgba(27,58,45,0.12)" }}>
           <p className="font-body text-[10px] tracking-[0.45em] uppercase"
-            style={{ color: "rgba(201,169,110,0.55)" }}>
+            style={{ color: "rgba(27,58,45,0.5)" }}>
             Serving
           </p>
           <div className="flex flex-wrap gap-6 md:gap-10">
@@ -124,7 +127,7 @@ const ServicesSection = () => (
               <span
                 key={city}
                 className="font-heading text-lg md:text-xl font-light"
-                style={{ color: i === 5 ? "#c9a96e" : "rgba(232,224,208,0.6)" }}
+                style={{ color: i === 5 ? FOREST : "rgba(27,46,36,0.55)" }}
               >
                 {city}
               </span>

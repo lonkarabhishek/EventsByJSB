@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 
+const FOREST = "#1B3A2D";
+const IVORY  = "#FAF8F3";
+
 const images = [
   { src: "/gallery/real/2026-02-18_15-00-14_UTC_1.jpg",  alt: "Wedding celebration",    label: "Wedding Ceremony" },
   { src: "/gallery/real/2026-02-28_14-47-07_UTC.jpg",    alt: "Floral décor",           label: "Floral Design"    },
@@ -14,7 +17,7 @@ const images = [
 ];
 
 const PortfolioSection = () => (
-  <section id="portfolio" className="py-20 md:py-32 px-4 md:px-6">
+  <section id="portfolio" className="py-20 md:py-32 px-4 md:px-6" style={{ background: IVORY }}>
     <div className="max-w-7xl mx-auto">
 
       {/* Header */}
@@ -22,15 +25,15 @@ const PortfolioSection = () => (
         <div>
           <FadeIn>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
-              style={{ color: "#c9a96e" }}>
+              style={{ color: FOREST }}>
               Our Portfolio
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="font-heading font-light leading-tight"
-              style={{ fontSize: "clamp(2rem, 5vw, 4rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(2rem, 5vw, 4rem)", color: "#1B2E24" }}>
               Celebrations<br />
-              <em className="italic" style={{ color: "rgba(232,224,208,0.4)" }}>We've Crafted</em>
+              <em className="italic" style={{ color: "rgba(27,46,36,0.38)" }}>We've Crafted</em>
             </h2>
           </FadeIn>
         </div>
@@ -38,16 +41,24 @@ const PortfolioSection = () => (
           <Link
             to="/gallery"
             className="self-start font-body text-[11px] tracking-[0.35em] uppercase px-6 py-3 transition-all duration-300"
-            style={{ border: "1px solid rgba(201,169,110,0.4)", color: "#c9a96e" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#c9a96e"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,169,110,0.4)"; }}
+            style={{ border: "1px solid rgba(27,58,45,0.35)", color: FOREST }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = FOREST;
+              el.style.color = "#FAF8F3";
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "transparent";
+              el.style.color = FOREST;
+            }}
           >
             View Full Gallery
           </Link>
         </FadeIn>
       </div>
 
-      {/* ── Mobile: CSS masonry columns ── */}
+      {/* Mobile: CSS masonry columns */}
       <div className="columns-2 gap-2 md:hidden">
         {images.map((img, i) => (
           <FadeIn key={img.label + i} delay={i * 0.05}>
@@ -60,17 +71,17 @@ const PortfolioSection = () => (
               />
               <div
                 className="absolute inset-0 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%)" }}
+                style={{ background: "linear-gradient(to top, rgba(6,20,13,0.78) 0%, transparent 55%)" }}
               >
                 <p className="font-heading text-white text-sm font-light">{img.label}</p>
-                <div className="h-px w-6 mt-1" style={{ background: "#c9a96e" }} />
+                <div className="h-px w-6 mt-1" style={{ background: "#9FCFB8" }} />
               </div>
             </div>
           </FadeIn>
         ))}
       </div>
 
-      {/* ── Desktop: CSS grid with aspect-ratio uniformity ── */}
+      {/* Desktop: CSS grid */}
       <div className="hidden md:columns-3 md:block gap-4">
         {images.map((img, i) => (
           <FadeIn key={img.label + i + "-d"} delay={i * 0.06}>
@@ -83,12 +94,12 @@ const PortfolioSection = () => (
               />
               <div
                 className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%)" }}
+                style={{ background: "linear-gradient(to top, rgba(6,20,13,0.80) 0%, transparent 55%)" }}
               >
                 <p className="font-heading text-white text-xl font-light translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                   {img.label}
                 </p>
-                <div className="h-px w-8 mt-2 group-hover:w-14 transition-all duration-500" style={{ background: "#c9a96e" }} />
+                <div className="h-px w-8 mt-2 group-hover:w-14 transition-all duration-500" style={{ background: "#9FCFB8" }} />
               </div>
             </div>
           </FadeIn>

@@ -2,8 +2,12 @@ import { Instagram, Facebook, Twitter, Phone, Mail, MapPin } from "lucide-react"
 import { Link } from "react-router-dom";
 import logo from "@/assets/jsb-logo.jpg";
 
+/* Deep forest green footer — gold accents on dark = luxury */
+const FOREST_DARK = "#0F2318";
+const GOLD        = "#B8966E";
+
 const Footer = () => (
-  <footer style={{ background: "#070605", borderTop: "1px solid rgba(201,169,110,0.12)" }}>
+  <footer style={{ background: FOREST_DARK, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
 
     {/* Main footer grid */}
     <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
@@ -16,14 +20,14 @@ const Footer = () => (
               src={logo}
               alt="JSB Events"
               className="h-11 w-11 rounded-full object-cover"
-              style={{ border: "1px solid rgba(201,169,110,0.35)" }}
+              style={{ border: "1px solid rgba(184,150,110,0.35)" }}
             />
-            <span className="font-heading text-2xl font-light tracking-[0.18em]" style={{ color: "#e8e0d0" }}>
+            <span className="font-heading text-2xl font-light tracking-[0.18em]" style={{ color: "#FAF8F3" }}>
               JSB Events
             </span>
           </Link>
           <p className="font-body text-sm leading-relaxed mb-6 max-w-xs"
-            style={{ color: "rgba(232,224,208,0.35)" }}>
+            style={{ color: "rgba(250,248,243,0.38)" }}>
             Creating beautiful celebrations with elegance, creativity, and unwavering attention to detail since 2014.
           </p>
           {/* Socials */}
@@ -38,16 +42,16 @@ const Footer = () => (
                 href="#"
                 aria-label={label}
                 className="w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300"
-                style={{ border: "1px solid rgba(201,169,110,0.2)", color: "rgba(201,169,110,0.5)" }}
+                style={{ border: "1px solid rgba(184,150,110,0.2)", color: "rgba(184,150,110,0.5)" }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = "rgba(201,169,110,0.7)";
-                  el.style.color = "#c9a96e";
+                  el.style.borderColor = "rgba(184,150,110,0.7)";
+                  el.style.color = GOLD;
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = "rgba(201,169,110,0.2)";
-                  el.style.color = "rgba(201,169,110,0.5)";
+                  el.style.borderColor = "rgba(184,150,110,0.2)";
+                  el.style.color = "rgba(184,150,110,0.5)";
                 }}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -59,7 +63,7 @@ const Footer = () => (
         {/* Quick links */}
         <div className="md:col-span-2">
           <h4 className="font-body text-[10px] tracking-[0.4em] uppercase mb-5"
-            style={{ color: "rgba(201,169,110,0.6)" }}>
+            style={{ color: "rgba(184,150,110,0.6)" }}>
             Navigate
           </h4>
           <div className="space-y-3">
@@ -73,8 +77,10 @@ const Footer = () => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="block font-body text-sm transition-colors duration-300 hover:text-[#c9a96e]"
-                style={{ color: "rgba(232,224,208,0.35)" }}
+                className="block font-body text-sm transition-colors duration-300"
+                style={{ color: "rgba(250,248,243,0.38)" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = GOLD; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(250,248,243,0.38)"; }}
               >
                 {link.label}
               </Link>
@@ -85,7 +91,7 @@ const Footer = () => (
         {/* Services */}
         <div className="md:col-span-3">
           <h4 className="font-body text-[10px] tracking-[0.4em] uppercase mb-5"
-            style={{ color: "rgba(201,169,110,0.6)" }}>
+            style={{ color: "rgba(184,150,110,0.6)" }}>
             Services
           </h4>
           <div className="space-y-3">
@@ -97,7 +103,7 @@ const Footer = () => (
               "Private Celebrations",
             ].map(s => (
               <p key={s} className="font-body text-sm"
-                style={{ color: "rgba(232,224,208,0.35)" }}>
+                style={{ color: "rgba(250,248,243,0.38)" }}>
                 {s}
               </p>
             ))}
@@ -107,18 +113,18 @@ const Footer = () => (
         {/* Contact */}
         <div className="md:col-span-3">
           <h4 className="font-body text-[10px] tracking-[0.4em] uppercase mb-5"
-            style={{ color: "rgba(201,169,110,0.6)" }}>
+            style={{ color: "rgba(184,150,110,0.6)" }}>
             Contact
           </h4>
           <div className="space-y-4">
             {[
-              { Icon: Phone,  text: "+91 99051 68295"         },
-              { Icon: Mail,   text: "hello@jsbevents.com"     },
+              { Icon: Phone,  text: "+91 99051 68295"     },
+              { Icon: Mail,   text: "hello@jsbevents.com" },
               { Icon: MapPin, text: "New Delhi · Global"  },
             ].map(({ Icon, text }) => (
               <div key={text} className="flex items-start gap-3">
-                <Icon className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "rgba(201,169,110,0.5)" }} />
-                <span className="font-body text-sm" style={{ color: "rgba(232,224,208,0.35)" }}>{text}</span>
+                <Icon className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "rgba(184,150,110,0.5)" }} />
+                <span className="font-body text-sm" style={{ color: "rgba(250,248,243,0.38)" }}>{text}</span>
               </div>
             ))}
           </div>
@@ -130,13 +136,13 @@ const Footer = () => (
     {/* Bottom bar */}
     <div
       className="px-6 py-5"
-      style={{ borderTop: "1px solid rgba(201,169,110,0.08)" }}
+      style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-        <p className="font-body text-xs" style={{ color: "rgba(232,224,208,0.2)" }}>
+        <p className="font-body text-xs" style={{ color: "rgba(250,248,243,0.22)" }}>
           © {new Date().getFullYear()} JSB Events. All rights reserved.
         </p>
-        <p className="font-body text-xs" style={{ color: "rgba(201,169,110,0.3)" }}>
+        <p className="font-body text-xs" style={{ color: "rgba(184,150,110,0.4)" }}>
           Crafting Timeless Celebrations
         </p>
       </div>

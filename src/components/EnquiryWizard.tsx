@@ -3,7 +3,8 @@ import { MessageCircle, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react"
 
 const WA_NUMBER     = "919905168295";
 const WEB3FORMS_KEY = "683f9335-f4c0-481e-ae0a-711e11c6414c";
-const GOLD          = "#c9a96e";
+const FOREST        = "#1B3A2D";
+const EMERALD       = "#2E6348";
 
 const buildWAMessage = (a: Record<string, string>) => {
   const lines = [
@@ -85,7 +86,7 @@ const STEPS: Step[] = [
   },
 ];
 
-/* ── Shared animation hook ── */
+/* Shared animation hook */
 const useStepTransition = () => {
   const [visible, setVisible] = useState(true);
   const [dir, setDir]         = useState<"up" | "down">("up");
@@ -99,9 +100,7 @@ const useStepTransition = () => {
   return { visible, dir, transition };
 };
 
-/* ── Wizard ── */
 interface Props {
-  /** dark background the wizard sits on */
   compact?: boolean;
 }
 
@@ -180,43 +179,43 @@ const EnquiryWizard = ({ compact = false }: Props) => {
     }
   };
 
-  /* ── Success screen ── */
+  /* Success screen */
   if (status === "success") {
     return (
       <div className="flex flex-col items-center justify-center text-center py-8 md:py-12 px-4">
         <div
           className="w-14 h-14 rounded-full flex items-center justify-center mb-5"
-          style={{ background: `${GOLD}12`, border: `1px solid ${GOLD}45` }}
+          style={{ background: "rgba(27,58,45,0.08)", border: `1px solid rgba(27,58,45,0.22)` }}
         >
-          <CheckCircle className="w-6 h-6" style={{ color: GOLD }} />
+          <CheckCircle className="w-6 h-6" style={{ color: FOREST }} />
         </div>
-        <h3 className="font-heading text-2xl md:text-3xl font-light mb-3" style={{ color: "#e8e0d0" }}>
+        <h3 className="font-heading text-2xl md:text-3xl font-light mb-3" style={{ color: "#1B2E24" }}>
           Enquiry Received
         </h3>
-        <p className="font-body text-sm mb-8 max-w-xs" style={{ color: "rgba(232,224,208,0.45)" }}>
+        <p className="font-body text-sm mb-8 max-w-xs" style={{ color: "rgba(27,46,36,0.52)" }}>
           Thank you{answers.name ? `, ${answers.name.split(" ")[0]}` : ""}! We'll be in touch within 10 minutes.
         </p>
         <a
           href={waLink}
           target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2.5 px-8 py-3.5 font-body text-[11px] tracking-[0.3em] uppercase mb-3 transition-all duration-300"
-          style={{ background: GOLD, color: "#0c0a08" }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#d4b878"; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
+          style={{ background: FOREST, color: "#FAF8F3" }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = EMERALD; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = FOREST; }}
         >
           <MessageCircle className="w-3.5 h-3.5" />
           Continue on WhatsApp
         </a>
         <p className="font-body text-[9px] tracking-[0.2em] uppercase mb-8"
-          style={{ color: "rgba(232,224,208,0.28)" }}>
+          style={{ color: "rgba(27,46,36,0.3)" }}>
           Your details are pre-filled in the message
         </p>
         <button
           onClick={() => { setStatus("idle"); setStepIdx(0); setAnswers({}); }}
           className="font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-300"
-          style={{ color: "rgba(232,224,208,0.3)" }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = GOLD; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(232,224,208,0.3)"; }}
+          style={{ color: "rgba(27,46,36,0.3)" }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = FOREST; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.3)"; }}
         >
           Send Another Enquiry
         </button>
@@ -224,34 +223,34 @@ const EnquiryWizard = ({ compact = false }: Props) => {
     );
   }
 
-  /* ── Progress segments ── */
+  /* Progress segments */
   const ProgressBar = () => (
     <div className="flex gap-1 mb-8 md:mb-10">
       {STEPS.map((_, i) => (
         <div
           key={i}
           className="h-[2px] flex-1 rounded-full transition-all duration-500"
-          style={{ background: i < stepIdx ? GOLD : i === stepIdx ? `${GOLD}90` : "rgba(201,169,110,0.15)" }}
+          style={{ background: i < stepIdx ? FOREST : i === stepIdx ? `${FOREST}90` : "rgba(27,58,45,0.15)" }}
         />
       ))}
     </div>
   );
 
-  /* ── Slide transition style ── */
+  /* Slide transition style */
   const animStyle: React.CSSProperties = {
     transition: "opacity 0.28s ease, transform 0.28s ease",
     opacity:    visible ? 1 : 0,
     transform:  visible ? "translateY(0)" : dir === "up" ? "translateY(-16px)" : "translateY(16px)",
   };
 
-  /* ── Input rendering ── */
+  /* Input base style — dark text on ivory background */
   const inputBase: React.CSSProperties = {
     fontSize: "16px",
-    color: "#e8e0d0",
+    color: "#1B2E24",
     background: "transparent",
     border: "none",
-    borderBottom: `1px solid rgba(201,169,110,0.3)`,
-    caretColor: GOLD,
+    borderBottom: `1px solid rgba(27,58,45,0.22)`,
+    caretColor: FOREST,
     outline: "none",
     width: "100%",
     padding: "12px 0",
@@ -272,22 +271,22 @@ const EnquiryWizard = ({ compact = false }: Props) => {
                 onClick={() => pickPill(opt)}
                 className="px-4 py-2.5 font-body text-[11px] tracking-[0.15em] uppercase transition-all duration-200"
                 style={{
-                  border:     `1px solid ${active ? GOLD : "rgba(201,169,110,0.25)"}`,
-                  color:      active ? "#0c0a08" : "rgba(232,224,208,0.6)",
-                  background: active ? GOLD : "transparent",
+                  border:     `1px solid ${active ? FOREST : "rgba(27,58,45,0.22)"}`,
+                  color:      active ? "#FAF8F3" : "rgba(27,46,36,0.6)",
+                  background: active ? FOREST : "transparent",
                 }}
                 onMouseEnter={e => {
                   if (!active) {
                     const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = `${GOLD}70`;
-                    el.style.color = "#e8e0d0";
+                    el.style.borderColor = `rgba(27,58,45,0.55)`;
+                    el.style.color = "#1B2E24";
                   }
                 }}
                 onMouseLeave={e => {
                   if (!active) {
                     const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(201,169,110,0.25)";
-                    el.style.color = "rgba(232,224,208,0.6)";
+                    el.style.borderColor = "rgba(27,58,45,0.22)";
+                    el.style.color = "rgba(27,46,36,0.6)";
                   }
                 }}
               >
@@ -308,8 +307,8 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           onChange={e => setAnswer(e.target.value)}
           style={{
             ...inputBase,
-            color: current ? "#e8e0d0" : "rgba(232,224,208,0.35)",
-            colorScheme: "dark",
+            color: current ? "#1B2E24" : "rgba(27,46,36,0.35)",
+            colorScheme: "light",
           } as React.CSSProperties}
         />
       );
@@ -326,8 +325,9 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           className="resize-none font-body"
           style={{
             ...inputBase,
+            color: "#1B2E24",
             borderBottom: "none",
-            border: `1px solid rgba(201,169,110,0.25)`,
+            border: `1px solid rgba(27,58,45,0.2)`,
             padding: "14px 16px",
           }}
         />
@@ -343,8 +343,8 @@ const EnquiryWizard = ({ compact = false }: Props) => {
         onChange={e => setAnswer(e.target.value)}
         onKeyDown={e => { if (e.key === "Enter" && canNext) advance(); }}
         style={inputBase}
-        onFocus={e => { e.currentTarget.style.borderBottomColor = GOLD; }}
-        onBlur={e => { e.currentTarget.style.borderBottomColor = "rgba(201,169,110,0.3)"; }}
+        onFocus={e => { e.currentTarget.style.borderBottomColor = FOREST; }}
+        onBlur={e => { e.currentTarget.style.borderBottomColor = "rgba(27,58,45,0.22)"; }}
       />
     );
   };
@@ -353,7 +353,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
     <div className="w-full">
       <ProgressBar />
 
-      {/* Content + nav in one flex column — content grows, nav sticks below */}
+      {/* Content + nav in one flex column */}
       <div
         className="flex flex-col"
         style={{
@@ -364,7 +364,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
         <div style={{ ...animStyle, flex: "1 1 auto" }}>
           {/* Step counter */}
           <p className="font-body text-[9px] tracking-[0.4em] uppercase mb-3"
-            style={{ color: "rgba(201,169,110,0.5)" }}>
+            style={{ color: "rgba(27,58,45,0.45)" }}>
             {stepIdx + 1} of {STEPS.length}
           </p>
 
@@ -373,14 +373,14 @@ const EnquiryWizard = ({ compact = false }: Props) => {
             className="font-heading font-light leading-tight mb-2"
             style={{
               fontSize: compact ? "clamp(1.3rem, 4vw, 1.7rem)" : "clamp(1.5rem, 4vw, 2.1rem)",
-              color: "#e8e0d0",
+              color: "#1B2E24",
             }}
           >
             {step.question}
           </h3>
 
           {/* Hint */}
-          <p className="font-body text-sm mb-5" style={{ color: "rgba(232,224,208,0.38)", fontSize: "12px" }}>
+          <p className="font-body text-sm mb-5" style={{ color: "rgba(27,46,36,0.42)", fontSize: "12px" }}>
             {step.hint}
           </p>
 
@@ -388,75 +388,79 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           {renderInput()}
         </div>
 
-        {/* Navigation — always flush to the bottom of the min-height box */}
+        {/* Navigation — flush to the bottom of the min-height box */}
         <div className="flex items-center justify-between pt-6 mt-auto">
-        {/* Back */}
-        {stepIdx > 0 ? (
-          <button
-            type="button"
-            onClick={back}
-            className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-200"
-            style={{ color: "rgba(201,169,110,0.4)" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = GOLD; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(201,169,110,0.4)"; }}
-          >
-            <ArrowLeft className="w-3 h-3" />
-            Back
-          </button>
-        ) : (
-          <div />
-        )}
+          {/* Back */}
+          {stepIdx > 0 ? (
+            <button
+              type="button"
+              onClick={back}
+              className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-200"
+              style={{ color: "rgba(27,58,45,0.38)" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = FOREST; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,58,45,0.38)"; }}
+            >
+              <ArrowLeft className="w-3 h-3" />
+              Back
+            </button>
+          ) : (
+            <div />
+          )}
 
-        {/* Skip + Continue/Submit — not shown for pills (auto-advances) */}
-        {step.type !== "pills" && (
-          <div className="flex items-center gap-3">
-            {step.skippable && (
+          {/* Skip + Continue/Submit — not shown for pills (auto-advances) */}
+          {step.type !== "pills" && (
+            <div className="flex items-center gap-3">
+              {step.skippable && (
+                <button
+                  type="button"
+                  onClick={advance}
+                  className="font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-200"
+                  style={{ color: "rgba(27,46,36,0.32)" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.65)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.32)"; }}
+                >
+                  Skip
+                </button>
+              )}
+
               <button
                 type="button"
                 onClick={advance}
-                className="font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-200"
-                style={{ color: "rgba(232,224,208,0.3)" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(232,224,208,0.6)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(232,224,208,0.3)"; }}
+                disabled={!canNext || status === "sending"}
+                className="inline-flex items-center gap-2 px-6 py-3 font-body text-[11px] tracking-[0.3em] uppercase transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                style={{
+                  background: canNext ? FOREST : "transparent",
+                  color: canNext ? "#FAF8F3" : "rgba(27,58,45,0.4)",
+                  border: canNext ? "none" : `1px solid rgba(27,58,45,0.22)`,
+                }}
+                onMouseEnter={e => { if (canNext) (e.currentTarget as HTMLElement).style.background = EMERALD; }}
+                onMouseLeave={e => { if (canNext) (e.currentTarget as HTMLElement).style.background = FOREST; }}
               >
-                Skip
+                {status === "sending" ? (
+                  <>
+                    <svg className="animate-spin w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Sending...
+                  </>
+                ) : stepIdx === STEPS.length - 1 ? (
+                  <>Send Enquiry <ArrowRight className="w-3.5 h-3.5" /></>
+                ) : (
+                  <>Continue <ArrowRight className="w-3.5 h-3.5" /></>
+                )}
               </button>
-            )}
-
-            <button
-              type="button"
-              onClick={advance}
-              disabled={!canNext || status === "sending"}
-              className="inline-flex items-center gap-2 px-6 py-3 font-body text-[11px] tracking-[0.3em] uppercase transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
-              style={{ background: canNext ? GOLD : "transparent", color: canNext ? "#0c0a08" : "rgba(201,169,110,0.4)", border: canNext ? "none" : `1px solid rgba(201,169,110,0.25)` }}
-              onMouseEnter={e => { if (canNext) (e.currentTarget as HTMLElement).style.background = "#d4b878"; }}
-              onMouseLeave={e => { if (canNext) (e.currentTarget as HTMLElement).style.background = GOLD; }}
-            >
-              {status === "sending" ? (
-                <>
-                  <svg className="animate-spin w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Sending...
-                </>
-              ) : stepIdx === STEPS.length - 1 ? (
-                <>Send Enquiry <ArrowRight className="w-3.5 h-3.5" /></>
-              ) : (
-                <>Continue <ArrowRight className="w-3.5 h-3.5" /></>
-              )}
-            </button>
-          </div>
-        )}
+            </div>
+          )}
         </div>{/* end navigation */}
       </div>{/* end flex column */}
 
       {/* Error message */}
       {status === "error" && (
-        <p className="font-body text-sm mt-4" style={{ color: "#d97070" }}>
+        <p className="font-body text-sm mt-4" style={{ color: "#c0392b" }}>
           Something went wrong. Please try again or{" "}
           <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer"
-            style={{ color: GOLD, textDecoration: "underline" }}>
+            style={{ color: FOREST, textDecoration: "underline" }}>
             chat on WhatsApp
           </a>.
         </p>
@@ -465,8 +469,8 @@ const EnquiryWizard = ({ compact = false }: Props) => {
       {/* Response badge */}
       {stepIdx === STEPS.length - 1 && status !== "sending" && (
         <div className="flex items-center gap-2 mt-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-          <span className="font-body text-[10px]" style={{ color: "rgba(232,224,208,0.28)" }}>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+          <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.32)" }}>
             We typically respond in under 10 minutes
           </span>
         </div>

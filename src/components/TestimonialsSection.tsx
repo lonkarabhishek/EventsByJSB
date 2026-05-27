@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { Play, Volume2, VolumeX, ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
+const FOREST = "#1B3A2D";
+const IVORY  = "#FAF8F3";
+
 const testimonials = [
   {
     name: "Priya & Arjun",
@@ -44,9 +47,7 @@ const TestimonialsSection = () => {
   return (
     <section
       className="py-16 md:py-32 px-4 md:px-6"
-      style={{
-        background: "linear-gradient(to bottom, hsl(24 10% 5%), hsl(24 8% 7%))",
-      }}
+      style={{ background: IVORY }}
     >
       <div className="max-w-6xl mx-auto">
 
@@ -54,13 +55,13 @@ const TestimonialsSection = () => {
         <div className="text-center mb-10 md:mb-20">
           <FadeIn>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
-              style={{ color: "#c9a96e" }}>
+              style={{ color: FOREST }}>
               Testimonials
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="font-heading font-light"
-              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#1B2E24" }}>
               Words From Our Couples
             </h2>
           </FadeIn>
@@ -70,12 +71,12 @@ const TestimonialsSection = () => {
         <FadeIn delay={0.15}>
           <div
             className="relative px-5 md:px-16 py-10 md:py-16 mb-8"
-            style={{ border: "1px solid rgba(201,169,110,0.12)", background: "rgba(201,169,110,0.03)" }}
+            style={{ border: "1px solid rgba(27,58,45,0.12)", background: "rgba(27,58,45,0.03)" }}
           >
             {/* Big decorative quote mark */}
             <span
               className="absolute top-6 left-8 md:left-14 font-heading leading-none select-none pointer-events-none"
-              style={{ fontSize: "8rem", color: "rgba(201,169,110,0.08)", lineHeight: 1 }}
+              style={{ fontSize: "8rem", color: "rgba(27,58,45,0.07)", lineHeight: 1 }}
             >
               "
             </span>
@@ -85,7 +86,7 @@ const TestimonialsSection = () => {
               className="relative font-heading font-light italic text-center mb-8 leading-snug transition-all duration-500"
               style={{
                 fontSize: "clamp(1.1rem, 3vw, 2.2rem)",
-                color: "rgba(232,224,208,0.85)",
+                color: "rgba(27,46,36,0.82)",
                 maxWidth: "820px",
                 margin: "0 auto 2rem",
               }}
@@ -95,12 +96,12 @@ const TestimonialsSection = () => {
 
             {/* Attribution */}
             <div className="flex flex-col items-center gap-1">
-              <div className="h-px w-10 mb-3" style={{ background: "#c9a96e" }} />
-              <p className="font-heading text-xl font-light" style={{ color: "#c9a96e" }}>
+              <div className="h-px w-10 mb-3" style={{ background: FOREST }} />
+              <p className="font-heading text-xl font-light" style={{ color: FOREST }}>
                 {t.name}
               </p>
               <p className="font-body text-[11px] tracking-[0.3em] uppercase"
-                style={{ color: "rgba(232,224,208,0.35)" }}>
+                style={{ color: "rgba(27,46,36,0.38)" }}>
                 {t.location}
               </p>
             </div>
@@ -110,7 +111,7 @@ const TestimonialsSection = () => {
               <button
                 onClick={prev}
                 className="w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 hover:opacity-100 opacity-40"
-                style={{ border: "1px solid rgba(201,169,110,0.4)", color: "#c9a96e" }}
+                style={{ border: "1px solid rgba(27,58,45,0.35)", color: FOREST }}
                 aria-label="Previous"
               >
                 <ChevronLeft size={16} />
@@ -120,7 +121,7 @@ const TestimonialsSection = () => {
               <button
                 onClick={next}
                 className="w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 hover:opacity-100 opacity-40"
-                style={{ border: "1px solid rgba(201,169,110,0.4)", color: "#c9a96e" }}
+                style={{ border: "1px solid rgba(27,58,45,0.35)", color: FOREST }}
                 aria-label="Next"
               >
                 <ChevronRight size={16} />
@@ -137,46 +138,46 @@ const TestimonialsSection = () => {
                 className="h-[2px] rounded-full transition-all duration-400"
                 style={{
                   width: i === active ? "2rem" : "0.5rem",
-                  background: i === active ? "#c9a96e" : "rgba(201,169,110,0.25)",
+                  background: i === active ? FOREST : "rgba(27,58,45,0.2)",
                 }}
               />
             ))}
           </div>
         </FadeIn>
 
-        {/* ── Stats + Video testimonial ──────────────── */}
+        {/* Stats + Video testimonial */}
         <div className="mt-20 md:mt-24 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
 
           {/* Stats / text side */}
           <FadeIn delay={0.2}>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-5"
-              style={{ color: "#c9a96e" }}>
+              style={{ color: FOREST }}>
               Hear Their Story
             </p>
             <h3 className="font-heading font-light leading-tight mb-6"
-              style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: "#1B2E24" }}>
               Hear From Our<br />
-              <em className="italic" style={{ color: "rgba(232,224,208,0.45)" }}>
+              <em className="italic" style={{ color: "rgba(27,46,36,0.42)" }}>
                 Happy Couples
               </em>
             </h3>
             <p className="font-body text-sm leading-relaxed mb-10"
-              style={{ color: "rgba(232,224,208,0.45)" }}>
+              style={{ color: "rgba(27,46,36,0.52)" }}>
               Nothing speaks louder than joy. Watch this heartfelt testimonial and see why families trust JSB Events for their most precious celebrations.
             </p>
             <div className="flex items-center gap-10">
               <div>
-                <p className="font-heading text-4xl font-light" style={{ color: "#c9a96e" }}>200+</p>
-                <p className="font-body text-[11px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(232,224,208,0.35)" }}>
+                <p className="font-heading text-4xl font-light" style={{ color: FOREST }}>200+</p>
+                <p className="font-body text-[11px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(27,46,36,0.38)" }}>
                   Happy Couples
                 </p>
               </div>
-              <div className="w-px h-12" style={{ background: "rgba(201,169,110,0.2)" }} />
+              <div className="w-px h-12" style={{ background: "rgba(27,58,45,0.18)" }} />
               <div>
-                <p className="font-heading text-4xl font-light" style={{ color: "#c9a96e" }}>5.0</p>
+                <p className="font-heading text-4xl font-light" style={{ color: FOREST }}>5.0</p>
                 <div className="flex gap-1 mt-1">
                   {[...Array(5)].map((_, j) => (
-                    <svg key={j} width="10" height="10" viewBox="0 0 10 10" fill="#c9a96e">
+                    <svg key={j} width="10" height="10" viewBox="0 0 10 10" fill={FOREST}>
                       <polygon points="5,0 6.2,3.6 10,3.6 7,5.8 8.1,9.5 5,7.4 1.9,9.5 3,5.8 0,3.6 3.8,3.6"/>
                     </svg>
                   ))}
@@ -185,7 +186,7 @@ const TestimonialsSection = () => {
             </div>
           </FadeIn>
 
-          {/* Video side — full width on mobile, right-aligned on desktop */}
+          {/* Video side */}
           <FadeIn delay={0.3}>
             <div className="flex justify-center md:justify-end">
               <div
@@ -194,7 +195,7 @@ const TestimonialsSection = () => {
                   maxWidth: "420px",
                   width: "min(100%, 420px)",
                   aspectRatio: "9/16",
-                  border: "1px solid rgba(201,169,110,0.2)",
+                  border: "1px solid rgba(27,58,45,0.18)",
                 }}
               >
                 <video
@@ -216,14 +217,14 @@ const TestimonialsSection = () => {
                   <button
                     onClick={togglePlay}
                     className="absolute inset-0 z-10 flex items-center justify-center"
-                    style={{ background: "rgba(0,0,0,0.35)" }}
+                    style={{ background: "rgba(0,0,0,0.28)" }}
                     aria-label="Play testimonial"
                   >
                     <div
                       className="w-16 h-16 rounded-full flex items-center justify-center"
-                      style={{ background: "rgba(201,169,110,0.9)", backdropFilter: "blur(4px)" }}
+                      style={{ background: "rgba(27,58,45,0.92)", backdropFilter: "blur(4px)" }}
                     >
-                      <Play className="w-6 h-6 fill-black text-black ml-1" />
+                      <Play className="w-6 h-6 fill-white text-white ml-1" />
                     </div>
                   </button>
                 )}
@@ -236,8 +237,8 @@ const TestimonialsSection = () => {
                       style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
                     >
                       {muted
-                        ? <VolumeX className="w-3.5 h-3.5" style={{ color: "#c9a96e" }} />
-                        : <Volume2 className="w-3.5 h-3.5" style={{ color: "#c9a96e" }} />}
+                        ? <VolumeX className="w-3.5 h-3.5" style={{ color: "#9FCFB8" }} />
+                        : <Volume2 className="w-3.5 h-3.5" style={{ color: "#9FCFB8" }} />}
                     </button>
                   </>
                 )}

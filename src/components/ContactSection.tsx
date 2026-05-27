@@ -4,8 +4,8 @@ import EnquiryWizard from "@/components/EnquiryWizard";
 
 const WA_NUMBER = "919905168295";
 const PHONE     = "+91 99051 68295";
-const GOLD      = "#c9a96e";
-const DARK      = "hsl(24 8% 7%)";
+const FOREST    = "#1B3A2D";
+const IVORY     = "#FAF8F3";
 
 const ContactSection = () => (
   <section id="contact" className="py-0">
@@ -21,7 +21,7 @@ const ContactSection = () => (
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(135deg,rgba(0,0,0,0.84) 0%,rgba(0,0,0,0.52) 60%,rgba(0,0,0,0.75) 100%)" }}
+          style={{ background: "linear-gradient(135deg,rgba(6,20,13,0.90) 0%,rgba(6,20,13,0.56) 60%,rgba(6,20,13,0.80) 100%)" }}
         />
 
         <div
@@ -31,7 +31,7 @@ const ContactSection = () => (
           <div>
             <FadeIn>
               <p className="font-body text-[10px] tracking-[0.5em] uppercase mb-3"
-                style={{ color: GOLD }}>
+                style={{ color: "#9FCFB8" }}>
                 Get In Touch
               </p>
             </FadeIn>
@@ -41,7 +41,7 @@ const ContactSection = () => (
                 style={{ fontSize: "clamp(1.8rem,5vw,3rem)", color: "#fff" }}
               >
                 Let's Begin<br />
-                <em className="italic" style={{ color: GOLD }}>Your Story</em>
+                <em className="italic" style={{ color: "#9FCFB8" }}>Your Story</em>
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -62,13 +62,13 @@ const ContactSection = () => (
                 <div key={label} className="flex items-start gap-3">
                   <div
                     className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ border: "1px solid rgba(201,169,110,0.35)", background: "rgba(201,169,110,0.08)" }}
+                    style={{ border: "1px solid rgba(159,207,184,0.35)", background: "rgba(159,207,184,0.1)" }}
                   >
-                    <Icon className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                    <Icon className="w-3.5 h-3.5" style={{ color: "#9FCFB8" }} />
                   </div>
                   <div>
                     <p className="font-body text-[10px] tracking-[0.2em] uppercase"
-                      style={{ color: "rgba(201,169,110,0.55)" }}>
+                      style={{ color: "rgba(159,207,184,0.55)" }}>
                       {label}
                     </p>
                     <p className="font-body mt-0.5" style={{ color: "rgba(255,255,255,0.75)", fontSize: "13px" }}>
@@ -95,7 +95,7 @@ const ContactSection = () => (
       {/* ── Right: conversational wizard ── */}
       <div
         className="flex flex-col justify-center p-6 sm:p-10 md:p-12 lg:p-16"
-        style={{ background: DARK }}
+        style={{ background: IVORY }}
       >
         <EnquiryWizard compact />
       </div>

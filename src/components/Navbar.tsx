@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Gallery",  href: "/gallery" },
 ];
 
-const GOLD = "#c9a96e";
+const FOREST = "#1B3A2D";
 
 const Navbar = () => {
   const [scrolled,  setScrolled]  = useState(false);
@@ -32,9 +32,9 @@ const Navbar = () => {
       style={{
         background: transparent
           ? "transparent"
-          : "rgba(12, 10, 8, 0.92)",
-        backdropFilter: transparent ? "none" : "blur(12px)",
-        borderBottom: transparent ? "none" : "1px solid rgba(201,169,110,0.12)",
+          : "rgba(250, 248, 243, 0.96)",
+        backdropFilter: transparent ? "none" : "blur(14px)",
+        borderBottom: transparent ? "none" : "1px solid rgba(27,58,45,0.1)",
       }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:py-5">
@@ -45,11 +45,11 @@ const Navbar = () => {
             src={logo}
             alt="JSB Events"
             className="h-10 w-10 rounded-full object-cover"
-            style={{ border: `1px solid ${GOLD}40` }}
+            style={{ border: `1px solid ${transparent ? "rgba(255,255,255,0.3)" : "rgba(27,58,45,0.2)"}` }}
           />
           <span
             className="font-heading text-xl md:text-2xl font-light tracking-[0.18em] transition-colors duration-300"
-            style={{ color: transparent ? "#fff" : "#e8e0d0", letterSpacing: "0.2em" }}
+            style={{ color: transparent ? "#fff" : FOREST, letterSpacing: "0.2em" }}
           >
             JSB Events
           </span>
@@ -66,18 +66,20 @@ const Navbar = () => {
                 className="font-body text-[11px] tracking-[0.3em] uppercase transition-all duration-300"
                 style={{
                   color: active
-                    ? GOLD
+                    ? transparent ? "#9FCFB8" : FOREST
                     : transparent
                     ? "rgba(255,255,255,0.65)"
-                    : "rgba(232,224,208,0.55)",
+                    : "rgba(27,46,36,0.55)",
                 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = GOLD; }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.color = transparent ? "#9FCFB8" : FOREST;
+                }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLElement).style.color = active
-                    ? GOLD
+                    ? transparent ? "#9FCFB8" : FOREST
                     : transparent
                     ? "rgba(255,255,255,0.65)"
-                    : "rgba(232,224,208,0.55)";
+                    : "rgba(27,46,36,0.55)";
                 }}
               >
                 {link.label}
@@ -89,18 +91,20 @@ const Navbar = () => {
             to="/contact"
             className="font-body text-[11px] tracking-[0.3em] uppercase px-6 py-2.5 transition-all duration-300"
             style={{
-              border: `1px solid ${GOLD}`,
-              color: GOLD,
+              border: `1px solid ${transparent ? "rgba(255,255,255,0.5)" : FOREST}`,
+              color: transparent ? "#fff" : FOREST,
             }}
             onMouseEnter={e => {
               const el = e.currentTarget as HTMLElement;
-              el.style.background = GOLD;
-              el.style.color = "#0c0a08";
+              el.style.background = FOREST;
+              el.style.color = "#FAF8F3";
+              el.style.borderColor = FOREST;
             }}
             onMouseLeave={e => {
               const el = e.currentTarget as HTMLElement;
               el.style.background = "transparent";
-              el.style.color = GOLD;
+              el.style.color = transparent ? "#fff" : FOREST;
+              el.style.borderColor = transparent ? "rgba(255,255,255,0.5)" : FOREST;
             }}
           >
             Book Now
@@ -111,7 +115,7 @@ const Navbar = () => {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden transition-colors"
-          style={{ color: transparent ? "#fff" : "#e8e0d0" }}
+          style={{ color: transparent ? "#fff" : FOREST }}
           aria-label="Toggle menu"
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -123,9 +127,9 @@ const Navbar = () => {
         <div
           className="md:hidden"
           style={{
-            background: "rgba(10,8,6,0.97)",
+            background: "rgba(250,248,243,0.98)",
             backdropFilter: "blur(16px)",
-            borderTop: "1px solid rgba(201,169,110,0.15)",
+            borderTop: "1px solid rgba(27,58,45,0.1)",
           }}
         >
           <div className="flex flex-col items-center gap-7 py-10">
@@ -136,7 +140,7 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className="font-body text-[11px] tracking-[0.35em] uppercase transition-colors"
                 style={{
-                  color: location.pathname === link.href ? GOLD : "rgba(232,224,208,0.55)",
+                  color: location.pathname === link.href ? FOREST : "rgba(27,46,36,0.5)",
                 }}
               >
                 {link.label}
@@ -146,7 +150,7 @@ const Navbar = () => {
               to="/contact"
               onClick={() => setMenuOpen(false)}
               className="font-body text-[11px] tracking-[0.35em] uppercase px-8 py-3 mt-2"
-              style={{ border: `1px solid ${GOLD}`, color: GOLD }}
+              style={{ border: `1px solid ${FOREST}`, color: FOREST }}
             >
               Book Now
             </Link>

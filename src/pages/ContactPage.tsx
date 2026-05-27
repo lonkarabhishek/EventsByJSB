@@ -6,105 +6,107 @@ import { MapPin, Phone, Mail, Clock, Instagram, MessageCircle } from "lucide-rea
 import EnquiryWizard from "@/components/EnquiryWizard";
 
 const WA_NUMBER = "919905168295";
-const GOLD      = "#c9a96e";
-const DARK      = "hsl(24 10% 5%)";
+const FOREST    = "#1B3A2D";
+const IVORY     = "#FAF8F3";
+const CREAM     = "#EEE9DF";
 
 const ContactPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen" style={{ background: DARK }}>
+    <div className="min-h-screen" style={{ background: IVORY }}>
       <Navbar />
 
-      {/* ── Page hero ── */}
-      <section className="relative pt-24 md:pt-32 pb-10 md:pb-20 px-6 text-center overflow-hidden">
+      {/* Page hero */}
+      <section className="relative pt-24 md:pt-32 pb-10 md:pb-20 px-6 text-center overflow-hidden"
+        style={{ background: CREAM }}>
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ width: "700px", height: "320px", background: "radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 68%)" }}
+          style={{ width: "700px", height: "320px", background: "radial-gradient(ellipse, rgba(27,58,45,0.05) 0%, transparent 68%)" }}
         />
         <FadeIn>
-          <p className="font-body text-[10px] tracking-[0.5em] uppercase mb-5" style={{ color: GOLD }}>
+          <p className="font-body text-[10px] tracking-[0.5em] uppercase mb-5" style={{ color: FOREST }}>
             Get In Touch
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
           <h1
             className="font-heading font-light mb-5"
-            style={{ fontSize: "clamp(2.2rem, 8vw, 6.5rem)", color: "#e8e0d0", lineHeight: 0.95 }}
+            style={{ fontSize: "clamp(2.2rem, 8vw, 6.5rem)", color: "#1B2E24", lineHeight: 0.95 }}
           >
             Let's Begin<br />
-            <em className="italic" style={{ color: GOLD }}>Your Story</em>
+            <em className="italic" style={{ color: FOREST }}>Your Story</em>
           </h1>
         </FadeIn>
         <FadeIn delay={0.2}>
           <div className="flex items-center justify-center gap-4 mb-5">
-            <div className="h-px w-12" style={{ background: `${GOLD}40` }} />
-            <div className="w-1 h-1 rounded-full" style={{ background: `${GOLD}60` }} />
-            <div className="h-px w-12" style={{ background: `${GOLD}40` }} />
+            <div className="h-px w-12" style={{ background: `rgba(27,58,45,0.2)` }} />
+            <div className="w-1 h-1 rounded-full" style={{ background: `rgba(27,58,45,0.35)` }} />
+            <div className="h-px w-12" style={{ background: `rgba(27,58,45,0.2)` }} />
           </div>
           <p className="font-body text-sm font-light max-w-sm mx-auto"
-            style={{ color: "rgba(232,224,208,0.45)" }}>
+            style={{ color: "rgba(27,46,36,0.48)" }}>
             Answer a few quick questions and we'll get back to you within 10 minutes.
           </p>
         </FadeIn>
       </section>
 
-      {/* ── Main grid — wizard first on mobile ── */}
-      <section className="px-4 md:px-6 pb-20 md:pb-32">
+      {/* Main grid — wizard first on mobile */}
+      <section className="px-4 md:px-6 pb-20 md:pb-32 pt-10 md:pt-16" style={{ background: IVORY }}>
         <div className="max-w-5xl mx-auto flex flex-col-reverse md:grid md:grid-cols-[1fr_1.65fr] gap-8 md:gap-14 md:items-start">
 
-          {/* Left: contact info — below wizard on mobile */}
+          {/* Left: contact info */}
           <FadeIn direction="left" className="w-full">
             <div className="md:sticky md:top-28 overflow-hidden"
-              style={{ border: "1px solid rgba(201,169,110,0.13)" }}>
+              style={{ border: "1px solid rgba(27,58,45,0.12)", background: CREAM }}>
 
-              {/* ── Header band ── */}
+              {/* Header band */}
               <div className="px-6 pt-7 pb-6 relative"
-                style={{ background: "rgba(201,169,110,0.06)", borderBottom: "1px solid rgba(201,169,110,0.1)" }}>
-                {/* Gold top-left corner accent */}
+                style={{ background: "rgba(27,58,45,0.05)", borderBottom: "1px solid rgba(27,58,45,0.1)" }}>
+                {/* Forest corner accent */}
                 <div className="absolute top-0 left-0 w-8 h-8 pointer-events-none"
-                  style={{ borderTop: `2px solid ${GOLD}`, borderLeft: `2px solid ${GOLD}` }} />
+                  style={{ borderTop: `2px solid ${FOREST}`, borderLeft: `2px solid ${FOREST}` }} />
 
                 <p className="font-body text-[9px] tracking-[0.5em] uppercase mb-3"
-                  style={{ color: `${GOLD}80` }}>
+                  style={{ color: `rgba(27,58,45,0.55)` }}>
                   Reach Us
                 </p>
                 <h2 className="font-heading text-2xl font-light leading-snug"
-                  style={{ color: "#e8e0d0" }}>
+                  style={{ color: "#1B2E24" }}>
                   We'd Love to<br />
-                  <em className="italic" style={{ color: GOLD }}>Hear From You</em>
+                  <em className="italic" style={{ color: FOREST }}>Hear From You</em>
                 </h2>
 
                 {/* Response badge */}
                 <div className="flex items-center gap-2 mt-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-                  <span className="font-body text-[10px]" style={{ color: "rgba(232,224,208,0.4)" }}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+                  <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.42)" }}>
                     Typically responds in under 10 minutes
                   </span>
                 </div>
               </div>
 
-              {/* ── Clickable contact rows ── */}
-              <div style={{ background: "rgba(201,169,110,0.02)" }}>
+              {/* Clickable contact rows */}
+              <div style={{ background: CREAM }}>
 
-                {/* Phone — prominent tap target */}
+                {/* Phone */}
                 <a href="tel:+919905168295"
                   className="flex items-center gap-4 px-6 py-4 group transition-all duration-200"
-                  style={{ borderBottom: "1px solid rgba(201,169,110,0.08)" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,169,110,0.05)"; }}
+                  style={{ borderBottom: "1px solid rgba(27,58,45,0.08)" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(27,58,45,0.05)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}
                 >
                   <div className="w-9 h-9 flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${GOLD}12`, border: `1px solid ${GOLD}30` }}>
-                    <Phone className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                    style={{ background: "rgba(27,58,45,0.07)", border: `1px solid rgba(27,58,45,0.2)` }}>
+                    <Phone className="w-3.5 h-3.5" style={{ color: FOREST }} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-[9px] tracking-[0.25em] uppercase mb-0.5"
-                      style={{ color: "rgba(232,224,208,0.3)" }}>Phone</p>
-                    <p className="font-body text-sm" style={{ color: "#e8e0d0" }}>+91 99051 68295</p>
+                      style={{ color: "rgba(27,46,36,0.35)" }}>Phone</p>
+                    <p className="font-body text-sm" style={{ color: "#1B2E24" }}>+91 99051 68295</p>
                   </div>
-                  <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -translate-x-1 group-hover:translate-x-0 transition-transform"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: GOLD }}>
+                  <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: FOREST }}>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
@@ -112,7 +114,7 @@ const ContactPage = () => {
                 {/* WhatsApp */}
                 <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-4 px-6 py-4 group transition-all duration-200"
-                  style={{ borderBottom: "1px solid rgba(201,169,110,0.08)" }}
+                  style={{ borderBottom: "1px solid rgba(27,58,45,0.08)" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(37,211,102,0.04)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}
                 >
@@ -122,8 +124,8 @@ const ContactPage = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-[9px] tracking-[0.25em] uppercase mb-0.5"
-                      style={{ color: "rgba(232,224,208,0.3)" }}>WhatsApp</p>
-                    <p className="font-body text-sm" style={{ color: "#e8e0d0" }}>+91 99051 68295</p>
+                      style={{ color: "rgba(27,46,36,0.35)" }}>WhatsApp</p>
+                    <p className="font-body text-sm" style={{ color: "#1B2E24" }}>+91 99051 68295</p>
                   </div>
                   <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: "#25D366" }}>
@@ -134,53 +136,53 @@ const ContactPage = () => {
                 {/* Email */}
                 <a href="mailto:hello@jsbevents.com"
                   className="flex items-center gap-4 px-6 py-4 group transition-all duration-200"
-                  style={{ borderBottom: "1px solid rgba(201,169,110,0.08)" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,169,110,0.05)"; }}
+                  style={{ borderBottom: "1px solid rgba(27,58,45,0.08)" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(27,58,45,0.05)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}
                 >
                   <div className="w-9 h-9 flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${GOLD}12`, border: `1px solid ${GOLD}30` }}>
-                    <Mail className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                    style={{ background: "rgba(27,58,45,0.07)", border: `1px solid rgba(27,58,45,0.2)` }}>
+                    <Mail className="w-3.5 h-3.5" style={{ color: FOREST }} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-[9px] tracking-[0.25em] uppercase mb-0.5"
-                      style={{ color: "rgba(232,224,208,0.3)" }}>Email</p>
-                    <p className="font-body text-sm truncate" style={{ color: "#e8e0d0" }}>hello@jsbevents.com</p>
+                      style={{ color: "rgba(27,46,36,0.35)" }}>Email</p>
+                    <p className="font-body text-sm truncate" style={{ color: "#1B2E24" }}>hello@jsbevents.com</p>
                   </div>
                   <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: GOLD }}>
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: FOREST }}>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
 
-                {/* Location + Hours — side by side */}
+                {/* Location + Hours */}
                 <div className="grid grid-cols-2"
-                  style={{ borderBottom: "1px solid rgba(201,169,110,0.08)" }}>
+                  style={{ borderBottom: "1px solid rgba(27,58,45,0.08)" }}>
                   <div className="px-6 py-4"
-                    style={{ borderRight: "1px solid rgba(201,169,110,0.08)" }}>
+                    style={{ borderRight: "1px solid rgba(27,58,45,0.08)" }}>
                     <div className="flex items-center gap-2 mb-2">
-                      <MapPin className="w-3 h-3 flex-shrink-0" style={{ color: `${GOLD}70` }} />
+                      <MapPin className="w-3 h-3 flex-shrink-0" style={{ color: `rgba(27,58,45,0.55)` }} />
                       <p className="font-body text-[9px] tracking-[0.2em] uppercase"
-                        style={{ color: "rgba(232,224,208,0.3)" }}>Location</p>
+                        style={{ color: "rgba(27,46,36,0.35)" }}>Location</p>
                     </div>
-                    <p className="font-body text-sm leading-snug" style={{ color: "#e8e0d0" }}>New Delhi</p>
-                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(232,224,208,0.3)" }}>Available globally</p>
+                    <p className="font-body text-sm leading-snug" style={{ color: "#1B2E24" }}>New Delhi</p>
+                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(27,46,36,0.35)" }}>Available globally</p>
                   </div>
                   <div className="px-6 py-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Clock className="w-3 h-3 flex-shrink-0" style={{ color: `${GOLD}70` }} />
+                      <Clock className="w-3 h-3 flex-shrink-0" style={{ color: `rgba(27,58,45,0.55)` }} />
                       <p className="font-body text-[9px] tracking-[0.2em] uppercase"
-                        style={{ color: "rgba(232,224,208,0.3)" }}>Hours</p>
+                        style={{ color: "rgba(27,46,36,0.35)" }}>Hours</p>
                     </div>
-                    <p className="font-body text-sm leading-snug" style={{ color: "#e8e0d0" }}>Mon to Sat</p>
-                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(232,224,208,0.3)" }}>10 AM to 7 PM</p>
+                    <p className="font-body text-sm leading-snug" style={{ color: "#1B2E24" }}>Mon to Sat</p>
+                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(27,46,36,0.35)" }}>10 AM to 7 PM</p>
                   </div>
                 </div>
               </div>
 
-              {/* ── Footer: WhatsApp CTA + socials ── */}
+              {/* Footer: WhatsApp CTA + socials */}
               <div className="px-6 py-5"
-                style={{ background: "rgba(201,169,110,0.04)", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
+                style={{ background: "rgba(27,58,45,0.04)", borderTop: "1px solid rgba(27,58,45,0.1)" }}>
 
                 {/* WhatsApp button */}
                 <a
@@ -197,17 +199,17 @@ const ContactPage = () => {
                   Chat on WhatsApp
                 </a>
 
-                {/* Social icons with labels */}
+                {/* Social icons */}
                 <div className="flex items-center gap-3">
                   <p className="font-body text-[9px] tracking-[0.3em] uppercase mr-1"
-                    style={{ color: "rgba(232,224,208,0.2)" }}>
+                    style={{ color: "rgba(27,46,36,0.25)" }}>
                     Follow
                   </p>
                   <a href="https://instagram.com/eventsbyjsb" target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-3 py-1.5 transition-all duration-200"
-                    style={{ border: `1px solid ${GOLD}20`, color: "rgba(232,224,208,0.4)" }}
-                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.color = GOLD; }}
-                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = `${GOLD}20`; el.style.color = "rgba(232,224,208,0.4)"; }}
+                    style={{ border: `1px solid rgba(27,58,45,0.15)`, color: "rgba(27,46,36,0.42)" }}
+                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = FOREST; el.style.color = FOREST; }}
+                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = `rgba(27,58,45,0.15)`; el.style.color = "rgba(27,46,36,0.42)"; }}
                   >
                     <Instagram className="w-3 h-3" />
                     <span className="font-body text-[9px] tracking-[0.15em] uppercase">Instagram</span>
@@ -222,7 +224,7 @@ const ContactPage = () => {
           <FadeIn delay={0.1} className="w-full">
             <div
               className="p-5 md:p-8"
-              style={{ background: "rgba(201,169,110,0.03)", border: "1px solid rgba(201,169,110,0.1)" }}
+              style={{ background: IVORY, border: "1px solid rgba(27,58,45,0.1)" }}
             >
               <EnquiryWizard />
             </div>

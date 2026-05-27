@@ -9,14 +9,14 @@ const words = [
 ];
 
 const MarqueeStrip = () => {
-  const repeated = [...words, ...words]; // duplicate for seamless loop
+  const repeated = [...words, ...words];
 
   return (
     <div
       className="overflow-hidden py-4 border-y"
       style={{
-        borderColor: "rgba(201,169,110,0.2)",
-        background: "rgba(201,169,110,0.04)",
+        borderColor: "rgba(27,58,45,0.12)",
+        background: "#EEE9DF",
       }}
     >
       <div className="animate-marquee">
@@ -24,7 +24,7 @@ const MarqueeStrip = () => {
           <span
             key={i}
             className="font-heading text-sm md:text-base font-light tracking-[0.35em] uppercase mx-8 md:mx-12 whitespace-nowrap"
-            style={{ color: i % 2 === 0 ? "rgba(201,169,110,0.7)" : "rgba(232,224,208,0.25)" }}
+            style={{ color: i % 2 === 0 ? "rgba(27,58,45,0.7)" : "rgba(27,46,36,0.28)" }}
           >
             {w}
           </span>

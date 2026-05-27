@@ -2,6 +2,9 @@ import { useRef, useState, useCallback, useEffect } from "react";
 import { Play, Volume2, VolumeX } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
+const FOREST    = "#1B3A2D";
+const FOREST_BG = "#0D2018"; /* very dark forest for cinematic section */
+
 const reels = [
   { src: "/videos/reels/reel-1.mp4", poster: "/gallery/mandap-velvet.jpg" },
   { src: "/videos/reels/reel-2.mp4", poster: "/gallery/pampas-arch.jpg" },
@@ -22,7 +25,6 @@ const ReelCard = ({ reel, isActive, onActivate, onDeactivate }: ReelCardProps) =
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
 
-  /* When another card becomes active, pause this one */
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -78,14 +80,14 @@ const ReelCard = ({ reel, isActive, onActivate, onDeactivate }: ReelCardProps) =
         >
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-            style={{ background: "rgba(201,169,110,0.88)", backdropFilter: "blur(4px)" }}
+            style={{ background: "rgba(27,58,45,0.9)", backdropFilter: "blur(4px)" }}
           >
-            <Play className="w-5 h-5 fill-black text-black ml-0.5" />
+            <Play className="w-5 h-5 fill-white text-white ml-0.5" />
           </div>
         </button>
       )}
 
-      {/* Pause overlay (tap anywhere while playing) */}
+      {/* Pause overlay */}
       {isActive && (
         <button
           onClick={handlePause}
@@ -94,7 +96,7 @@ const ReelCard = ({ reel, isActive, onActivate, onDeactivate }: ReelCardProps) =
         />
       )}
 
-      {/* Mute/unmute (only while playing) */}
+      {/* Mute/unmute */}
       {isActive && (
         <button
           onClick={e => { e.stopPropagation(); setMuted(m => !m); }}
@@ -103,8 +105,8 @@ const ReelCard = ({ reel, isActive, onActivate, onDeactivate }: ReelCardProps) =
           aria-label={muted ? "Unmute" : "Mute"}
         >
           {muted
-            ? <VolumeX className="w-3.5 h-3.5" style={{ color: "#c9a96e" }} />
-            : <Volume2 className="w-3.5 h-3.5" style={{ color: "#c9a96e" }} />}
+            ? <VolumeX className="w-3.5 h-3.5" style={{ color: "#9FCFB8" }} />
+            : <Volume2 className="w-3.5 h-3.5" style={{ color: "#9FCFB8" }} />}
         </button>
       )}
     </div>
@@ -112,30 +114,29 @@ const ReelCard = ({ reel, isActive, onActivate, onDeactivate }: ReelCardProps) =
 };
 
 const VideoReelsSection = () => {
-  /* -1 = none playing */
   const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
-    <section className="py-16 md:py-32 px-4 md:px-6" style={{ background: "hsl(24 8% 7%)" }}>
+    <section className="py-16 md:py-32 px-4 md:px-6" style={{ background: FOREST_BG }}>
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-10 md:mb-20">
           <FadeIn>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
-              style={{ color: "#c9a96e" }}>
+              style={{ color: "#9FCFB8" }}>
               Captured Moments
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="font-heading font-light"
-              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: "#FAF8F3" }}>
               Stories in Motion
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="font-body text-sm font-light mt-4 max-w-md mx-auto"
-              style={{ color: "rgba(232,224,208,0.45)" }}>
+              style={{ color: "rgba(250,248,243,0.45)" }}>
               Behind every event is a story worth telling. Watch ours.
             </p>
           </FadeIn>
@@ -163,10 +164,10 @@ const VideoReelsSection = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 font-body text-[11px] tracking-[0.35em] uppercase transition-all duration-300 hover:opacity-70"
-              style={{ color: "#c9a96e" }}
+              style={{ color: "#9FCFB8" }}
             >
               <span>Follow on Instagram</span>
-              <div className="h-px w-10 animate-line-draw" style={{ background: "#c9a96e" }} />
+              <div className="h-px w-10 animate-line-draw" style={{ background: "#9FCFB8" }} />
             </a>
           </div>
         </FadeIn>

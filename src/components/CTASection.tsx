@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 
-const GOLD = "#c9a96e";
+/* On the dark forest green background, gold accents are luxurious */
+const GOLD   = "#B8966E";
+const FOREST_EDGE = "#081610"; /* very dark forest for edge gradient */
 
 const stats = [
   { value: "200+", label: "Events Crafted" },
@@ -12,10 +14,9 @@ const stats = [
 const CTASection = () => (
   <section
     className="relative overflow-hidden py-20 md:py-40 px-4 md:px-6"
-    style={{ background: "hsl(24 10% 5%)" }}
+    style={{ background: FOREST_EDGE }}
   >
-    {/* ── Layered atmospheric background ── */}
-    {/* Full bleed image with very heavy dark overlay for luxury feel */}
+    {/* Layered atmospheric background */}
     <div className="absolute inset-0">
       <img
         src="/gallery/gold-aisle.jpg"
@@ -24,36 +25,35 @@ const CTASection = () => (
         aria-hidden="true"
         loading="lazy"
       />
-      {/* Deep dark vignette — keeps it dark luxury, not photo-heavy */}
-      <div className="absolute inset-0" style={{ background: "rgba(8,6,4,0.88)" }} />
-      {/* Radial gold centre glow */}
+      {/* Deep forest green vignette */}
+      <div className="absolute inset-0" style={{ background: "rgba(6,20,13,0.90)" }} />
+      {/* Soft centre glow */}
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(27,58,45,0.35) 0%, transparent 70%)",
         }}
       />
-      {/* Top + bottom gradient edge-fade */}
+      {/* Top + bottom edge fade */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(to bottom, hsl(24 10% 5%) 0%, transparent 18%, transparent 82%, hsl(24 10% 5%) 100%)",
+          background: `linear-gradient(to bottom, ${FOREST_EDGE} 0%, transparent 18%, transparent 82%, ${FOREST_EDGE} 100%)`,
         }}
       />
     </div>
 
-    {/* ── Gold corner brackets ── */}
+    {/* Subtle corner brackets */}
     <div className="absolute top-8 left-8 w-12 h-12 hidden md:block pointer-events-none"
-      style={{ borderTop: `1px solid ${GOLD}40`, borderLeft: `1px solid ${GOLD}40` }} />
+      style={{ borderTop: `1px solid ${GOLD}35`, borderLeft: `1px solid ${GOLD}35` }} />
     <div className="absolute bottom-8 right-8 w-12 h-12 hidden md:block pointer-events-none"
-      style={{ borderBottom: `1px solid ${GOLD}40`, borderRight: `1px solid ${GOLD}40` }} />
-    {/* Inner subtle border */}
+      style={{ borderBottom: `1px solid ${GOLD}35`, borderRight: `1px solid ${GOLD}35` }} />
     <div
       className="absolute inset-8 hidden md:block pointer-events-none"
-      style={{ border: `1px solid ${GOLD}08` }}
+      style={{ border: `1px solid ${GOLD}06` }}
     />
 
-    {/* ── Content ── */}
+    {/* Content */}
     <div className="relative z-10 max-w-4xl mx-auto text-center">
 
       {/* Eyebrow */}
@@ -103,7 +103,7 @@ const CTASection = () => (
                 {s.value}
               </p>
               <p className="font-body text-[9px] md:text-[10px] tracking-[0.2em] uppercase mt-1"
-                style={{ color: "rgba(232,224,208,0.35)" }}>
+                style={{ color: "rgba(255,255,255,0.35)" }}>
                 {s.label}
               </p>
             </div>
@@ -118,7 +118,7 @@ const CTASection = () => (
             to="/contact"
             className="w-full sm:w-auto px-10 py-4 font-body text-[11px] tracking-[0.4em] uppercase transition-all duration-300"
             style={{ background: GOLD, color: "#0c0a08" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#d4b878"; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#C9A478"; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
           >
             Start Planning Now
@@ -146,7 +146,7 @@ const CTASection = () => (
         <div className="inline-flex items-center gap-2.5 px-5 py-2.5"
           style={{ border: `1px solid ${GOLD}20`, background: `${GOLD}06` }}>
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-body text-[11px]" style={{ color: "rgba(232,224,208,0.5)" }}>
+          <span className="font-body text-[11px]" style={{ color: "rgba(255,255,255,0.5)" }}>
             We respond in under 10 minutes
           </span>
         </div>

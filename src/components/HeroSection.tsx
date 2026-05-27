@@ -9,15 +9,17 @@ const VIDEOS = [
   "/videos/reels/reel-5.mp4",
   "/videos/reels/reel-6.mp4",
 ];
-const CYCLE_MS   = 8000; // time each video plays
-const FADE_MS    = 1200; // crossfade duration
+const CYCLE_MS   = 8000;
+const FADE_MS    = 1200;
+
+/* Sage-mint accent for hero (readable on dark video overlay) */
+const SAGE = "#9FCFB8";
 
 const HeroSection = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [fading,     setFading]     = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  /* ── Play the newly active video, buffer the next one ── */
   useEffect(() => {
     const v = videoRefs.current[currentIdx];
     if (v) { v.currentTime = 0; v.play().catch(() => {}); }
@@ -25,10 +27,8 @@ const HeroSection = () => {
     videoRefs.current[next]?.load();
   }, [currentIdx]);
 
-  /* ── Auto-cycle ──────────────────────────────────────── */
   useEffect(() => {
     const timer = setInterval(() => {
-      // Pre-play next so it's ready
       const next = (currentIdx + 1) % VIDEOS.length;
       videoRefs.current[next]?.play().catch(() => {});
 
@@ -45,7 +45,7 @@ const HeroSection = () => {
     <>
       <section className="fixed inset-0 h-screen overflow-hidden z-0">
 
-        {/* ── Video layers ─────────────────────────────── */}
+        {/* Video layers */}
         {VIDEOS.map((src, i) => (
           <video
             key={src}
@@ -65,26 +65,24 @@ const HeroSection = () => {
           />
         ))}
 
-        {/* ── Cinematic overlays ───────────────────────── */}
-        <div className="absolute inset-0 z-10 bg-black/50" />
+        {/* Cinematic overlays */}
+        <div className="absolute inset-0 z-10 bg-black/52" />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.45) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.48) 100%)" }}
         />
-        {/* Side vignette */}
         <div className="absolute inset-0 z-10"
           style={{ background: "linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.35) 100%)" }}
         />
 
-        {/* ── Main content ─────────────────────────────── */}
+        {/* Main content */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
 
-          {/* Spacer for navbar */}
           <div className="hidden md:block" style={{ height: "0.5rem" }} />
 
           {/* Brand eyebrow */}
           <p
-            className="hero-fade-up font-body text-[10px] md:text-xs tracking-[0.65em] uppercase text-[#c9a96e] mb-5 md:mb-7"
-            style={{ animationDelay: "0.45s" }}
+            className="hero-fade-up font-body text-[10px] md:text-xs tracking-[0.65em] uppercase mb-5 md:mb-7"
+            style={{ color: SAGE, animationDelay: "0.45s" }}
           >
             JSB Events &nbsp;·&nbsp; Est.&nbsp;2014
           </p>
@@ -98,18 +96,18 @@ const HeroSection = () => {
             }}
           >
             Crafting<br />
-            <em className="italic" style={{ color: "hsl(38 46% 68%)" }}>Timeless</em><br />
+            <em className="italic" style={{ color: SAGE }}>Timeless</em><br />
             Celebrations
           </h1>
 
-          {/* Gold divider */}
+          {/* Sage divider */}
           <div
             className="hero-fade-up flex items-center gap-4 my-5 md:my-7"
             style={{ animationDelay: "1.0s" }}
           >
-            <div className="h-px w-16 bg-[#c9a96e]/40" />
-            <div className="w-1 h-1 rounded-full bg-[#c9a96e]/60" />
-            <div className="h-px w-16 bg-[#c9a96e]/40" />
+            <div className="h-px w-16" style={{ background: `${SAGE}45` }} />
+            <div className="w-1 h-1 rounded-full" style={{ background: `${SAGE}70` }} />
+            <div className="h-px w-16" style={{ background: `${SAGE}45` }} />
           </div>
 
           {/* Subheading */}
@@ -128,20 +126,34 @@ const HeroSection = () => {
           >
             <Link
               to="/gallery"
-              className="px-9 py-3.5 bg-[#c9a96e] text-black font-body text-[11px] tracking-[0.35em] uppercase hover:bg-[#d4b878] transition-all duration-300"
+              className="px-9 py-3.5 font-body text-[11px] tracking-[0.35em] uppercase transition-all duration-300"
+              style={{ background: "#1B3A2D", color: "#FAF8F3" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#2E6348"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#1B3A2D"; }}
             >
               Explore Our Work
             </Link>
             <Link
               to="/contact"
-              className="px-9 py-3.5 border border-white/25 text-white font-body text-[11px] tracking-[0.35em] uppercase hover:border-[#c9a96e] hover:text-[#c9a96e] transition-all duration-300"
+              className="px-9 py-3.5 border font-body text-[11px] tracking-[0.35em] uppercase transition-all duration-300"
+              style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = SAGE;
+                el.style.color = SAGE;
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "rgba(255,255,255,0.3)";
+                el.style.color = "#fff";
+              }}
             >
               Begin Your Journey
             </Link>
           </div>
         </div>
 
-        {/* ── Video progress dots ───────────────────────── */}
+        {/* Video progress dots */}
         <div className="absolute bottom-10 right-8 z-20 flex items-center gap-2">
           {VIDEOS.map((_, i) => (
             <button
@@ -150,7 +162,7 @@ const HeroSection = () => {
               className="h-[1px] transition-all duration-500 rounded-full"
               style={{
                 width: i === currentIdx ? "2rem" : "0.6rem",
-                backgroundColor: i === currentIdx ? "#c9a96e" : "rgba(255,255,255,0.25)",
+                backgroundColor: i === currentIdx ? SAGE : "rgba(255,255,255,0.25)",
               }}
             />
           ))}

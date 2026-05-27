@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
+const FOREST = "#1B3A2D";
+const IVORY  = "#FAF8F3";
+
 const faqs = [
   {
     q: "How far in advance should we book?",
@@ -33,20 +36,20 @@ const FAQSection = () => {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-24 md:py-32 px-6" style={{ background: "hsl(24 8% 7%)" }}>
+    <section className="py-24 md:py-32 px-6" style={{ background: "#EEE9DF" }}>
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-14 md:mb-20">
           <FadeIn>
             <p className="font-body text-[11px] tracking-[0.45em] uppercase mb-3"
-              style={{ color: "#c9a96e" }}>
+              style={{ color: FOREST }}>
               Common Questions
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="font-heading font-light"
-              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", color: "#e8e0d0" }}>
+              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", color: "#1B2E24" }}>
               Frequently Asked
             </h2>
           </FadeIn>
@@ -54,7 +57,7 @@ const FAQSection = () => {
 
         {/* Custom accordion */}
         <FadeIn delay={0.2}>
-          <div className="space-y-0 divide-y" style={{ borderColor: "rgba(201,169,110,0.12)" }}>
+          <div className="space-y-0 divide-y" style={{ borderColor: "rgba(27,58,45,0.12)" }}>
             {faqs.map((faq, i) => {
               const isOpen = open === i;
               return (
@@ -65,13 +68,13 @@ const FAQSection = () => {
                   >
                     <span
                       className="font-heading text-lg md:text-xl font-light transition-colors duration-300"
-                      style={{ color: isOpen ? "#c9a96e" : "#e8e0d0" }}
+                      style={{ color: isOpen ? FOREST : "#1B2E24" }}
                     >
                       {faq.q}
                     </span>
                     <span
                       className="flex-shrink-0 w-6 h-6 flex items-center justify-center transition-colors duration-300"
-                      style={{ color: "#c9a96e" }}
+                      style={{ color: FOREST }}
                     >
                       {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </span>
@@ -84,7 +87,7 @@ const FAQSection = () => {
                   >
                     <p
                       className="font-body text-sm leading-relaxed pb-6"
-                      style={{ color: "rgba(232,224,208,0.45)" }}
+                      style={{ color: "rgba(27,46,36,0.55)" }}
                     >
                       {faq.a}
                     </p>
