@@ -48,7 +48,7 @@ const Navbar = () => {
             style={{ border: `1px solid ${transparent ? "rgba(255,255,255,0.3)" : "rgba(27,58,45,0.2)"}` }}
           />
           <span
-            className="font-heading text-xl md:text-2xl font-light tracking-[0.18em] transition-colors duration-300"
+            className="font-heading text-xl md:text-2xl font-normal tracking-[0.18em] transition-colors duration-300"
             style={{ color: transparent ? "#fff" : FOREST, letterSpacing: "0.2em" }}
           >
             JSB Events
@@ -66,9 +66,9 @@ const Navbar = () => {
                 className="font-body text-[11px] tracking-[0.3em] uppercase transition-all duration-300"
                 style={{
                   color: active
-                    ? transparent ? "#9FCFB8" : FOREST
+                    ? transparent ? "#A8F0C8" : FOREST
                     : transparent
-                    ? "rgba(255,255,255,0.65)"
+                    ? "rgba(255,255,255,0.92)"
                     : "rgba(27,46,36,0.92)",
                 }}
                 onMouseEnter={e => {
@@ -78,7 +78,7 @@ const Navbar = () => {
                   (e.currentTarget as HTMLElement).style.color = active
                     ? transparent ? "#9FCFB8" : FOREST
                     : transparent
-                    ? "rgba(255,255,255,0.65)"
+                    ? "rgba(255,255,255,0.92)"
                     : "rgba(27,46,36,0.92)";
                 }}
               >
@@ -91,7 +91,7 @@ const Navbar = () => {
             to="/contact"
             className="font-body text-[11px] tracking-[0.3em] uppercase px-6 py-2.5 transition-all duration-300"
             style={{
-              border: `1px solid ${transparent ? "rgba(255,255,255,0.5)" : FOREST}`,
+              border: `1px solid ${transparent ? "rgba(255,255,255,0.85)" : FOREST}`,
               color: transparent ? "#fff" : FOREST,
             }}
             onMouseEnter={e => {
@@ -104,7 +104,7 @@ const Navbar = () => {
               const el = e.currentTarget as HTMLElement;
               el.style.background = "transparent";
               el.style.color = transparent ? "#fff" : FOREST;
-              el.style.borderColor = transparent ? "rgba(255,255,255,0.5)" : FOREST;
+              el.style.borderColor = transparent ? "rgba(255,255,255,0.85)" : FOREST;
             }}
           >
             Book Now
@@ -140,7 +140,7 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className="font-body text-[11px] tracking-[0.35em] uppercase transition-colors"
                 style={{
-                  color: location.pathname === link.href ? FOREST : "rgba(27,46,36,0.5)",
+                  color: location.pathname === link.href ? FOREST : "rgba(27,46,36,0.78)",
                 }}
               >
                 {link.label}
