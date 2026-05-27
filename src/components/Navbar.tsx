@@ -69,7 +69,7 @@ const Navbar = () => {
                     ? transparent ? "#9FCFB8" : FOREST
                     : transparent
                     ? "rgba(255,255,255,0.65)"
-                    : "rgba(27,46,36,0.82)",
+                    : "rgba(27,46,36,0.92)",
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.color = transparent ? "#9FCFB8" : FOREST;
@@ -79,7 +79,7 @@ const Navbar = () => {
                     ? transparent ? "#9FCFB8" : FOREST
                     : transparent
                     ? "rgba(255,255,255,0.65)"
-                    : "rgba(27,46,36,0.82)";
+                    : "rgba(27,46,36,0.92)";
                 }}
               >
                 {link.label}

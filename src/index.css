@@ -23,7 +23,7 @@
     --secondary-foreground: 152 24% 14%;
 
     --muted: 45 20% 93%;             /* light ivory-cream          */
-    --muted-foreground: 152 12% 42%; /* warm mid-green-gray        */
+    --muted-foreground: 152 18% 28%; /* warm mid-green-gray — darkened */
 
     --accent: 152 36% 17%;
     --accent-foreground: 45 40% 97%;
@@ -76,7 +76,7 @@
 
   .text-body {
     font-family: var(--font-body);
-    @apply font-normal leading-relaxed;
+    @apply font-medium leading-relaxed;
   }
 
   .section-padding {

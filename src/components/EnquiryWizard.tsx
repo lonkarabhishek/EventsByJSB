@@ -192,7 +192,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
         <h3 className="font-heading text-2xl md:text-3xl font-light mb-3" style={{ color: "#1B2E24" }}>
           Enquiry Received
         </h3>
-        <p className="font-body text-sm mb-8 max-w-xs" style={{ color: "rgba(27,46,36,0.80)" }}>
+        <p className="font-body text-sm mb-8 max-w-xs" style={{ color: "rgba(27,46,36,0.90)" }}>
           Thank you{answers.name ? `, ${answers.name.split(" ")[0]}` : ""}! We'll be in touch within 10 minutes.
         </p>
         <a
@@ -207,15 +207,15 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           Continue on WhatsApp
         </a>
         <p className="font-body text-[9px] tracking-[0.2em] uppercase mb-8"
-          style={{ color: "rgba(27,46,36,0.3)" }}>
+          style={{ color: "rgba(27,46,36,0.60)" }}>
           Your details are pre-filled in the message
         </p>
         <button
           onClick={() => { setStatus("idle"); setStepIdx(0); setAnswers({}); }}
           className="font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-300"
-          style={{ color: "rgba(27,46,36,0.3)" }}
+          style={{ color: "rgba(27,46,36,0.60)" }}
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = FOREST; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.3)"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.60)"; }}
         >
           Send Another Enquiry
         </button>
@@ -307,7 +307,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           onChange={e => setAnswer(e.target.value)}
           style={{
             ...inputBase,
-            color: current ? "#1B2E24" : "rgba(27,46,36,0.62)",
+            color: current ? "#1B2E24" : "rgba(27,46,36,0.80)",
             colorScheme: "light",
           } as React.CSSProperties}
         />
@@ -380,7 +380,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
           </h3>
 
           {/* Hint */}
-          <p className="font-body text-sm mb-5" style={{ color: "rgba(27,46,36,0.68)", fontSize: "12px" }}>
+          <p className="font-body text-sm mb-5" style={{ color: "rgba(27,46,36,0.84)", fontSize: "12px" }}>
             {step.hint}
           </p>
 
@@ -415,9 +415,9 @@ const EnquiryWizard = ({ compact = false }: Props) => {
                   type="button"
                   onClick={advance}
                   className="font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-200"
-                  style={{ color: "rgba(27,46,36,0.60)" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.65)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.60)"; }}
+                  style={{ color: "rgba(27,46,36,0.78)" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.82)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(27,46,36,0.78)"; }}
                 >
                   Skip
                 </button>
@@ -470,7 +470,7 @@ const EnquiryWizard = ({ compact = false }: Props) => {
       {stepIdx === STEPS.length - 1 && status !== "sending" && (
         <div className="flex items-center gap-2 mt-4">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-          <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.60)" }}>
+          <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.78)" }}>
             We typically respond in under 10 minutes
           </span>
         </div>

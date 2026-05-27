@@ -86,7 +86,7 @@ const TestimonialsSection = () => {
               className="relative font-heading font-light italic text-center mb-8 leading-snug transition-all duration-500"
               style={{
                 fontSize: "clamp(1.1rem, 3vw, 2.2rem)",
-                color: "rgba(27,46,36,0.82)",
+                color: "rgba(27,46,36,0.92)",
                 maxWidth: "820px",
                 margin: "0 auto 2rem",
               }}
@@ -101,7 +101,7 @@ const TestimonialsSection = () => {
                 {t.name}
               </p>
               <p className="font-body text-[11px] tracking-[0.3em] uppercase"
-                style={{ color: "rgba(27,46,36,0.65)" }}>
+                style={{ color: "rgba(27,46,36,0.82)" }}>
                 {t.location}
               </p>
             </div>
@@ -157,18 +157,18 @@ const TestimonialsSection = () => {
             <h3 className="font-heading font-light leading-tight mb-6"
               style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: "#1B2E24" }}>
               Hear From Our<br />
-              <em className="italic" style={{ color: "rgba(27,46,36,0.68)" }}>
+              <em className="italic" style={{ color: "rgba(27,46,36,0.84)" }}>
                 Happy Couples
               </em>
             </h3>
             <p className="font-body text-sm leading-relaxed mb-10"
-              style={{ color: "rgba(27,46,36,0.80)" }}>
+              style={{ color: "rgba(27,46,36,0.90)" }}>
               Nothing speaks louder than joy. Watch this heartfelt testimonial and see why families trust JSB Events for their most precious celebrations.
             </p>
             <div className="flex items-center gap-10">
               <div>
                 <p className="font-heading text-4xl font-light" style={{ color: FOREST }}>200+</p>
-                <p className="font-body text-[11px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(27,46,36,0.65)" }}>
+                <p className="font-body text-[11px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(27,46,36,0.82)" }}>
                   Happy Couples
                 </p>
               </div>

@@ -50,7 +50,7 @@ const ServicesSection = () => (
           <h2 className="font-heading font-light leading-tight"
             style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)", color: "#1B2E24" }}>
             Everything Your<br />
-            <em className="italic" style={{ color: "rgba(27,46,36,0.68)" }}>
+            <em className="italic" style={{ color: "rgba(27,46,36,0.84)" }}>
               Celebration Deserves
             </em>
           </h2>
@@ -81,7 +81,7 @@ const ServicesSection = () => (
                   {s.title}
                 </h3>
                 <p className="font-body text-sm leading-relaxed max-w-lg"
-                  style={{ color: "rgba(27,46,36,0.80)" }}>
+                  style={{ color: "rgba(27,46,36,0.90)" }}>
                   {s.description}
                 </p>
                 <div className="flex flex-wrap gap-2 pt-1">
@@ -127,7 +127,7 @@ const ServicesSection = () => (
               <span
                 key={city}
                 className="font-heading text-lg md:text-xl font-light"
-                style={{ color: i === 5 ? FOREST : "rgba(27,46,36,0.82)" }}
+                style={{ color: i === 5 ? FOREST : "rgba(27,46,36,0.92)" }}
               >
                 {city}
               </span>

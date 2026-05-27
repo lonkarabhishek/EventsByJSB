@@ -45,7 +45,7 @@ const ContactPage = () => {
             <div className="h-px w-12" style={{ background: `rgba(27,58,45,0.2)` }} />
           </div>
           <p className="font-body text-sm font-light max-w-sm mx-auto"
-            style={{ color: "rgba(27,46,36,0.75)" }}>
+            style={{ color: "rgba(27,46,36,0.88)" }}>
             Answer a few quick questions and we'll get back to you within 10 minutes.
           </p>
         </FadeIn>
@@ -80,7 +80,7 @@ const ContactPage = () => {
                 {/* Response badge */}
                 <div className="flex items-center gap-2 mt-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-                  <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.68)" }}>
+                  <span className="font-body text-[10px]" style={{ color: "rgba(27,46,36,0.84)" }}>
                     Typically responds in under 10 minutes
                   </span>
                 </div>
@@ -102,7 +102,7 @@ const ContactPage = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-[9px] tracking-[0.25em] uppercase mb-0.5"
-                      style={{ color: "rgba(27,46,36,0.62)" }}>Phone</p>
+                      style={{ color: "rgba(27,46,36,0.80)" }}>Phone</p>
                     <p className="font-body text-sm" style={{ color: "#1B2E24" }}>+91 99051 68295</p>
                   </div>
                   <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -124,7 +124,7 @@ const ContactPage = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-[9px] tracking-[0.25em] uppercase mb-0.5"
-                      style={{ color: "rgba(27,46,36,0.62)" }}>WhatsApp</p>
+                      style={{ color: "rgba(27,46,36,0.80)" }}>WhatsApp</p>
                     <p className="font-body text-sm" style={{ color: "#1B2E24" }}>+91 99051 68295</p>
                   </div>
                   <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200"
@@ -146,7 +146,7 @@ const ContactPage = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-[9px] tracking-[0.25em] uppercase mb-0.5"
-                      style={{ color: "rgba(27,46,36,0.62)" }}>Email</p>
+                      style={{ color: "rgba(27,46,36,0.80)" }}>Email</p>
                     <p className="font-body text-sm truncate" style={{ color: "#1B2E24" }}>hello@jsbevents.com</p>
                   </div>
                   <svg className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200"
@@ -163,19 +163,19 @@ const ContactPage = () => {
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-3 h-3 flex-shrink-0" style={{ color: `rgba(27,58,45,0.55)` }} />
                       <p className="font-body text-[9px] tracking-[0.2em] uppercase"
-                        style={{ color: "rgba(27,46,36,0.62)" }}>Location</p>
+                        style={{ color: "rgba(27,46,36,0.80)" }}>Location</p>
                     </div>
                     <p className="font-body text-sm leading-snug" style={{ color: "#1B2E24" }}>New Delhi</p>
-                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(27,46,36,0.62)" }}>Available globally</p>
+                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(27,46,36,0.80)" }}>Available globally</p>
                   </div>
                   <div className="px-6 py-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="w-3 h-3 flex-shrink-0" style={{ color: `rgba(27,58,45,0.55)` }} />
                       <p className="font-body text-[9px] tracking-[0.2em] uppercase"
-                        style={{ color: "rgba(27,46,36,0.62)" }}>Hours</p>
+                        style={{ color: "rgba(27,46,36,0.80)" }}>Hours</p>
                     </div>
                     <p className="font-body text-sm leading-snug" style={{ color: "#1B2E24" }}>Mon to Sat</p>
-                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(27,46,36,0.62)" }}>10 AM to 7 PM</p>
+                    <p className="font-body text-[10px] mt-0.5" style={{ color: "rgba(27,46,36,0.80)" }}>10 AM to 7 PM</p>
                   </div>
                 </div>
               </div>
@@ -202,14 +202,14 @@ const ContactPage = () => {
                 {/* Social icons */}
                 <div className="flex items-center gap-3">
                   <p className="font-body text-[9px] tracking-[0.3em] uppercase mr-1"
-                    style={{ color: "rgba(27,46,36,0.52)" }}>
+                    style={{ color: "rgba(27,46,36,0.72)" }}>
                     Follow
                   </p>
                   <a href="https://instagram.com/eventsbyjsb" target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-3 py-1.5 transition-all duration-200"
-                    style={{ border: `1px solid rgba(27,58,45,0.15)`, color: "rgba(27,46,36,0.68)" }}
+                    style={{ border: `1px solid rgba(27,58,45,0.15)`, color: "rgba(27,46,36,0.84)" }}
                     onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = FOREST; el.style.color = FOREST; }}
-                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = `rgba(27,58,45,0.15)`; el.style.color = "rgba(27,46,36,0.68)"; }}
+                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = `rgba(27,58,45,0.15)`; el.style.color = "rgba(27,46,36,0.84)"; }}
                   >
                     <Instagram className="w-3 h-3" />
                     <span className="font-body text-[9px] tracking-[0.15em] uppercase">Instagram</span>

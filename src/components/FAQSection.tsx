@@ -87,7 +87,7 @@ const FAQSection = () => {
                   >
                     <p
                       className="font-body text-sm leading-relaxed pb-6"
-                      style={{ color: "rgba(27,46,36,0.82)" }}
+                      style={{ color: "rgba(27,46,36,0.92)" }}
                     >
                       {faq.a}
                     </p>
