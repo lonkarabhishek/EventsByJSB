@@ -12,8 +12,8 @@ const VIDEOS = [
 const CYCLE_MS   = 8000;
 const FADE_MS    = 1200;
 
-/* Sage-mint accent for hero (readable on dark video overlay) */
-const SAGE = "#9FCFB8";
+/* Bright sage-mint accent for hero */
+const SAGE = "#C5EDD9";
 
 const HeroSection = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -65,13 +65,13 @@ const HeroSection = () => {
           />
         ))}
 
-        {/* Cinematic overlays */}
-        <div className="absolute inset-0 z-10 bg-black/52" />
+        {/* Cinematic overlays — lightened so text pops */}
+        <div className="absolute inset-0 z-10 bg-black/30" />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.48) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.28) 100%)" }}
         />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.35) 100%)" }}
+          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.18) 100%)" }}
         />
 
         {/* Main content */}
@@ -112,7 +112,7 @@ const HeroSection = () => {
 
           {/* Subheading */}
           <p
-            className="hero-fade-up font-body text-sm md:text-base font-light text-white/55 mb-10 md:mb-12 max-w-md tracking-wider"
+            className="hero-fade-up font-body text-sm md:text-base font-light text-white/85 mb-10 md:mb-12 max-w-md tracking-wider"
             style={{ animationDelay: "1.15s" }}
           >
             Destination weddings &amp; milestone celebrations,<br className="hidden md:block" />
