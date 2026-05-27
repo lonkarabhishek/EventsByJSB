@@ -13,7 +13,7 @@ const CYCLE_MS   = 8000;
 const FADE_MS    = 1200;
 
 /* Bright sage-mint accent for hero */
-const SAGE = "#C5EDD9";
+const SAGE = "#A8F0C8";
 
 const HeroSection = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -66,12 +66,12 @@ const HeroSection = () => {
         ))}
 
         {/* Cinematic overlays */}
-        <div className="absolute inset-0 z-10 bg-black/42" />
+        <div className="absolute inset-0 z-10 bg-black/58" />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.38) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.55) 100%)" }}
         />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.22) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.22) 100%)" }}
+          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.30) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.30) 100%)" }}
         />
 
         {/* Main content */}
@@ -89,7 +89,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1
-            className="hero-fade-up text-shadow-hero font-heading font-normal text-white leading-[0.95] mb-5 md:mb-6 tracking-wide"
+            className="hero-fade-up text-shadow-hero font-heading font-semibold text-white leading-[0.95] mb-5 md:mb-6 tracking-wide"
             style={{
               fontSize: "clamp(2.4rem, 9vw, 10rem)",
               animationDelay: "0.7s",
@@ -112,7 +112,7 @@ const HeroSection = () => {
 
           {/* Subheading */}
           <p
-            className="hero-fade-up font-body text-sm md:text-base font-light text-white/85 mb-10 md:mb-12 max-w-md tracking-wider"
+            className="hero-fade-up font-body text-sm md:text-base font-normal text-white mb-10 md:mb-12 max-w-md tracking-wider"
             style={{ animationDelay: "1.15s" }}
           >
             Destination weddings &amp; milestone celebrations,<br className="hidden md:block" />
