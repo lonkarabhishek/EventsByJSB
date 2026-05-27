@@ -65,13 +65,13 @@ const HeroSection = () => {
           />
         ))}
 
-        {/* Cinematic overlays — lightened so text pops */}
-        <div className="absolute inset-0 z-10 bg-black/30" />
+        {/* Cinematic overlays */}
+        <div className="absolute inset-0 z-10 bg-black/42" />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.28) 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.38) 100%)" }}
         />
         <div className="absolute inset-0 z-10"
-          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.18) 100%)" }}
+          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.22) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.22) 100%)" }}
         />
 
         {/* Main content */}
@@ -89,7 +89,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1
-            className="hero-fade-up text-shadow-hero font-heading font-light text-white leading-[0.95] mb-5 md:mb-6 tracking-wide"
+            className="hero-fade-up text-shadow-hero font-heading font-normal text-white leading-[0.95] mb-5 md:mb-6 tracking-wide"
             style={{
               fontSize: "clamp(2.4rem, 9vw, 10rem)",
               animationDelay: "0.7s",
